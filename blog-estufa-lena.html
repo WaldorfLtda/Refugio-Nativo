@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Guía completa para encender y usar la estufa a leña de forma segura. Pasos, regulación de temperatura y consejos de mantenimiento.">
+<title>Cómo usar la estufa a leña | Refugio Nativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: #f5f2eb; color: #1a1a18; overflow-x: hidden; }
+  img { display: block; width: 100%; object-fit: cover; }
+  a { text-decoration: none; color: inherit; }
+  :root { --verde: #2a3a22; --verde-medio: #3d5030; --verde-claro: #a0b878; --crema: #f5f2eb; --crema-oscuro: #edeadf; --negro: #0f150f; --gris: #888880; --gris-claro: #c8c4b0; }
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(245,242,235,0.97); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--gris-claro); }
+  .nav-logo { display: flex; align-items: center; gap: 14px; }
+  .nav-logo img { height: 44px; width: auto; filter: brightness(0); }
+  .nav-logo-name { font-size: 13px; letter-spacing: 4px; font-weight: 500; text-transform: uppercase; }
+  .nav-logo-sub { font-size: 9px; letter-spacing: 2px; color: var(--gris); font-weight: 300; }
+  .nav-back { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); transition: color 0.2s; }
+  .nav-back:hover { color: #1a1a18; }
+  .article-hero { padding-top: 90px; background: #2a1a0a; padding-bottom: 64px; }
+  .article-hero-inner { max-width: 860px; margin: 0 auto; padding: 64px 48px 0; }
+  .article-cat { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--verde-claro); margin-bottom: 16px; font-weight: 300; }
+  .article-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 300; color: #f0ece0; line-height: 1.05; font-style: italic; margin-bottom: 24px; }
+  .article-meta { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; font-size: 11px; letter-spacing: 1.5px; color: rgba(255,255,255,0.4); text-transform: uppercase; border-top: 0.5px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 24px; }
+  .article-meta span { display: flex; align-items: center; gap: 6px; }
+  .article-body { max-width: 860px; margin: 0 auto; padding: 64px 48px; }
+  .article-intro { font-size: 18px; line-height: 1.8; color: #3a3a38; font-weight: 300; margin-bottom: 56px; border-left: 3px solid var(--verde-claro); padding-left: 24px; }
+  .steps { display: flex; flex-direction: column; gap: 0; margin-bottom: 64px; }
+  .step { display: grid; grid-template-columns: 72px 1fr; gap: 32px; align-items: start; padding: 36px 0; border-bottom: 0.5px solid var(--gris-claro); }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 56px; font-weight: 300; color: var(--gris-claro); line-height: 1; text-align: right; }
+  .step-title { font-size: 16px; font-weight: 600; color: #1a1a18; margin-bottom: 10px; }
+  .step-body { font-size: 15px; line-height: 1.8; color: #4a4a48; font-weight: 300; }
+  .step-body strong { font-weight: 500; color: #1a1a18; }
+  .tip-box { background: var(--verde); padding: 32px 40px; margin: 12px 0 0; }
+  .tip-box p { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.7; font-weight: 300; }
+  .tip-box strong { color: var(--verde-claro); }
+  .errores { background: var(--crema-oscuro); border: 0.5px solid var(--gris-claro); padding: 40px 48px; margin-bottom: 64px; }
+  .errores-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; font-style: italic; color: #1a1a18; margin-bottom: 24px; }
+  .errores-list { display: flex; flex-direction: column; gap: 16px; }
+  .error-item { display: flex; align-items: flex-start; gap: 14px; }
+  .error-item i { font-size: 18px; color: #c05030; flex-shrink: 0; margin-top: 2px; }
+  .error-text { font-size: 14px; color: #4a4a48; line-height: 1.6; font-weight: 300; }
+  .error-text strong { font-weight: 500; color: #1a1a18; }
+  .article-cta { background: var(--crema-oscuro); padding: 48px; display: flex; align-items: center; justify-content: space-between; gap: 32px; border: 0.5px solid var(--gris-claro); }
+  .cta-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+  .cta-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; font-style: italic; color: #1a1a18; }
+  .cta-btn { display: inline-block; padding: 14px 36px; border: 0.5px solid var(--verde); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--verde); white-space: nowrap; transition: all 0.3s; }
+  .cta-btn:hover { background: var(--verde); color: #f0ece0; }
+  .article-footer { padding: 32px 48px; border-top: 0.5px solid var(--gris-claro); display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--gris); letter-spacing: 1.5px; text-transform: uppercase; }
+  @media (max-width: 768px) { .nav { padding: 16px 24px; } .article-hero-inner, .article-body { padding: 40px 24px; } .step { grid-template-columns: 1fr; gap: 8px; } .step-num { font-size: 36px; text-align: left; } .article-cta { flex-direction: column; } .article-footer { flex-direction: column; gap: 12px; text-align: center; } }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="REFUGIONATIVOFondoTransparente.png" alt="Refugio Nativo">
+    <div><p class="nav-logo-name">Refugio Nativo</p><p class="nav-logo-sub">Las Trancas · Chile</p></div>
+  </div>
+  <a href="index.html#blog" class="nav-back"><i class="ti ti-arrow-left" style="font-size:14px"></i> Volver al blog</a>
+</nav>
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <p class="article-cat">Blog · Guía del refugio</p>
+    <h1 class="article-title">Cómo usar la estufa<br>a leña de forma segura</h1>
+    <div class="article-meta">
+      <span><i class="ti ti-flame"></i> Estufa a leña</span>
+      <span><i class="ti ti-clock"></i> 5 min de lectura</span>
+      <span><i class="ti ti-shield-check"></i> Guía de seguridad</span>
+    </div>
+  </div>
+</section>
+<div class="article-body">
+  <p class="article-intro">Una estufa a leña encendida es el corazón del refugio en invierno. El crepitar de la madera, el calor que irradia y el olor a leña quemada forman parte de la experiencia. Para que todo funcione bien y de manera segura, sigue esta guía.</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div>
+        <p class="step-title">Verifica la ventilación antes de encender</p>
+        <p class="step-body">Asegúrate de que la <strong>compuerta del tiraje esté completamente abierta</strong> antes de encender. Esto permite que el humo salga correctamente y que el fuego tenga suficiente oxígeno para arrancar. Una chimenea fría puede generar contratiraje al principio — si ves humo entrando al espacio, espera unos minutos con la puerta de la estufa entreabierta.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div>
+        <p class="step-title">Arma la base del fuego en pirámide</p>
+        <p class="step-body">La técnica más efectiva: coloca primero <strong>papel de diario arrugado</strong> en el centro, luego <strong>astillas finas cruzadas</strong> en forma de pirámide, y encima uno o dos trozos de leña delgados. Enciende el papel desde abajo y deja la puerta entreabierta hasta que el fuego esté establecido. <strong>Usa siempre leña seca</strong> — la húmeda produce más humo y menos calor.</p>
+        <div class="tip-box"><p><strong>Test de la leña seca:</strong> Golpea dos trozos entre sí. Si suena hueco y seco, está lista. Si suena sordo y apagado, todavía tiene humedad.</p></div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div>
+        <p class="step-title">Regula la temperatura con las compuertas de aire</p>
+        <p class="step-body">Una vez que el fuego está establecido: <strong>compuerta completamente abierta = más calor y consumo más rápido de leña</strong>. Para reducir la intensidad y que la leña dure más, <strong>cierra parcialmente la compuerta de aire</strong>. Para mantener el calor toda la noche, agrega un tronco grueso antes de acostarte y cierra la compuerta al mínimo.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div>
+        <p class="step-title">Agrega leña de forma progresiva</p>
+        <p class="step-body">No llenes la estufa de golpe. <strong>Agrega uno o dos trozos a la vez</strong>, cuando ya haya una base de brasas establecida. Los trozos más gruesos van cuando el fuego ya está fuerte. Abre la puerta lentamente para evitar que salgan chispas y ciérrala bien después de cada carga.</p>
+        <div class="tip-box"><p><strong>Para toda la noche:</strong> Un tronco grueso de madera dura puede mantener brasas por 6–8 horas con la compuerta casi cerrada. Al despertar, sopla suave sobre las brasas y agrega astillas — el fuego rearrancan fácilmente.</p></div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">05</div>
+      <div>
+        <p class="step-title">Seguridad básica siempre presente</p>
+        <p class="step-body">Mantén un <strong>área despejada de al menos 1 metro</strong> alrededor de la estufa. No coloques ropa húmeda directamente sobre ella. <strong>Nunca dejes la estufa encendida con la puerta abierta sin supervisión</strong>. Antes de dormir, asegúrate de que la puerta esté bien cerrada y la compuerta regulada.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="errores">
+    <p class="errores-title">Errores frecuentes que conviene evitar</p>
+    <div class="errores-list">
+      <div class="error-item"><i class="ti ti-x"></i><p class="error-text"><strong>Usar leña húmeda o verde.</strong> Produce mucho humo, poca calor y acumula creosota en el conducto de humo.</p></div>
+      <div class="error-item"><i class="ti ti-x"></i><p class="error-text"><strong>Cerrar el tiraje demasiado pronto.</strong> Si cierras la compuerta antes de que el fuego esté bien establecido, el humo entra al espacio.</p></div>
+      <div class="error-item"><i class="ti ti-x"></i><p class="error-text"><strong>Quemar basura, plásticos o madera pintada.</strong> Libera gases tóxicos y daña el interior de la estufa.</p></div>
+      <div class="error-item"><i class="ti ti-x"></i><p class="error-text"><strong>Sobrecargar la estufa de leña.</strong> Demasiada leña de golpe puede elevar la temperatura por encima de los límites seguros.</p></div>
+    </div>
+  </div>
+
+  <div class="article-cta">
+    <div><p class="cta-label">Tu refugio en el bosque</p><p class="cta-title">La estufa ya está lista<br>para tu llegada</p></div>
+    <a href="index.html" class="cta-btn">Ver el refugio</a>
+  </div>
+</div>
+<footer class="article-footer">
+  <span>© 2025 Refugio Nativo · Las Trancas, Ñuble</span>
+  <a href="index.html" style="display:flex;align-items:center;gap:6px"><i class="ti ti-arrow-left" style="font-size:12px"></i> Volver al inicio</a>
+</footer>
+</body>
+</html>

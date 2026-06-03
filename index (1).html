@@ -1,0 +1,2234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Refugio Nativo — Cabaña y Domo en bosque nativo, Las Trancas, Termas de Chillán. Tinaja privada, piscina en temporada, 2.000 m² de naturaleza.">
+<title>Refugio Nativo — Las Trancas, Chile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: #f5f2eb;
+    color: #1a1a18;
+    overflow-x: hidden;
+  }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  a { text-decoration: none; color: inherit; }
+
+  /* ===== CSS VARIABLES ===== */
+  :root {
+    --verde: #2a3a22;
+    --verde-medio: #3d5030;
+    --verde-claro: #a0b878;
+    --crema: #f5f2eb;
+    --crema-oscuro: #edeadf;
+    --negro: #0f150f;
+    --gris: #888880;
+    --gris-claro: #c8c4b0;
+  }
+
+  /* ===== NAV ===== */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 48px;
+    background: rgba(245,242,235,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--gris-claro);
+    transition: all 0.3s ease;
+  }
+  .nav.scrolled {
+    padding: 10px 48px;
+    background: rgba(245,242,235,0.98);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+  }
+  .nav-logo img {
+    height: 44px;
+    width: auto;
+    filter: brightness(0);
+  }
+  .nav-logo-text { display: flex; flex-direction: column; gap: 1px; }
+  .nav-logo-name {
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: 500;
+    color: #1a1a18;
+    text-transform: uppercase;
+  }
+  .nav-logo-sub {
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: var(--gris);
+    font-weight: 300;
+  }
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    font-weight: 400;
+    color: #1a1a18;
+    text-transform: uppercase;
+    transition: opacity 0.2s;
+  }
+  .nav-links a:hover { opacity: 0.5; }
+  .nav-links a.active {
+    border-bottom: 1px solid #1a1a18;
+    padding-bottom: 2px;
+  }
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-hamburger span {
+    width: 24px;
+    height: 1.5px;
+    background: #1a1a18;
+    display: block;
+    transition: all 0.3s;
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--crema);
+    z-index: 200;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-size: 28px;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    color: #1a1a18;
+    letter-spacing: 2px;
+  }
+  .mobile-menu-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #1a1a18;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    height: 100vh;
+    min-height: 600px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://lh3.googleusercontent.com/pw/AP1GczM2nCdkc2gXrizomcJ6j68Tm-a5UU_9-zm4uz6ezXXoMvgYXPpvi_hp6w2SpeTEpFuBoKfUQvIM67Z67h-GDGkT70I0ljS3tst1aEa3HJrH6eZFRjZ0tkIfTrT3HzDm5Q1TV4QWaXMwJpxIVTXNDVUHcQ=w1920');
+    background-size: cover;
+    background-position: center;
+    transform: scale(1.05);
+    transition: transform 8s ease;
+  }
+  .hero-bg.loaded { transform: scale(1); }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(10,18,8,0.85) 0%,
+      rgba(10,18,8,0.4) 50%,
+      rgba(10,18,8,0.1) 100%
+    );
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 48px 64px;
+    width: 100%;
+    max-width: 1200px;
+  }
+  .hero-tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--verde-claro);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 300;
+    color: #f0ece0;
+    line-height: 0.95;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: 11px;
+    letter-spacing: 2.5px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+  .hero-btn {
+    display: inline-block;
+    padding: 12px 32px;
+    border: 0.5px solid var(--verde-claro);
+    color: #f0ece0;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-family: 'Jost', sans-serif;
+    transition: all 0.3s;
+  }
+  .hero-btn:hover {
+    background: var(--verde-claro);
+    color: var(--negro);
+  }
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    right: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 2;
+  }
+  .hero-scroll span {
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+  }
+  .hero-scroll-line {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+    animation: scrollLine 2s ease infinite;
+  }
+  @keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* ===== SECCIÓN 2.000 M² ===== */
+  .terreno {
+    background: var(--verde);
+    padding: 64px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .terreno-left {}
+  .terreno-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(72px, 10vw, 120px);
+    font-weight: 300;
+    color: #f0ece0;
+    line-height: 1;
+  }
+  .terreno-unit {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--verde-claro);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    margin-top: 4px;
+  }
+  .terreno-desc {
+    font-size: 14px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 400px;
+  }
+  .terreno-amenities {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+  .terreno-am {
+    background: var(--verde);
+    padding: 24px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: background 0.2s;
+  }
+  .terreno-am:hover { background: var(--verde-medio); }
+  .terreno-am i {
+    font-size: 22px;
+    color: var(--verde-claro);
+  }
+  .terreno-am-name {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .terreno-am-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  /* ===== SECCIÓN ESPACIOS ===== */
+  .section {
+    padding: 96px 48px;
+  }
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-bottom: 8px;
+    font-weight: 300;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 300;
+    color: #1a1a18;
+    line-height: 1.1;
+    margin-bottom: 48px;
+  }
+  .section-title em { font-style: italic; }
+
+  .espacios-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .espacio-card {
+    background: #1a1a18;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .espacio-card:hover { transform: translateY(-4px); }
+  .espacio-gallery {
+    position: relative;
+    height: 380px;
+    overflow: hidden;
+  }
+  .espacio-gallery img {
+    transition: transform 0.6s ease;
+  }
+  .espacio-card:hover .espacio-gallery img { transform: scale(1.04); }
+  .espacio-gallery-nav {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+  }
+  .espacio-gallery-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .espacio-gallery-dot.active { background: #fff; }
+  .espacio-body { padding: 28px; }
+  .espacio-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: #f0ece0;
+    margin-bottom: 4px;
+    font-style: italic;
+  }
+  .espacio-cap {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #484840;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .espacio-services {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    border-top: 0.5px solid #2a2a28;
+    padding-top: 16px;
+    margin-bottom: 16px;
+  }
+  .espacio-svc {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: #888880;
+  }
+  .espacio-svc i { font-size: 14px; color: var(--verde-claro); }
+  .espacio-unique {
+    padding: 12px 14px;
+    background: #0f150f;
+    border-left: 2px solid var(--verde-medio);
+    margin-bottom: 16px;
+  }
+  .espacio-unique-label {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #4a5a3a;
+    margin-bottom: 4px;
+  }
+  .espacio-unique-val {
+    font-size: 12px;
+    color: var(--verde-claro);
+    font-weight: 300;
+  }
+  .espacio-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--verde-claro);
+    text-transform: uppercase;
+    border: 0.5px solid #2a3a2a;
+    padding: 10px 20px;
+    transition: all 0.2s;
+  }
+  .espacio-link:hover {
+    background: var(--verde-claro);
+    color: var(--negro);
+    border-color: var(--verde-claro);
+  }
+
+  /* ===== GALERÍA ===== */
+  .galeria { padding: 64px 48px 96px; background: var(--crema); }
+  .galeria-header { margin-bottom: 40px; }
+
+  /* Carpetas */
+  .gcarpetas {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-bottom: 0;
+  }
+  .gcarpeta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 32px 16px;
+    border: 0.5px solid var(--gris-claro);
+    background: var(--crema);
+    cursor: pointer;
+    transition: all 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .gcarpeta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #1a1a18;
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.25s ease;
+    z-index: 0;
+  }
+  .gcarpeta:hover::before,
+  .gcarpeta.active::before { transform: scaleY(1); }
+  .gcarpeta > * { position: relative; z-index: 1; }
+  .gcarpeta-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--crema-oscuro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.25s;
+  }
+  .gcarpeta:hover .gcarpeta-icon,
+  .gcarpeta.active .gcarpeta-icon { background: rgba(255,255,255,0.1); }
+  .gcarpeta-icon i {
+    font-size: 28px;
+    color: var(--verde);
+    transition: color 0.25s;
+  }
+  .gcarpeta:hover .gcarpeta-icon i,
+  .gcarpeta.active .gcarpeta-icon i { color: var(--verde-claro); }
+  .gcarpeta-name {
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    color: #1a1a18;
+    text-transform: uppercase;
+    transition: color 0.25s;
+    text-align: center;
+  }
+  .gcarpeta:hover .gcarpeta-name,
+  .gcarpeta.active .gcarpeta-name { color: #f0ece0; }
+  .gcarpeta-count {
+    font-size: 10px;
+    color: var(--gris);
+    font-weight: 300;
+    transition: color 0.25s;
+  }
+  .gcarpeta:hover .gcarpeta-count,
+  .gcarpeta.active .gcarpeta-count { color: rgba(255,255,255,0.4); }
+
+  /* Grid expandible */
+  .galeria-lightbox-grid {
+    margin-top: 6px;
+    background: #1a1a18;
+    padding: 0;
+    animation: fadeInGrid 0.3s ease;
+  }
+  @keyframes fadeInGrid {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .galeria-grid-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-bottom: 0.5px solid #2a2a28;
+  }
+  .galeria-grid-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    font-weight: 400;
+  }
+  .galeria-grid-close {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #585850;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: 'Jost', sans-serif;
+    transition: color 0.2s;
+  }
+  .galeria-grid-close:hover { color: #f0ece0; }
+  .ggrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+    padding: 3px;
+  }
+  .gi {
+    height: 180px;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+  .gi img { transition: transform 0.5s ease; width:100%; height:100%; object-fit:cover; }
+  .gi:hover img { transform: scale(1.06); }
+  .gi.hidden { display: none; }
+
+  /* ===== EXPLORA ===== */
+  .explora {
+    background: var(--negro);
+    padding: 96px 48px;
+  }
+  .explora .section-label { color: #3a4a2a; }
+  .explora .section-title { color: #f0ece0; margin-bottom: 56px; }
+
+  .temporadas-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    margin-bottom: 64px;
+  }
+  .temporada {
+    background: var(--negro);
+    padding: 32px 24px;
+    transition: background 0.2s;
+  }
+  .temporada:hover { background: #141c14; }
+  .temp-icon { font-size: 24px; color: var(--verde-claro); margin-bottom: 12px; }
+  .temp-badge {
+    display: inline-block;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    margin-bottom: 10px;
+  }
+  .b-winter { background: #1a2a3a; color: #7090a8; }
+  .b-autumn { background: #2a1a08; color: #c09050; }
+  .b-summer { background: #1a2a1a; color: #80a868; }
+  .b-spring { background: #2a1a2a; color: #a890b0; }
+  .temp-months {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #3a4a3a;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .temp-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    color: #f0ece0;
+    font-weight: 300;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .temp-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .temp-list li {
+    font-size: 12px;
+    color: #585850;
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .temp-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: #3a4a2a;
+  }
+
+  /* Actividades */
+  .actividades-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: #f0ece0;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .actividades-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    margin-bottom: 64px;
+  }
+  .actividad {
+    background: var(--negro);
+    padding: 20px 16px;
+    transition: background 0.2s;
+  }
+  .actividad:hover { background: #141c14; }
+  .actividad i { font-size: 18px; color: var(--verde-claro); margin-bottom: 8px; display: block; }
+  .actividad-name { font-size: 11px; font-weight: 500; color: #c0bca8; margin-bottom: 2px; }
+  .actividad-desc { font-size: 10px; color: #484840; line-height: 1.4; }
+
+  /* Atractivos */
+  .atractivos-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: #f0ece0;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .atractivos-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+    margin-bottom: 64px;
+  }
+  .atractivo {
+    background: var(--negro);
+    padding: 20px 16px;
+    transition: background 0.2s;
+  }
+  .atractivo:hover { background: #141c14; }
+  .atractivo i { font-size: 18px; color: var(--verde-claro); margin-bottom: 8px; display: block; }
+  .atractivo-name { font-size: 11px; font-weight: 500; color: #c0bca8; margin-bottom: 2px; }
+  .atractivo-desc { font-size: 10px; color: #484840; line-height: 1.4; }
+
+  /* Restaurantes */
+  .restaurantes-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    color: #f0ece0;
+    font-weight: 300;
+    font-style: italic;
+    margin-bottom: 24px;
+  }
+  .restaurantes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+  }
+  .restaurante {
+    background: var(--negro);
+    padding: 20px 16px;
+    transition: background 0.2s;
+  }
+  .restaurante:hover { background: #141c14; }
+  .restaurante i { font-size: 18px; color: var(--verde-claro); margin-bottom: 8px; display: block; }
+  .restaurante-name { font-size: 11px; font-weight: 500; color: #c0bca8; margin-bottom: 2px; }
+  .restaurante-desc { font-size: 10px; color: #484840; line-height: 1.4; }
+
+  /* ===== BLOG ===== */
+  .blog {
+    padding: 96px 48px;
+    background: var(--crema-oscuro);
+  }
+  .blog .section-title { margin-bottom: 48px; }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .blog-card {
+    background: var(--crema);
+    border: 0.5px solid var(--gris-claro);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+  .blog-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+  }
+  .blog-card-img {
+    height: 200px;
+    overflow: hidden;
+  }
+  .blog-card-img img { transition: transform 0.5s; }
+  .blog-card:hover .blog-card-img img { transform: scale(1.04); }
+  .blog-card-color {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .blog-card-body { padding: 24px; }
+  .blog-cat {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-bottom: 8px;
+  }
+  .blog-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #1a1a18;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+  .blog-excerpt {
+    font-size: 12px;
+    color: var(--gris);
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+  .blog-arrow {
+    font-size: 10px;
+    color: var(--gris);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: color 0.2s, gap 0.2s;
+  }
+  .blog-card:hover .blog-arrow {
+    color: var(--verde-medio);
+    gap: 10px;
+  }
+
+  /* ===== COMO LLEGAR ===== */
+  .llegar {
+    padding: 96px 48px;
+    background: var(--crema);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .llegar-content {}
+  .llegar-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin-top: 32px;
+  }
+  .llegar-step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .llegar-step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--gris-claro);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 40px;
+  }
+  .llegar-step-body {}
+  .llegar-step-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: #1a1a18;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+  .llegar-step-desc {
+    font-size: 12px;
+    color: var(--gris);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .llegar-alerta {
+    margin-top: 32px;
+    padding: 16px 20px;
+    background: #f0e8d8;
+    border-left: 2px solid #c09050;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .llegar-alerta i { color: #c09050; font-size: 18px; flex-shrink: 0; margin-top: 2px; }
+  .llegar-alerta p { font-size: 12px; color: #7a6040; line-height: 1.7; font-weight: 300; }
+  .llegar-img {
+    height: 500px;
+    overflow: hidden;
+  }
+  .llegar-img img { border-radius: 0; }
+
+  /* ===== FOOTER ===== */
+  .footer {
+    background: #080c08;
+    padding: 64px 48px 32px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 64px;
+    padding-bottom: 48px;
+    border-bottom: 0.5px solid #1a2a1a;
+  }
+  .footer-brand {}
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .footer-logo-name {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #3a4a2a;
+    text-transform: uppercase;
+    display: block;
+  }
+  .footer-logo-sub {
+    font-size: 8px;
+    color: #2a3a1a;
+    letter-spacing: 1.5px;
+    display: block;
+    margin-top: 2px;
+  }
+  .footer-desc {
+    font-size: 12px;
+    color: #3a4a3a;
+    line-height: 1.8;
+    font-weight: 300;
+    max-width: 280px;
+  }
+  .footer-col-title {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #3a4a2a;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+  .footer-links-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer-links-list a {
+    font-size: 12px;
+    color: #484840;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+  .footer-links-list a:hover { color: var(--verde-claro); }
+  .footer-airbnb {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 10px 20px;
+    border: 0.5px solid #3a4a2a;
+    color: var(--verde-claro);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .footer-airbnb:hover {
+    background: var(--verde-claro);
+    color: var(--negro);
+    border-color: var(--verde-claro);
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-copy {
+    font-size: 10px;
+    color: #2a3a2a;
+    letter-spacing: 1px;
+  }
+  .footer-marca {
+    font-size: 10px;
+    color: #2a3a2a;
+    letter-spacing: 1px;
+  }
+
+  /* ===== SUPERANFITRIÓN BADGE ===== */
+  .superhost-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255,255,255,0.2);
+    padding: 10px 18px;
+    margin-bottom: 24px;
+    backdrop-filter: blur(8px);
+  }
+  .superhost-badge i { font-size: 18px; color: #FFD700; }
+  .superhost-badge-text { display: flex; flex-direction: column; gap: 1px; }
+  .superhost-badge-title { font-size: 11px; font-weight: 500; color: #f0ece0; letter-spacing: 1px; }
+  .superhost-badge-sub { font-size: 9px; color: rgba(255,255,255,0.5); letter-spacing: 1.5px; text-transform: uppercase; }
+
+  /* ===== RESEÑAS ===== */
+  .resenas {
+    padding: 96px 48px;
+    background: var(--negro);
+  }
+  .resenas .section-label { color: #3a4a2a; }
+  .resenas .section-title { color: #f0ece0; margin-bottom: 16px; }
+  .resenas-rating {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .resenas-rating-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: #f0ece0;
+    line-height: 1;
+  }
+  .resenas-rating-right {}
+  .resenas-stars { display: flex; gap: 3px; margin-bottom: 4px; }
+  .resenas-stars i { font-size: 14px; color: #FFD700; }
+  .resenas-rating-desc { font-size: 11px; color: #585850; letter-spacing: 1px; }
+  .resenas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.05);
+  }
+  .resena-card {
+    background: var(--negro);
+    padding: 28px 24px;
+    transition: background 0.2s;
+  }
+  .resena-card:hover { background: #141c14; }
+  .resena-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .resena-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--verde);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--verde-claro);
+    flex-shrink: 0;
+    font-family: 'Cormorant Garamond', serif;
+  }
+  .resena-name { font-size: 13px; font-weight: 500; color: #d0ccc0; margin-bottom: 1px; }
+  .resena-location { font-size: 10px; color: #484840; letter-spacing: 0.5px; }
+  .resena-stars { display: flex; gap: 2px; margin-bottom: 12px; }
+  .resena-stars i { font-size: 11px; color: #FFD700; }
+  .resena-text {
+    font-size: 13px;
+    color: #585850;
+    line-height: 1.8;
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  @media (max-width: 1024px) {
+    .resenas { padding: 64px 24px; }
+    .resenas-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .resenas-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ===== CONTACTO ===== */
+  .contacto {
+    padding: 96px 48px;
+    background: var(--crema);
+  }
+  .contacto-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 0;
+    max-width: 800px;
+  }
+  .contacto-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 24px;
+    border: 0.5px solid var(--gris-claro);
+    background: var(--crema);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .contacto-card:hover {
+    border-color: #1a1a18;
+    background: #1a1a18;
+  }
+  .contacto-card:hover .contacto-label,
+  .contacto-card:hover .contacto-val,
+  .contacto-card:hover .contacto-hint,
+  .contacto-card:hover .contacto-arrow { color: #f0ece0; }
+  .contacto-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .contacto-body { flex: 1; }
+  .contacto-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gris);
+    margin-bottom: 4px;
+  }
+  .contacto-val {
+    font-size: 14px;
+    font-weight: 400;
+    color: #1a1a18;
+    margin-bottom: 3px;
+  }
+  .contacto-hint {
+    font-size: 11px;
+    color: var(--gris);
+    font-weight: 300;
+  }
+  .contacto-arrow {
+    font-size: 18px;
+    color: var(--gris-claro);
+    transition: transform 0.2s;
+  }
+  .contacto-card:hover .contacto-arrow { transform: translateX(4px); }
+
+  @media (max-width: 640px) {
+    .contacto { padding: 64px 24px; }
+    .contacto-cards { grid-template-columns: 1fr; }
+  }
+
+  /* ===== WHATSAPP ===== */
+  .wsp-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 200;
+    width: 56px;
+    height: 56px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wsp-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.5);
+  }
+
+  /* ===== LIGHTBOX ===== */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.95);
+    z-index: 300;
+    align-items: center;
+    justify-content: center;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+  .lightbox-close:hover { opacity: 1; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .nav { padding: 16px 24px; }
+    .nav.scrolled { padding: 10px 24px; }
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .hero-content { padding: 0 24px 48px; }
+    .terreno { grid-template-columns: 1fr; gap: 32px; padding: 48px 24px; }
+    .terreno-amenities { grid-template-columns: repeat(3, 1fr); }
+    .section { padding: 64px 24px; }
+    .espacios-grid { grid-template-columns: 1fr; }
+    .galeria { padding: 48px 24px 64px; }
+    .gcarpetas { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .ggrid { grid-template-columns: repeat(2, 1fr); }
+    .gi { height: 140px; }
+    .explora { padding: 64px 24px; }
+    .temporadas-grid { grid-template-columns: 1fr 1fr; }
+    .actividades-grid { grid-template-columns: repeat(3, 1fr); }
+    .atractivos-grid { grid-template-columns: repeat(3, 1fr); }
+    .restaurantes-grid { grid-template-columns: repeat(2, 1fr); }
+    .blog { padding: 64px 24px; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .llegar { grid-template-columns: 1fr; padding: 64px 24px; }
+    .llegar-img { height: 300px; }
+    .footer { padding: 48px 24px 24px; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  }
+
+  @media (max-width: 640px) {
+    .temporadas-grid { grid-template-columns: 1fr; }
+    .actividades-grid { grid-template-columns: repeat(2, 1fr); }
+    .atractivos-grid { grid-template-columns: repeat(2, 1fr); }
+    .restaurantes-grid { grid-template-columns: 1fr 1fr; }
+    .terreno-amenities { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <img src="REFUGIONATIVOFondoTransparente.png" alt="Refugio Nativo" style="height:44px;width:auto;filter:brightness(0)">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">Refugio Nativo</span>
+      <span class="nav-logo-sub">Las Trancas · Chile</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#inicio" class="active">Inicio</a></li>
+    <li><a href="#espacios">Los espacios</a></li>
+    <li><a href="#explora">Explora</a></li>
+    <li><a href="#blog">Blog</a></li>
+    <li><a href="#llegar">Cómo llegar</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-menu-close" id="menuClose"><i class="ti ti-x"></i></span>
+  <a href="#inicio" onclick="closeMobileMenu()">Inicio</a>
+  <a href="#espacios" onclick="closeMobileMenu()">Los espacios</a>
+  <a href="#explora" onclick="closeMobileMenu()">Explora la zona</a>
+  <a href="#blog" onclick="closeMobileMenu()">Blog</a>
+  <a href="#llegar" onclick="closeMobileMenu()">Cómo llegar</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="superhost-badge">
+      <i class="ti ti-medal"></i>
+      <div class="superhost-badge-text">
+        <span class="superhost-badge-title">Superanfitrión Airbnb</span>
+        <span class="superhost-badge-sub">3 años consecutivos · ★4.88</span>
+      </div>
+    </div>
+    <p class="hero-tag">Shangrilá · Termas de Chillán · Ñuble</p>
+    <h1 class="hero-title">Bosque nativo<br>en las alturas</h1>
+    <p class="hero-sub">Dos refugios · Tinaja privada · 12 meses al año</p>
+    <a href="#espacios" class="hero-btn">Explorar el lugar</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>scroll</span>
+  </div>
+</section>
+
+<!-- 2000 M² -->
+<section class="terreno">
+  <div class="terreno-left">
+    <div class="terreno-num">2.000</div>
+    <div class="terreno-unit">m² de terreno privado</div>
+    <p class="terreno-desc">Todo el espacio es tuyo. Piscina en temporada, hamacas entre los coihues, zonas de descanso en el bosque nativo — sin vecinos, sin apuro. Solo el sonido del bosque y la montaña.</p>
+  </div>
+  <div class="terreno-amenities">
+    <div class="terreno-am">
+      <i class="ti ti-pool"></i>
+      <span class="terreno-am-name">Piscina</span>
+      <span class="terreno-am-desc">Disponible en temporada de verano</span>
+    </div>
+    <div class="terreno-am">
+      <i class="ti ti-ripple"></i>
+      <span class="terreno-am-name">Hot tub</span>
+      <span class="terreno-am-desc">Tinaja privada todo el año</span>
+    </div>
+    <div class="terreno-am">
+      <i class="ti ti-trees"></i>
+      <span class="terreno-am-name">Bosque nativo</span>
+      <span class="terreno-am-desc">Coihues centenarios en el terreno</span>
+    </div>
+    <div class="terreno-am">
+      <i class="ti ti-armchair"></i>
+      <span class="terreno-am-name">Zonas descanso</span>
+      <span class="terreno-am-desc">Hamacas y espacios al aire libre</span>
+    </div>
+    <div class="terreno-am">
+      <i class="ti ti-flame"></i>
+      <span class="terreno-am-name">Fogón</span>
+      <span class="terreno-am-desc">Área de fogón y parrilla exterior</span>
+    </div>
+    <div class="terreno-am">
+      <i class="ti ti-star"></i>
+      <span class="terreno-am-name">Superanfitrión</span>
+      <span class="terreno-am-desc">★4.88 con más de 140 reseñas</span>
+    </div>
+  </div>
+</section>
+
+<!-- ESPACIOS -->
+<section class="section" id="espacios">
+  <p class="section-label">Los espacios</p>
+  <h2 class="section-title">Dos refugios,<br><em>un mismo bosque</em></h2>
+  <div class="espacios-grid">
+
+    <!-- REFUGIO -->
+    <div class="espacio-card">
+      <div class="espacio-gallery">
+        <img id="refugioImg" src="https://lh3.googleusercontent.com/pw/AP1GczPiMYxDl_k1kEwTAT-TcQKUC1jiEnvhPKA1ryLnH0pCxt3yH4cXPCyIZcyIAVg-07ev5IzJevUBgSKpXUBWpHjim8KFo3pJejaDuWDQbLO4bjt2QupZ9jdylWwqQqBRxQ6hXued_3Nci7B3tbT-XoXNhA=w1260" alt="El Refugio — Refugio Nativo">
+        <div class="espacio-gallery-nav">
+          <div class="espacio-gallery-dot active" onclick="changeImg('refugioImg', 0)"></div>
+          <div class="espacio-gallery-dot" onclick="changeImg('refugioImg', 1)"></div>
+          <div class="espacio-gallery-dot" onclick="changeImg('refugioImg', 2)"></div>
+          <div class="espacio-gallery-dot" onclick="changeImg('refugioImg', 3)"></div>
+        </div>
+      </div>
+      <div class="espacio-body">
+        <p class="espacio-name">El refugio</p>
+        <p class="espacio-cap">Hasta 7 personas</p>
+        <div class="espacio-services">
+          <div class="espacio-svc"><i class="ti ti-flame"></i>Estufa a leña</div>
+          <div class="espacio-svc"><i class="ti ti-ripple"></i>Hot tub privado</div>
+          <div class="espacio-svc"><i class="ti ti-pool"></i>Piscina en temporada</div>
+          <div class="espacio-svc"><i class="ti ti-deck-chair"></i>Terraza con fogón</div>
+          <div class="espacio-svc"><i class="ti ti-grill"></i>Parrilla exterior</div>
+          <div class="espacio-svc"><i class="ti ti-paw"></i>Pet friendly</div>
+        </div>
+        <div class="espacio-unique">
+          <p class="espacio-unique-label">Exclusivo del refugio</p>
+          <p class="espacio-unique-val">Fogón, parrilla y bienvenida de mascotas</p>
+        </div>
+        <a href="https://es-l.airbnb.com/rooms/811690761160204107" target="_blank" class="espacio-link">
+          Ver en Airbnb <i class="ti ti-external-link"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- DOMO -->
+    <div class="espacio-card">
+      <div class="espacio-gallery">
+        <img id="domoImg" src="https://lh3.googleusercontent.com/pw/AP1GczPLbqkr5pvniHZ503sNeXPMEuAPlmPoKTyemUZm5ggCqo9DJZmf0FqsgAbPj68XX1owSqQsowLhu0eWR15iL-1fMumsDMuG6IAfpBojq8VxqpVDxG-uWI59CO-PgWwbKTqjbCmqN9lwUc5jHarwg8Q9RQ=w1260" alt="El Domo — Refugio Nativo">
+        <div class="espacio-gallery-nav">
+          <div class="espacio-gallery-dot active" onclick="changeImg('domoImg', 0, 'domo')"></div>
+          <div class="espacio-gallery-dot" onclick="changeImg('domoImg', 1, 'domo')"></div>
+          <div class="espacio-gallery-dot" onclick="changeImg('domoImg', 2, 'domo')"></div>
+          <div class="espacio-gallery-dot" onclick="changeImg('domoImg', 3, 'domo')"></div>
+        </div>
+      </div>
+      <div class="espacio-body">
+        <p class="espacio-name">El domo</p>
+        <p class="espacio-cap">Hasta 4 personas</p>
+        <div class="espacio-services">
+          <div class="espacio-svc"><i class="ti ti-flame"></i>Estufa a leña</div>
+          <div class="espacio-svc"><i class="ti ti-ripple"></i>Hot tub privado</div>
+          <div class="espacio-svc"><i class="ti ti-pool"></i>Piscina en temporada</div>
+          <div class="espacio-svc"><i class="ti ti-deck-chair"></i>Terraza con vistas</div>
+          <div class="espacio-svc"><i class="ti ti-mountain"></i>Vista volcanes</div>
+          <div class="espacio-svc"><i class="ti ti-star"></i>Superanfitrión</div>
+        </div>
+        <div class="espacio-unique">
+          <p class="espacio-unique-label">Exclusivo del domo</p>
+          <p class="espacio-unique-val">Vistas al cerro Las Bravas y los volcanes Chillán</p>
+        </div>
+        <a href="https://es-l.airbnb.com/rooms/907301360932038684" target="_blank" class="espacio-link">
+          Ver en Airbnb <i class="ti ti-external-link"></i>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALERÍA -->
+<section class="galeria" id="galeria">
+  <div class="galeria-header">
+    <p class="section-label">Galería</p>
+    <h2 class="section-title">El lugar en<br><em>imágenes</em></h2>
+  </div>
+
+  <!-- Carpetas -->
+  <div class="gcarpetas">
+    <div class="gcarpeta active" data-cat="all">
+      <div class="gcarpeta-icon">
+        <i class="ti ti-photo"></i>
+      </div>
+      <p class="gcarpeta-name">Todos</p>
+      <p class="gcarpeta-count">92 fotos</p>
+    </div>
+    <div class="gcarpeta" data-cat="refugio">
+      <div class="gcarpeta-icon">
+        <i class="ti ti-home"></i>
+      </div>
+      <p class="gcarpeta-name">El refugio</p>
+      <p class="gcarpeta-count">31 fotos</p>
+    </div>
+    <div class="gcarpeta" data-cat="domo">
+      <div class="gcarpeta-icon">
+        <i class="ti ti-dome"></i>
+      </div>
+      <p class="gcarpeta-name">El domo</p>
+      <p class="gcarpeta-count">32 fotos</p>
+    </div>
+    <div class="gcarpeta" data-cat="comunes">
+      <div class="gcarpeta-icon">
+        <i class="ti ti-pool"></i>
+      </div>
+      <p class="gcarpeta-name">Áreas comunes</p>
+      <p class="gcarpeta-count">22 fotos</p>
+    </div>
+    <div class="gcarpeta" data-cat="paisaje">
+      <div class="gcarpeta-icon">
+        <i class="ti ti-mountain"></i>
+      </div>
+      <p class="gcarpeta-name">Paisaje</p>
+      <p class="gcarpeta-count">8 fotos</p>
+    </div>
+  </div>
+
+  <!-- Grid de fotos (oculto por defecto, se abre al hacer clic) -->
+  <div class="galeria-lightbox-grid" id="galeriaGrid" style="display:none">
+    <div class="galeria-grid-header">
+      <span class="galeria-grid-title" id="galeriaGridTitle">Todos</span>
+      <button class="galeria-grid-close" id="galeriaGridClose"><i class="ti ti-x"></i> Cerrar</button>
+    </div>
+    <div class="ggrid">
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPsXd4lQd-bSRzk0lqLbbHrk8Knq6n96l0hoMcSA-vxcxVjegs065GmNmFdOxhEtJI7wHBHHPt2wnFLHFPUpqf_OUWmfTKbId1jY3i05E6YhSp38zB8TH1wes4rzL9q4YpkSyQWHrqzC94JPwLesvkdcA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPsXd4lQd-bSRzk0lqLbbHrk8Knq6n96l0hoMcSA-vxcxVjegs065GmNmFdOxhEtJI7wHBHHPt2wnFLHFPUpqf_OUWmfTKbId1jY3i05E6YhSp38zB8TH1wes4rzL9q4YpkSyQWHrqzC94JPwLesvkdcA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMrKwm1d5N3aXsEOF4N-LKkyoF3gT-F_PokGWx0XGkCkCYad0Lc6GL-KXsWGZH46LepvtRMQ_6H7n9i5NOPzzW_fMRwMO2ZbSErmVQXod-h8x5D92fFZLXS2FyiR4oeWZ-KEghveF46e_J1GlYMhIVCgQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMrKwm1d5N3aXsEOF4N-LKkyoF3gT-F_PokGWx0XGkCkCYad0Lc6GL-KXsWGZH46LepvtRMQ_6H7n9i5NOPzzW_fMRwMO2ZbSErmVQXod-h8x5D92fFZLXS2FyiR4oeWZ-KEghveF46e_J1GlYMhIVCgQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOAGKFEg6EnFsh0vrJuJhPZjfNyML9eALSsCZz1C9U6eLfLb7NAQkfcBHzJPxbWaEjmTJOtxiV-_XvWNMOwo7QYgv9bUjqB5FypKCJmUHfyWOh3jolFQTgSKF7COiqZi489tOvSnk_H_N2zKctTmHM7hA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOAGKFEg6EnFsh0vrJuJhPZjfNyML9eALSsCZz1C9U6eLfLb7NAQkfcBHzJPxbWaEjmTJOtxiV-_XvWNMOwo7QYgv9bUjqB5FypKCJmUHfyWOh3jolFQTgSKF7COiqZi489tOvSnk_H_N2zKctTmHM7hA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczM1FPW0fGAd_NoBaqtHz8xIYHapDOG7k6wqxS82vVgv7RA4xWXkQh2lwMYCAy8hG3oqzXXN_skxeAEa9hdC4HvQBh3uXF3Hadnt9Hzd26egFuBIXt1IfuVXL-elpqTdfVBYEutdQd6bWlaug1HVBNHQvQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczM1FPW0fGAd_NoBaqtHz8xIYHapDOG7k6wqxS82vVgv7RA4xWXkQh2lwMYCAy8hG3oqzXXN_skxeAEa9hdC4HvQBh3uXF3Hadnt9Hzd26egFuBIXt1IfuVXL-elpqTdfVBYEutdQd6bWlaug1HVBNHQvQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPiMYxDl_k1kEwTAT-TcQKUC1jiEnvhPKA1ryLnH0pCxt3yH4cXPCyIZcyIAVg-07ev5IzJevUBgSKpXUBWpHjim8KFo3pJejaDuWDQbLO4bjt2QupZ9jdylWwqQqBRxQ6hXued_3Nci7B3tbT-XoXNhA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPiMYxDl_k1kEwTAT-TcQKUC1jiEnvhPKA1ryLnH0pCxt3yH4cXPCyIZcyIAVg-07ev5IzJevUBgSKpXUBWpHjim8KFo3pJejaDuWDQbLO4bjt2QupZ9jdylWwqQqBRxQ6hXued_3Nci7B3tbT-XoXNhA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMD_SLBEDs-wXJ71BI6GQP5IX2mwo0D0obHWQrZQy7WZQAdMk5kyPz2mCwmHZxm5yuQcKxVhO4dH9ulthGySxC7VWVhZWyMEDR6qd1qTscsTLVuNIlNJ1UWPAHdpGAMWDi89oSGbqSiHMraizDs-E6ZfQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMD_SLBEDs-wXJ71BI6GQP5IX2mwo0D0obHWQrZQy7WZQAdMk5kyPz2mCwmHZxm5yuQcKxVhO4dH9ulthGySxC7VWVhZWyMEDR6qd1qTscsTLVuNIlNJ1UWPAHdpGAMWDi89oSGbqSiHMraizDs-E6ZfQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNxbxr2BYzZF3S7VWc4Ubi6Ib1BJArhk0kMCBLQlEDVQVBCwA7EOY9qIVKX8QILudWmsdzpjQ7oDEEjCp8XUvxBZiF1KgmMmXg13jw3iQUHO5zZjOSTx9Wpr0OdH7gHR4CNies0s5Nx6GF2xKhWvcXiog=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNxbxr2BYzZF3S7VWc4Ubi6Ib1BJArhk0kMCBLQlEDVQVBCwA7EOY9qIVKX8QILudWmsdzpjQ7oDEEjCp8XUvxBZiF1KgmMmXg13jw3iQUHO5zZjOSTx9Wpr0OdH7gHR4CNies0s5Nx6GF2xKhWvcXiog=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOt0Fh-7ajVijT9XM9SxzhODYrOS94PHoEyUhRbCG4YssjPMQbS6I-luGRkqvZ3tRORBh2EC8IvhxXtEQ2ra-Y_xZTiceDA-iZmQvlJY5MIgzfYrVTsjpG2aoi3p_DoDOMr3DqJSTGEidHq22F9anSyqA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOt0Fh-7ajVijT9XM9SxzhODYrOS94PHoEyUhRbCG4YssjPMQbS6I-luGRkqvZ3tRORBh2EC8IvhxXtEQ2ra-Y_xZTiceDA-iZmQvlJY5MIgzfYrVTsjpG2aoi3p_DoDOMr3DqJSTGEidHq22F9anSyqA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczO3TxXVsMfe_Msizdhqof0GkFgLr942egVS4XKXB7P93-XM7HUonx_AhX8q3iBT2_Lhy5mnx8VdUngavR4-YDOka-SW3XBoa69ME1VMQPLMpvSpkWf1VnnCpNiYsQ-0Z_0WbEJoW6DD6IUi7Vro1dznhg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczO3TxXVsMfe_Msizdhqof0GkFgLr942egVS4XKXB7P93-XM7HUonx_AhX8q3iBT2_Lhy5mnx8VdUngavR4-YDOka-SW3XBoa69ME1VMQPLMpvSpkWf1VnnCpNiYsQ-0Z_0WbEJoW6DD6IUi7Vro1dznhg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOG5jZlqsGv50vVbVJJHQMUKMmGoepKhHzHak48rGy_6ZqFQ4ZquKuu2FaYghKTfN44hCfo9DpaGTnRVdgJckn20xhFugqV26oSgRs2OOl-OJgyp64WTRH1i6BwbmQykSe4VirtCczMqNmx7imnNkMSHQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOG5jZlqsGv50vVbVJJHQMUKMmGoepKhHzHak48rGy_6ZqFQ4ZquKuu2FaYghKTfN44hCfo9DpaGTnRVdgJckn20xhFugqV26oSgRs2OOl-OJgyp64WTRH1i6BwbmQykSe4VirtCczMqNmx7imnNkMSHQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOt4zafTCcK843t6h0JBUtmP1_MX-U2C3Fy-XmVw3Bzy21pxUccKZ3CB2kug27WxaZra94TkLpQkyAmGVBEVu_gfD6awA9TY-mzminJvAN8T8P6uYrjyFR-LqrlN-_dkKALTHAIXIt-lozL47FTCPY4nw=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOt4zafTCcK843t6h0JBUtmP1_MX-U2C3Fy-XmVw3Bzy21pxUccKZ3CB2kug27WxaZra94TkLpQkyAmGVBEVu_gfD6awA9TY-mzminJvAN8T8P6uYrjyFR-LqrlN-_dkKALTHAIXIt-lozL47FTCPY4nw=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczORzc0w38mXuhZ74UVb1opJM38Lx2ZY85MMcWWVwPhk5Ro4geHFN90X5iVTrnNcNpj_iD8wB4rMMLFI73xc_XDBmQ1VHOjYSs9czKB5xG0M280uZvFUi53-4Njl1Ko54pFBChb9RbXCRfm6Gm0ixqg9Ng=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczORzc0w38mXuhZ74UVb1opJM38Lx2ZY85MMcWWVwPhk5Ro4geHFN90X5iVTrnNcNpj_iD8wB4rMMLFI73xc_XDBmQ1VHOjYSs9czKB5xG0M280uZvFUi53-4Njl1Ko54pFBChb9RbXCRfm6Gm0ixqg9Ng=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOkLZ_q7qTk0X7Pq0N_eykwAlgt7TeOaFwO8_mGuIuI1lWxTgwtC7gaw3YnhONFpU1b-XfUFdW0IBqwIn8bXRCYJ_260YNNVz85X9vb4K959eXbh33K1yFZRoHuoRDAglU_OYcyXIK3WhweMlaF2C4q8A=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOkLZ_q7qTk0X7Pq0N_eykwAlgt7TeOaFwO8_mGuIuI1lWxTgwtC7gaw3YnhONFpU1b-XfUFdW0IBqwIn8bXRCYJ_260YNNVz85X9vb4K959eXbh33K1yFZRoHuoRDAglU_OYcyXIK3WhweMlaF2C4q8A=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="paisaje" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczM2nCdkc2gXrizomcJ6j68Tm-a5UU_9-zm4uz6ezXXoMvgYXPpvi_hp6w2SpeTEpFuBoKfUQvIM67Z67h-GDGkT70I0ljS3tst1aEa3HJrH6eZFRjZ0tkIfTrT3HzDm5Q1TV4QWaXMwJpxIVTXNDVUHcQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczM2nCdkc2gXrizomcJ6j68Tm-a5UU_9-zm4uz6ezXXoMvgYXPpvi_hp6w2SpeTEpFuBoKfUQvIM67Z67h-GDGkT70I0ljS3tst1aEa3HJrH6eZFRjZ0tkIfTrT3HzDm5Q1TV4QWaXMwJpxIVTXNDVUHcQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="paisaje" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNdQ2Q-Hpn36ZlzJjXEzKVNyVySv9t3SXS3GIPGamwAtrphbm1XRCFvvHl_-jNiA8M5dMuIwEK4J1GQnxE9XrPsxJGle8C-WhSsyfPhVEdDiZ6-lwR7MhLy8Q1a51NeDG6glxX7Reo2-KxOZJlbIU15fQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNdQ2Q-Hpn36ZlzJjXEzKVNyVySv9t3SXS3GIPGamwAtrphbm1XRCFvvHl_-jNiA8M5dMuIwEK4J1GQnxE9XrPsxJGle8C-WhSsyfPhVEdDiZ6-lwR7MhLy8Q1a51NeDG6glxX7Reo2-KxOZJlbIU15fQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="paisaje" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczN3BXwtSb_9IVlMy0SjJCspompB0yeGYQpuZU0rvecW7QvjI1MYr0TdoXZpsTZRf6YEQ_q9Vra0LA7U2G8GDmkpauHLc05ox8cHf0JHQEyxnTH2sa3F8cknDp_9ZMWfFZ4rw7lMsL__6NkS6YU_yUordQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczN3BXwtSb_9IVlMy0SjJCspompB0yeGYQpuZU0rvecW7QvjI1MYr0TdoXZpsTZRf6YEQ_q9Vra0LA7U2G8GDmkpauHLc05ox8cHf0JHQEyxnTH2sa3F8cknDp_9ZMWfFZ4rw7lMsL__6NkS6YU_yUordQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="paisaje" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNU-XT7eDx96i_LPQED6mgWAxnyF2-SyVgNTh-spmRb5n_0OtdX7b2lieosVl_dxnS-DpR941dnBoNwy1nn6YDk1nk7wm6T8qDUdzm7CnF71egTK0mNFdOJ4gRPKEklrwI3iO3j5B1CoLIH1xuKeJqJFw=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNU-XT7eDx96i_LPQED6mgWAxnyF2-SyVgNTh-spmRb5n_0OtdX7b2lieosVl_dxnS-DpR941dnBoNwy1nn6YDk1nk7wm6T8qDUdzm7CnF71egTK0mNFdOJ4gRPKEklrwI3iO3j5B1CoLIH1xuKeJqJFw=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="paisaje" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczP41bb2dkmGAhYfSupMWxxHG8Rz2bSMlII11CElpKHUW6YctlUBovGl9FvcvBxMMm3mreBK0G5KIzk6h7xHLdyIYDZt0L_hhOX3aqVftp1mk1jXV11gsP27-A_VVUF-aJQQb2OmHu_RyFwgdStTgCVvig=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczP41bb2dkmGAhYfSupMWxxHG8Rz2bSMlII11CElpKHUW6YctlUBovGl9FvcvBxMMm3mreBK0G5KIzk6h7xHLdyIYDZt0L_hhOX3aqVftp1mk1jXV11gsP27-A_VVUF-aJQQb2OmHu_RyFwgdStTgCVvig=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="paisaje" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPkxfoR31mT_pNRwf-I0SJT8ijedHBJcNPrO2RbNNsvhdfgYJXSlFXLXzG2mXKy4znw_su-hoDWocQ-j_DJYB_gS-qz8LG7aZtlxfz6K_BlP51iVeNNl5u69jFnw9Se3Gh16pz8_XHouNtjYFOnBL33qQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPkxfoR31mT_pNRwf-I0SJT8ijedHBJcNPrO2RbNNsvhdfgYJXSlFXLXzG2mXKy4znw_su-hoDWocQ-j_DJYB_gS-qz8LG7aZtlxfz6K_BlP51iVeNNl5u69jFnw9Se3Gh16pz8_XHouNtjYFOnBL33qQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="paisaje" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOEc2vEaWydBIMDdRpWJ_jCXwNjM7xLNExMBlSWAsqkhahwMWKM-uC8zjpwZ1Tpx2H55ZAYCZqLxn6rUN4f9XtM9O874hei7b8oci3cvN4orRsW8Gtv7qPAxRy8LlYcqJIVQVXEuvWPVeZbv38I01lLJg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOEc2vEaWydBIMDdRpWJ_jCXwNjM7xLNExMBlSWAsqkhahwMWKM-uC8zjpwZ1Tpx2H55ZAYCZqLxn6rUN4f9XtM9O874hei7b8oci3cvN4orRsW8Gtv7qPAxRy8LlYcqJIVQVXEuvWPVeZbv38I01lLJg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="paisaje" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMnIpJTIP_-lxvAgvxyKYLw-ZfdAKluurjJHcpSSwLD8U2L8ogLhvqJ72bmT1hnQNbXf8Gu4bgiha7qJKjvnJDCorFBEugeJxykAcqu27vLKhUmJ2mKRlOLF-JLWA-jvJtXLh4oYlRCxj1TZkM268xrkw=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMnIpJTIP_-lxvAgvxyKYLw-ZfdAKluurjJHcpSSwLD8U2L8ogLhvqJ72bmT1hnQNbXf8Gu4bgiha7qJKjvnJDCorFBEugeJxykAcqu27vLKhUmJ2mKRlOLF-JLWA-jvJtXLh4oYlRCxj1TZkM268xrkw=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPPTgz_D5ue3YhBar1vhUb6bL1oUI_GY4eNqJTZ5KyqiiY9pQRFqoSRrJbw6a046T2NVjuAZ2zSR3AGuvctBqItZujZFOqx20br_N84yBvXmTev9Cva7MaDP4SSMWYREnD2XBLBxmlybvSc18EKq4oRNA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPPTgz_D5ue3YhBar1vhUb6bL1oUI_GY4eNqJTZ5KyqiiY9pQRFqoSRrJbw6a046T2NVjuAZ2zSR3AGuvctBqItZujZFOqx20br_N84yBvXmTev9Cva7MaDP4SSMWYREnD2XBLBxmlybvSc18EKq4oRNA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPmPvIEFNKruULBvBmQH8SwjWpq3SlOh-ah9THO4Ivt7GcvkRT4bzTT6vbn5jGc2PNTyS5To39N9YPkVPCshHakdKEJcpE4D5-Rn7f2XlMk3Me_5Nk9oW99Wm9Xi_C3pVwYIT-sYYAvOsOhE6TkITda0Q=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPmPvIEFNKruULBvBmQH8SwjWpq3SlOh-ah9THO4Ivt7GcvkRT4bzTT6vbn5jGc2PNTyS5To39N9YPkVPCshHakdKEJcpE4D5-Rn7f2XlMk3Me_5Nk9oW99Wm9Xi_C3pVwYIT-sYYAvOsOhE6TkITda0Q=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPeyMPxLYHUIRyzfJBSRGVXZ6CQKFpuuw5ujxrmm8ZjapoIw0zusNgiX4lFqcwFoJj_LyHxpTIOALUaeHFlLUnLWBvbawViwQK4RB_FoLOm4rXB8rF9BMx1SDioSQy7hYqh_CT8LfuDZ958sPjoWfuoQA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPeyMPxLYHUIRyzfJBSRGVXZ6CQKFpuuw5ujxrmm8ZjapoIw0zusNgiX4lFqcwFoJj_LyHxpTIOALUaeHFlLUnLWBvbawViwQK4RB_FoLOm4rXB8rF9BMx1SDioSQy7hYqh_CT8LfuDZ958sPjoWfuoQA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMMgQ76MSO0wlHtft4nkSEEd5NyVtKf3nyp39_mRjLt3CZNebqW00dQ5hbPK5WJ23uY-6MFknIG5Qp9jD-mnnvxmohOy0C9WGHZ6Do-5J_nhFEGQweLYjo5nF27-OhbCisQ_rhyrB8Lh4bXPaUwcFf6Mg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMMgQ76MSO0wlHtft4nkSEEd5NyVtKf3nyp39_mRjLt3CZNebqW00dQ5hbPK5WJ23uY-6MFknIG5Qp9jD-mnnvxmohOy0C9WGHZ6Do-5J_nhFEGQweLYjo5nF27-OhbCisQ_rhyrB8Lh4bXPaUwcFf6Mg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMXCcUpl2IlzoFEtgsAh4LFsgfZck-In5f1_X3TZ3Y742_qq0B1Eexgl8pJryinrCudmTh2SjLOLZCk7QbOAb4K8M7EjtJYewxlO0Xx_7rbuK2a0TBdyfDVsVRFoILaZQnfQJGgWjQ3Hwh7xiuK5rhtjg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMXCcUpl2IlzoFEtgsAh4LFsgfZck-In5f1_X3TZ3Y742_qq0B1Eexgl8pJryinrCudmTh2SjLOLZCk7QbOAb4K8M7EjtJYewxlO0Xx_7rbuK2a0TBdyfDVsVRFoILaZQnfQJGgWjQ3Hwh7xiuK5rhtjg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczP78YxYnaRUxsS2UuTdHKnLoBTaHVcE6QQ5HminhyqbdHdPXr7abdrFSuGq_OE6JdfZM4QYTC0bBbpUVU289t5AIn7-TjIz0ASXHiePyT0dh2rmGqOIdmAZbLmGP1LnoRPhVEA4619GvEw4qaBhJs_yiA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczP78YxYnaRUxsS2UuTdHKnLoBTaHVcE6QQ5HminhyqbdHdPXr7abdrFSuGq_OE6JdfZM4QYTC0bBbpUVU289t5AIn7-TjIz0ASXHiePyT0dh2rmGqOIdmAZbLmGP1LnoRPhVEA4619GvEw4qaBhJs_yiA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMsiwa52P9w69GTPRDCHoygZ4MODz0eBRzw7N6ppVANfYqG8DaSGQpqWEiZFLruPqXwBH-Q6RaR9qOC479grkg98rtO5iQ5JgU15mnRp7VWn-f-_boKvWCAinMS4Fthv6pDRT06ylNIb0fAf1ux6yHzcw=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMsiwa52P9w69GTPRDCHoygZ4MODz0eBRzw7N6ppVANfYqG8DaSGQpqWEiZFLruPqXwBH-Q6RaR9qOC479grkg98rtO5iQ5JgU15mnRp7VWn-f-_boKvWCAinMS4Fthv6pDRT06ylNIb0fAf1ux6yHzcw=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOPeROuCI4R0kREOBQUyPclrt1Kh7MgoX6WySh9j7b1-QzUBMcNu62TqymQa3NI716K375wiG-vPFTMc8gKNVGtBRyDZx_G8mErphNJrxZDA6gspVSdcOWmUq-CB-6doYoiy8ey2EnCUkkOHkRuBzdXAg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOPeROuCI4R0kREOBQUyPclrt1Kh7MgoX6WySh9j7b1-QzUBMcNu62TqymQa3NI716K375wiG-vPFTMc8gKNVGtBRyDZx_G8mErphNJrxZDA6gspVSdcOWmUq-CB-6doYoiy8ey2EnCUkkOHkRuBzdXAg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPKSPWYn0Zq7mQPiSM5OehF1VFWSsOr6xkTmqD16Hrzuk6BcxLxgejdP7zQp_z2bzOQQ4M0Y3wZxgiL0y1MhI3XwSGx74KNvxwk2hJxdUIEih-ypJi_WhLu6ufYKHYHU0119alC8Tg-K-N0Y8gvoGtpmQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPKSPWYn0Zq7mQPiSM5OehF1VFWSsOr6xkTmqD16Hrzuk6BcxLxgejdP7zQp_z2bzOQQ4M0Y3wZxgiL0y1MhI3XwSGx74KNvxwk2hJxdUIEih-ypJi_WhLu6ufYKHYHU0119alC8Tg-K-N0Y8gvoGtpmQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczM5h4lS9-4foslg-nJn1nz8OMzLD5rW49x1PaW2div2u6x_Ea13PAml0DlCA-IlxjZF_7_VlBFR-ysuIp0OB6hAChfVtGS7dRrnZlJ2BEhWfgIZ9jOgUrNqbZNSLbZe9UzN1t_Hl3NvNl8w_egbW0nz0A=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczM5h4lS9-4foslg-nJn1nz8OMzLD5rW49x1PaW2div2u6x_Ea13PAml0DlCA-IlxjZF_7_VlBFR-ysuIp0OB6hAChfVtGS7dRrnZlJ2BEhWfgIZ9jOgUrNqbZNSLbZe9UzN1t_Hl3NvNl8w_egbW0nz0A=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNL5fwiNQNo5Sx8ZYtBi34jjoA33Z9f64VmaZX7GROtddhassPjLS1vfBZJxotPKF-f-xRzf7ICkTR-zS_96pY6ZGR2fbv9PBIHE8pzoDWnplb0RJ4WLwE8uyBbpxaQCTGfonUhFLdMkF8QWOQsFw2rdw=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNL5fwiNQNo5Sx8ZYtBi34jjoA33Z9f64VmaZX7GROtddhassPjLS1vfBZJxotPKF-f-xRzf7ICkTR-zS_96pY6ZGR2fbv9PBIHE8pzoDWnplb0RJ4WLwE8uyBbpxaQCTGfonUhFLdMkF8QWOQsFw2rdw=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMeVEP5453Fan3dmbDI3yJRa14qa2Uc3hze4Gi5W_D4W9dctcgshBKjPBZWJiXajdE3xtAzjnFPMYm2txbKfz4N59RoZNhZYNDps0vzHtqduX-TETcPytjLlHORZfe3Mva2FCI0XmWiYLr9iVrGyCdY0A=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMeVEP5453Fan3dmbDI3yJRa14qa2Uc3hze4Gi5W_D4W9dctcgshBKjPBZWJiXajdE3xtAzjnFPMYm2txbKfz4N59RoZNhZYNDps0vzHtqduX-TETcPytjLlHORZfe3Mva2FCI0XmWiYLr9iVrGyCdY0A=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMxivceZ8ADQ9uvzMAopWX4IVDuISEohyoQ-yN5QY1RIhQ1OS9olIVfTPDvRxsieE6MhDoGohd65A8-2Su8MlNtqvJ4XA7lxKT7BfTibsSIh0s2jD_XrzGLKgzJSi4cShBEaMxe6wkO3NqDFZoiwADOYw=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMxivceZ8ADQ9uvzMAopWX4IVDuISEohyoQ-yN5QY1RIhQ1OS9olIVfTPDvRxsieE6MhDoGohd65A8-2Su8MlNtqvJ4XA7lxKT7BfTibsSIh0s2jD_XrzGLKgzJSi4cShBEaMxe6wkO3NqDFZoiwADOYw=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMx49l47qf0pjEpUPFx8aCJkix5ax94FHNZ3tNp8p5PdBaFAWvVTibzCGnilJLSaJeF4gk-jGDUh8RTxflAgBuHB93nJht3G6GW-w5EGsIfDdqG5RWM78Un3kAnvezrC-G81kxhNjorT5mvBXO8dEoLxw=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMx49l47qf0pjEpUPFx8aCJkix5ax94FHNZ3tNp8p5PdBaFAWvVTibzCGnilJLSaJeF4gk-jGDUh8RTxflAgBuHB93nJht3G6GW-w5EGsIfDdqG5RWM78Un3kAnvezrC-G81kxhNjorT5mvBXO8dEoLxw=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOq2UaLwFMDVT4qnMTAsLh80kaUGuXho1n3H_Ct4KWJKVKemybbGCq9HVtWrdsi2ois3MCWa82ydMibce3MGY06AGISADNsfF4oBwhdcRij_aR2y9avt0Y88-okDFnYBQ6rEHAbl-VuNDvqo6NQz22TaA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOq2UaLwFMDVT4qnMTAsLh80kaUGuXho1n3H_Ct4KWJKVKemybbGCq9HVtWrdsi2ois3MCWa82ydMibce3MGY06AGISADNsfF4oBwhdcRij_aR2y9avt0Y88-okDFnYBQ6rEHAbl-VuNDvqo6NQz22TaA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczN3RPoMLIpPrWONk84qUaYM-4qV7pyvUf1q9NxGUWcQ2r6Lujr8LYn4-HFbPgkFOqfbWnTvKxL5chhDCqh2PF2Rjii2hxmhGOdKdGk4eZ1HZwuVoUzAACzc5va_NAXXw1dRfm2KFX2WaUSnwG8wwIO76g=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczN3RPoMLIpPrWONk84qUaYM-4qV7pyvUf1q9NxGUWcQ2r6Lujr8LYn4-HFbPgkFOqfbWnTvKxL5chhDCqh2PF2Rjii2hxmhGOdKdGk4eZ1HZwuVoUzAACzc5va_NAXXw1dRfm2KFX2WaUSnwG8wwIO76g=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOcRiXUh2bzdDt5mzBc8X3UosTzL7mhTcah8a5xYVEsMCFRyixkERfxC4kVAiXRi9hXPmnF1V5q6t33EACi2JUabsTIgobGpLPut3VhxXrdzx5nYWiQ5yxh42NwdR9A0fR9WSbm3dIzWBiKMb4Jl0rv2A=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOcRiXUh2bzdDt5mzBc8X3UosTzL7mhTcah8a5xYVEsMCFRyixkERfxC4kVAiXRi9hXPmnF1V5q6t33EACi2JUabsTIgobGpLPut3VhxXrdzx5nYWiQ5yxh42NwdR9A0fR9WSbm3dIzWBiKMb4Jl0rv2A=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOYVXdf7_s0YIPQKG05UbAAB2ESkMJq_cueuGFqUYIkKn5xA_7qLaiciVyqvNIvdUuUSn3qNrYorTcmIMqEMDj4AfULqYh1PBFl_8xmzGvi1CxpL0hbWHYP7H-HzpDYpOVYRqFe0yK0_VTlA0XiUz0UVA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOYVXdf7_s0YIPQKG05UbAAB2ESkMJq_cueuGFqUYIkKn5xA_7qLaiciVyqvNIvdUuUSn3qNrYorTcmIMqEMDj4AfULqYh1PBFl_8xmzGvi1CxpL0hbWHYP7H-HzpDYpOVYRqFe0yK0_VTlA0XiUz0UVA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPcY32F06omwnX3Ueyu0-n8yGiz7EAFbqbH_VGYvjUzPTSkeo8P30IRkliyUmY1K20A5LNuZOYsG_8rq2qkl8Tty-HaZ207stiO-tvu0gsxp8rAQo_NtbT3ohsmCiu5AHN0UtFajxscfHDW5GhS4cqXlg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPcY32F06omwnX3Ueyu0-n8yGiz7EAFbqbH_VGYvjUzPTSkeo8P30IRkliyUmY1K20A5LNuZOYsG_8rq2qkl8Tty-HaZ207stiO-tvu0gsxp8rAQo_NtbT3ohsmCiu5AHN0UtFajxscfHDW5GhS4cqXlg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNaUioCZrMYdscXjC5kUXXyeE6QBiBeIFINeZGNuJ2Vumw3s0F_OWXkVRp7x7P72IZmrN_3l0d9kM0K2MDLyioa3v-o0mcu4lf_VZP85A-BdMsX6RNtOp74uxtcxRzDXe1NXTPuHZMnC6XuxmXG7w1sqA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNaUioCZrMYdscXjC5kUXXyeE6QBiBeIFINeZGNuJ2Vumw3s0F_OWXkVRp7x7P72IZmrN_3l0d9kM0K2MDLyioa3v-o0mcu4lf_VZP85A-BdMsX6RNtOp74uxtcxRzDXe1NXTPuHZMnC6XuxmXG7w1sqA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="comunes" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPtQj0Bq-Lpjs-ZSUYNnzjdHZDezzOhg2KWVfk5qnasVHWClQKS0xyEWzV5fw7dUpC4LBBULkt31M2hdq1PlilIABMBs89QyAZgoVIRTpIjWRw9ISFtYBt57Yol063cR9T9bobWa69wxH8D7gubJoLQVw=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPtQj0Bq-Lpjs-ZSUYNnzjdHZDezzOhg2KWVfk5qnasVHWClQKS0xyEWzV5fw7dUpC4LBBULkt31M2hdq1PlilIABMBs89QyAZgoVIRTpIjWRw9ISFtYBt57Yol063cR9T9bobWa69wxH8D7gubJoLQVw=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPfn9u0J0SAWHUaaacMRDPA-JmD4xTOBKzOY2_7FJb56_oxoiDeMbEKKDREfY9jCAjxlHYVDGFHN7Kp2PCTZHfkwuqLcg6ox044GBS8QW4kwdv773p6Uto7peFIH2Hj6iHjlZrTmeLm187OIzzgR_vvww=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPfn9u0J0SAWHUaaacMRDPA-JmD4xTOBKzOY2_7FJb56_oxoiDeMbEKKDREfY9jCAjxlHYVDGFHN7Kp2PCTZHfkwuqLcg6ox044GBS8QW4kwdv773p6Uto7peFIH2Hj6iHjlZrTmeLm187OIzzgR_vvww=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczObHfLH23svGIJROWhuuyuID4e6v6TKp5wkpMQVxTrg8YZJvmCnIT0gzP7Jc1I7wWAhPmPd6_eZaAJQk_fdIXZDCEh8_pb2KW6Ildz8k2CYB8X3BZHishm9KwvMd_EE24QoJXOrsjL2T7fS_esLnPOrXg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczObHfLH23svGIJROWhuuyuID4e6v6TKp5wkpMQVxTrg8YZJvmCnIT0gzP7Jc1I7wWAhPmPd6_eZaAJQk_fdIXZDCEh8_pb2KW6Ildz8k2CYB8X3BZHishm9KwvMd_EE24QoJXOrsjL2T7fS_esLnPOrXg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOBB0iY9dppMd5AFoVc0beuI-R3GkWYDnODKPENDxFtoNLV6JPzuUtBKpC1jf-7u9pLSCPUYUtPFVXNiT-pXWGPnbsJaqfVemwf5D-mzHcn-CZlY2PfqvHafZfNnVyWLlDdmAkva3Ld2Ll2Q2Zozft0eg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOBB0iY9dppMd5AFoVc0beuI-R3GkWYDnODKPENDxFtoNLV6JPzuUtBKpC1jf-7u9pLSCPUYUtPFVXNiT-pXWGPnbsJaqfVemwf5D-mzHcn-CZlY2PfqvHafZfNnVyWLlDdmAkva3Ld2Ll2Q2Zozft0eg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMVv2yi3PjyEq2qx5VY6CrVZck5CFEFoj8wFH1TLJfxittuy7hRyeIzrFLHAoqW1gUAPv8XFAil6bfKXxcPb2EKEEdtnUBsYIZtNJqDflUx5Re2ji6T9oXXgTGRcmH_8mqlb6HksO5rJ-c7yfdo-HiFKg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMVv2yi3PjyEq2qx5VY6CrVZck5CFEFoj8wFH1TLJfxittuy7hRyeIzrFLHAoqW1gUAPv8XFAil6bfKXxcPb2EKEEdtnUBsYIZtNJqDflUx5Re2ji6T9oXXgTGRcmH_8mqlb6HksO5rJ-c7yfdo-HiFKg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOVHGRFEwZ2kOVa7v7xRc61_mQpWcHZFeEHFBDT9_--fN_1YclHjrpVG9RqWK7NCN5KBlOkx60ULgJNaWnGBINP2p7pECfrahWtTBJxXNRD3B3nlVqGqzS-lAbyKB2kvBJw0pckCId-xAn7Q0I_mxp4-g=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOVHGRFEwZ2kOVa7v7xRc61_mQpWcHZFeEHFBDT9_--fN_1YclHjrpVG9RqWK7NCN5KBlOkx60ULgJNaWnGBINP2p7pECfrahWtTBJxXNRD3B3nlVqGqzS-lAbyKB2kvBJw0pckCId-xAn7Q0I_mxp4-g=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPxy2qmKCNiuD6FU4vXdkbh6ys2rxXMZOqWwU-f4hsVMs_4nt48K-NxLTV_ZIUQjCg4JX-SYuo3PyA8A3huX50GeHdcijz19E8t8QAe8w4PhQgs77wzbcutRRVR1EFj-rwK-Py3bULdu6WmCnJgygN-hg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPxy2qmKCNiuD6FU4vXdkbh6ys2rxXMZOqWwU-f4hsVMs_4nt48K-NxLTV_ZIUQjCg4JX-SYuo3PyA8A3huX50GeHdcijz19E8t8QAe8w4PhQgs77wzbcutRRVR1EFj-rwK-Py3bULdu6WmCnJgygN-hg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMKc_BxUPrLfi5-PeqJUoRgo8K74pmRKfQnv_qCMhu_Z5_zZsipf-OA0S25jTLKU6brtp9ODX-bd5m6Gm-Pawe1QOyxax5rCZA7hwpHIZe_25C9FLerdSrEFzd6KN2KYEfk3WidNbAb8sn2-WWPv1U9yg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMKc_BxUPrLfi5-PeqJUoRgo8K74pmRKfQnv_qCMhu_Z5_zZsipf-OA0S25jTLKU6brtp9ODX-bd5m6Gm-Pawe1QOyxax5rCZA7hwpHIZe_25C9FLerdSrEFzd6KN2KYEfk3WidNbAb8sn2-WWPv1U9yg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczM4FZ-9MhDueNvoGIufWOYCn00SwHRzry7qvM9AiK0vAdRxiCSHtIILHUQRUVWWD2Q6hNFNHQ7flJ5NuK3Uw4ralmtf9aoyL1X8jYdhsRc_XXxXCva-C9Pvh54fImMTYpTMBCjElyDw_PgeiV4-TLV47g=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczM4FZ-9MhDueNvoGIufWOYCn00SwHRzry7qvM9AiK0vAdRxiCSHtIILHUQRUVWWD2Q6hNFNHQ7flJ5NuK3Uw4ralmtf9aoyL1X8jYdhsRc_XXxXCva-C9Pvh54fImMTYpTMBCjElyDw_PgeiV4-TLV47g=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMRW_XHVFDmF-fsdgZB7Kkjy2ILMmeIXICpTfjNVeAmU-rEARTjVQliBWYA7Uk7fkgnghvhT5tA3gdO4sAw1Yuo2_B5qWFEzPyAICW0GfgKpospOhg8nGAFI76yMrIfZbbf9Fofd97VyPlo0nTpgPEN8g=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMRW_XHVFDmF-fsdgZB7Kkjy2ILMmeIXICpTfjNVeAmU-rEARTjVQliBWYA7Uk7fkgnghvhT5tA3gdO4sAw1Yuo2_B5qWFEzPyAICW0GfgKpospOhg8nGAFI76yMrIfZbbf9Fofd97VyPlo0nTpgPEN8g=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNiUZfUfqfsjA2Yt_nL4apxJ7PKOOTYsRSRJ4LEg1bvOel7L_Wk2wXHZCN5uvS73YGf7lwzkh9l_f18iaIPq3QMuWU4QEOWPTZoEfcHPN8h8OWsnlWXhf4lsXyQ2fuwhOo4HNLoyNib2j5hFzgD7riAbw=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNiUZfUfqfsjA2Yt_nL4apxJ7PKOOTYsRSRJ4LEg1bvOel7L_Wk2wXHZCN5uvS73YGf7lwzkh9l_f18iaIPq3QMuWU4QEOWPTZoEfcHPN8h8OWsnlWXhf4lsXyQ2fuwhOo4HNLoyNib2j5hFzgD7riAbw=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNCqMoBwzC3IXCt9HK8fOLmNEy0tOHjLMuhCMpLxX-4yQgYkM1rAt7uN_ZttzNClX0XZ8lN0GwyvPAAi_bBKcbmjWCWj5UsILHWC4fHMdeEASL8p2Wm3yFbAkyr8iBbTxy18v3tSxKfZ0BQ7evAbE3zdw=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNCqMoBwzC3IXCt9HK8fOLmNEy0tOHjLMuhCMpLxX-4yQgYkM1rAt7uN_ZttzNClX0XZ8lN0GwyvPAAi_bBKcbmjWCWj5UsILHWC4fHMdeEASL8p2Wm3yFbAkyr8iBbTxy18v3tSxKfZ0BQ7evAbE3zdw=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNE0LGLNhaYNUf8Cihu1kEMrmhquFAmSTSNMVSXc2ztY2QKlEwS13o0DuuPRnkclU5F08QpeZlte5uu-_XVdmpjHZMwIiDx8VGK6zW38Btd7l66Qf-25pv9HLfqfxoZfNCBmehTzt-hHxVl-mFydTCVYA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNE0LGLNhaYNUf8Cihu1kEMrmhquFAmSTSNMVSXc2ztY2QKlEwS13o0DuuPRnkclU5F08QpeZlte5uu-_XVdmpjHZMwIiDx8VGK6zW38Btd7l66Qf-25pv9HLfqfxoZfNCBmehTzt-hHxVl-mFydTCVYA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMZ6hM31v3EQxgzCOFTD45bQOaynu1WffsT6CnsZ7CKT-I7urBSYNf0pHNIvmP9en03XhylxUrA19a32yJ7NSXgkQY1n-rBc-07WSRyganIh-n3ooYD3bpwTmWOHKMtnImClgaXgtkHT4xhnTRmm5SlSg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMZ6hM31v3EQxgzCOFTD45bQOaynu1WffsT6CnsZ7CKT-I7urBSYNf0pHNIvmP9en03XhylxUrA19a32yJ7NSXgkQY1n-rBc-07WSRyganIh-n3ooYD3bpwTmWOHKMtnImClgaXgtkHT4xhnTRmm5SlSg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMcHrq1Z5lpsi6HOl6gwLEA7ERyiEIO-ckn32nOPYXFSouVJMd6L2evI-QJLSboNkWe7pWmrD8pPagi-InjmK-qRyFgSOOfo_7QOeaTO9UdYh3XS94ZDNXhrEHWQ5QsHukAfIwcG186-xzNFAkHNJtZYA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMcHrq1Z5lpsi6HOl6gwLEA7ERyiEIO-ckn32nOPYXFSouVJMd6L2evI-QJLSboNkWe7pWmrD8pPagi-InjmK-qRyFgSOOfo_7QOeaTO9UdYh3XS94ZDNXhrEHWQ5QsHukAfIwcG186-xzNFAkHNJtZYA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPLbqkr5pvniHZ503sNeXPMEuAPlmPoKTyemUZm5ggCqo9DJZmf0FqsgAbPj68XX1owSqQsowLhu0eWR15iL-1fMumsDMuG6IAfpBojq8VxqpVDxG-uWI59CO-PgWwbKTqjbCmqN9lwUc5jHarwg8Q9RQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPLbqkr5pvniHZ503sNeXPMEuAPlmPoKTyemUZm5ggCqo9DJZmf0FqsgAbPj68XX1owSqQsowLhu0eWR15iL-1fMumsDMuG6IAfpBojq8VxqpVDxG-uWI59CO-PgWwbKTqjbCmqN9lwUc5jHarwg8Q9RQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOH2-FJthC6kwHAmKFSwW5bvYNMXMXU1uXFt_81WAGs_P4kJMz56g_agycwUYg0zght66qAGxhAwVMs-Su_8OdMGHFgtwNeFacVHo4TnQcDcIlFfXWnwZtxtTzKk4rGXbvN03jfMmXlrG3o_X59uKAXiQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOH2-FJthC6kwHAmKFSwW5bvYNMXMXU1uXFt_81WAGs_P4kJMz56g_agycwUYg0zght66qAGxhAwVMs-Su_8OdMGHFgtwNeFacVHo4TnQcDcIlFfXWnwZtxtTzKk4rGXbvN03jfMmXlrG3o_X59uKAXiQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczO4VJuT6YaoT-wb_krOxnwVqdKkpAyTEFanW1Rnu12_vHVJ36H1aYzHPUIZeC20ZkKeGaGpxDt_xMcrETKesPsmhgMaz-Ek2s85mXQbIk9u_A5qHuAc0o2N1ZCWlDyBIAtZsWtV2V_cBQ5r96iIj4MX2A=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczO4VJuT6YaoT-wb_krOxnwVqdKkpAyTEFanW1Rnu12_vHVJ36H1aYzHPUIZeC20ZkKeGaGpxDt_xMcrETKesPsmhgMaz-Ek2s85mXQbIk9u_A5qHuAc0o2N1ZCWlDyBIAtZsWtV2V_cBQ5r96iIj4MX2A=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMcdhXSVCxcW-iAbDsSz9ketVm0hGWi37To0Y4nfjy_2NvAnGhfspCTKnYdr-7F9bIFCcqZO4fwDJ_JpyJl_2CA0S7Rt3m4OE4xgz-UeDEWBcjV9kimojiEDFPa6ky3NJBJtOHlV9uiJgzkuPAYYnBgng=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMcdhXSVCxcW-iAbDsSz9ketVm0hGWi37To0Y4nfjy_2NvAnGhfspCTKnYdr-7F9bIFCcqZO4fwDJ_JpyJl_2CA0S7Rt3m4OE4xgz-UeDEWBcjV9kimojiEDFPa6ky3NJBJtOHlV9uiJgzkuPAYYnBgng=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOlb33Rm427tfGvt3YRJIyVkRQxiilE0FDRrdrMOP4-_oPdVSvUHVkw21eb7XVYnWkMvwDLuc4PvCEdkU5kdgVDgDQVMXHZcaSPcegQGvhnYRRMGjk3QIkx6ktRcVVKV1FHTojzhByNu33IauGKnnEJjw=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOlb33Rm427tfGvt3YRJIyVkRQxiilE0FDRrdrMOP4-_oPdVSvUHVkw21eb7XVYnWkMvwDLuc4PvCEdkU5kdgVDgDQVMXHZcaSPcegQGvhnYRRMGjk3QIkx6ktRcVVKV1FHTojzhByNu33IauGKnnEJjw=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNkziL15w2wVnP2gzu4A0Qm2EGJtAAwEpsRwhSfGHd0_WsBDEMDe85-LZzbo33GEqnGMzbEx83ORZKmklSNwxKvshfivHidVTn3TbC6hwnDVP9KGUhVmmmIKGqO9ncUVbifxtaiWc6ql8GoAvrLukHeVA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNkziL15w2wVnP2gzu4A0Qm2EGJtAAwEpsRwhSfGHd0_WsBDEMDe85-LZzbo33GEqnGMzbEx83ORZKmklSNwxKvshfivHidVTn3TbC6hwnDVP9KGUhVmmmIKGqO9ncUVbifxtaiWc6ql8GoAvrLukHeVA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPdrP1NTZoOi-qMVrmVw1DICq7Q2ew1Ka-Ho-2Fz3GUHZ6g4wBo5P43Cz2hnz7kXVyUPHCQ2hJRbhfq-0QIEizBWMXc0QzQtDSM-rD3ieIXfnFu3E3gLhpZ2fQr8ee5DQLRjL57aWASKIBOAQemwtnWqQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPdrP1NTZoOi-qMVrmVw1DICq7Q2ew1Ka-Ho-2Fz3GUHZ6g4wBo5P43Cz2hnz7kXVyUPHCQ2hJRbhfq-0QIEizBWMXc0QzQtDSM-rD3ieIXfnFu3E3gLhpZ2fQr8ee5DQLRjL57aWASKIBOAQemwtnWqQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNJvVA-2mJwehQAyIojKub-AGlJIeAVT9ypC3cad08SPc7HCIG2BPvfdaqW7-10Dq7QxWnV5QISv4cNHw7KU6fORI8ORodwToD7T8-v3SHzaHhjs90Z5ewc9VrgLvh9E0oKX5FFDYlT-iAbtfqERAftKg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNJvVA-2mJwehQAyIojKub-AGlJIeAVT9ypC3cad08SPc7HCIG2BPvfdaqW7-10Dq7QxWnV5QISv4cNHw7KU6fORI8ORodwToD7T8-v3SHzaHhjs90Z5ewc9VrgLvh9E0oKX5FFDYlT-iAbtfqERAftKg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMej8aft9Jr4I82MKn91flx3C8RlyeGFL3smDDIGfTGFW2qp6KM9BvkVxa_PtyDj_BGwAE4krIkz2p68O7l53IUbHa1pIKztzKmpwp1ObYhR5euuzUydkF__5fNgy_HjzkwLh8CAYNRbsUfHiBugOPbHQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMej8aft9Jr4I82MKn91flx3C8RlyeGFL3smDDIGfTGFW2qp6KM9BvkVxa_PtyDj_BGwAE4krIkz2p68O7l53IUbHa1pIKztzKmpwp1ObYhR5euuzUydkF__5fNgy_HjzkwLh8CAYNRbsUfHiBugOPbHQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNYlPF3hZzk4k5GkbqI6pg0c2M6Bcsv0QnWZvh0CGi9NHoIGBvkJ4Mzg362e-Mm6g1r-gFoxlbJiMxnEDHMIPQsm_cGITXVIteO0hHOKWHuqyLa6doFKV7KGdSq495qTI1T5pPeJiHBqWnGZ_k_VtlDAA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNYlPF3hZzk4k5GkbqI6pg0c2M6Bcsv0QnWZvh0CGi9NHoIGBvkJ4Mzg362e-Mm6g1r-gFoxlbJiMxnEDHMIPQsm_cGITXVIteO0hHOKWHuqyLa6doFKV7KGdSq495qTI1T5pPeJiHBqWnGZ_k_VtlDAA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNOx5E0ZR5sOip9H0fJKtU_e3Y88RFXDa_uIlS1eP5AzpESK6-4NKTGFIWqVL2cgF60ravP4wLCv4Q_bAlVNFg2EQqUhTWBDrsVWWaSDXQ2cfC0hEph02G1-eRXchUd0_rPrcS4zt44DAiNmZTITzFS3Q=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNOx5E0ZR5sOip9H0fJKtU_e3Y88RFXDa_uIlS1eP5AzpESK6-4NKTGFIWqVL2cgF60ravP4wLCv4Q_bAlVNFg2EQqUhTWBDrsVWWaSDXQ2cfC0hEph02G1-eRXchUd0_rPrcS4zt44DAiNmZTITzFS3Q=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczP25xWmKHjUAWLGhjuvk1vcV9ZABgjFzBr60bHEqeT406Y6L1_LuuxLsFqTu-_DowDBBacOWPP-ixLviTtSfpOtFCf9Y1eg71oxYv3AdMGPOA5pq5-JrUbllbP94HEE5WkrAF_3DvCckkKQdjcu8zpUpg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczP25xWmKHjUAWLGhjuvk1vcV9ZABgjFzBr60bHEqeT406Y6L1_LuuxLsFqTu-_DowDBBacOWPP-ixLviTtSfpOtFCf9Y1eg71oxYv3AdMGPOA5pq5-JrUbllbP94HEE5WkrAF_3DvCckkKQdjcu8zpUpg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPMkm2Gh0B7SzNNNaESmrf8DZqyXnrcaHcCivfvjUqSTffdCo4DNTYVB6jqMoWEM_9t2FfZlrYpfvYPNIDeqcxWJMKRLhU_YNXpSn-09xegD0Xh09cyl27ZSZ66WIEW5WEjDQgvQsTrjsRwuToBB0pODg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPMkm2Gh0B7SzNNNaESmrf8DZqyXnrcaHcCivfvjUqSTffdCo4DNTYVB6jqMoWEM_9t2FfZlrYpfvYPNIDeqcxWJMKRLhU_YNXpSn-09xegD0Xh09cyl27ZSZ66WIEW5WEjDQgvQsTrjsRwuToBB0pODg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOkpawFpS31uDVUQAg21eBqpqewBIsbM9a30vzNS0y1tIa7tmOfD_9_WefVI3-Dv0aCGDnBnojSHnFZrVO2QYEr3PfvAi8sHX7INjC2fbytGKMhH5bHuzG7cYYcIClVweeEV3QpcRl_2MQcn0QS93hYhA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOkpawFpS31uDVUQAg21eBqpqewBIsbM9a30vzNS0y1tIa7tmOfD_9_WefVI3-Dv0aCGDnBnojSHnFZrVO2QYEr3PfvAi8sHX7INjC2fbytGKMhH5bHuzG7cYYcIClVweeEV3QpcRl_2MQcn0QS93hYhA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPh9eLFluMKkHu-w-F28w9yCZ21ZYeF-yvLqDCGXlnrdHob1HfJ48LDESr67W0WlPy5EH5oKk0YyRhc64qggdA6U0kcw1sLq0JSd0bvTq9nc1Ldm9046zSHvHk24ZpNX7o3q9VkKBzje8B7jA7EXtt4uA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPh9eLFluMKkHu-w-F28w9yCZ21ZYeF-yvLqDCGXlnrdHob1HfJ48LDESr67W0WlPy5EH5oKk0YyRhc64qggdA6U0kcw1sLq0JSd0bvTq9nc1Ldm9046zSHvHk24ZpNX7o3q9VkKBzje8B7jA7EXtt4uA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPoyzqhqih_mNDgDVBydtPpSaF05CjgVTpmKcHdVrrG-oCjqTRDSrYrcRbKxUoQgy55o2moSrrOdjFFsDI_iF5jVvvhQcSmNsEJoQhDj5bqbA2TTsvCwO_WcSkNbQF5WCwVwnv-Jm4DHJRhvvqGyYA_tQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPoyzqhqih_mNDgDVBydtPpSaF05CjgVTpmKcHdVrrG-oCjqTRDSrYrcRbKxUoQgy55o2moSrrOdjFFsDI_iF5jVvvhQcSmNsEJoQhDj5bqbA2TTsvCwO_WcSkNbQF5WCwVwnv-Jm4DHJRhvvqGyYA_tQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOjoachrhK37UreXh0rTcW7rQbkQVUaSdFXcwuo0V5xXXm5FLi3VofKin8GiPghQXFOhgm7XKUvVwQY47FrA_ZOJFm8FSKIrqYBa-csDfGhXe6u8a4GT1HxUsboBrA1czE2gjQUAipIok-YAZHi62JW3Q=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOjoachrhK37UreXh0rTcW7rQbkQVUaSdFXcwuo0V5xXXm5FLi3VofKin8GiPghQXFOhgm7XKUvVwQY47FrA_ZOJFm8FSKIrqYBa-csDfGhXe6u8a4GT1HxUsboBrA1czE2gjQUAipIok-YAZHi62JW3Q=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPcN7WVjAaFCbPi3IFWntUFwM-31qtK_g6sS28VLHiXy85Xpju5-cytx60qPcsYmQueqQJV3qN5HwOEoTX42UjvycvWNvLU1wwmqLyFnMAV1h_X1YAwV1G4i2onsoGPkc0TxMpZHrktKQ1A5h1sGvCv0g=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPcN7WVjAaFCbPi3IFWntUFwM-31qtK_g6sS28VLHiXy85Xpju5-cytx60qPcsYmQueqQJV3qN5HwOEoTX42UjvycvWNvLU1wwmqLyFnMAV1h_X1YAwV1G4i2onsoGPkc0TxMpZHrktKQ1A5h1sGvCv0g=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczN5zRYdHsyuExDQU9bFlxE-NkqMsVyCnPyL0-TuOniP1C5UTnRJvk97_nxggldm01I_0WROFMyVHHnimihcwyJKDGDFkmbOnbx8S8i-S1qtRWr1WBpUYU5gO8j1xT0u7RCw4XD-k8x_OgF4iNRaCAVg7w=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczN5zRYdHsyuExDQU9bFlxE-NkqMsVyCnPyL0-TuOniP1C5UTnRJvk97_nxggldm01I_0WROFMyVHHnimihcwyJKDGDFkmbOnbx8S8i-S1qtRWr1WBpUYU5gO8j1xT0u7RCw4XD-k8x_OgF4iNRaCAVg7w=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczO4iZKRBdpHp9sKevzAaQbX-olHJ3WztL5UMAPeB0fmnuIXZUU5grTz7j8llcyVrlAecvDseTY-QqD0GjSJHy2gi259K_s_cC_ksn0XFshGjmAkMuVf56cP-aGBcUNAN_ev76wTPiW3p_2GILcK3I4XVA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczO4iZKRBdpHp9sKevzAaQbX-olHJ3WztL5UMAPeB0fmnuIXZUU5grTz7j8llcyVrlAecvDseTY-QqD0GjSJHy2gi259K_s_cC_ksn0XFshGjmAkMuVf56cP-aGBcUNAN_ev76wTPiW3p_2GILcK3I4XVA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOhm-dzkNfHNo-85Oqkbc7hOY_JqISqMTLq7OwtgxtX0s8yowinh7pXivaC6lLz2Fi8RAm1CPwtG0Im3L3akdh3jJ5rk8pFdqqDMeRtm4OP9vEcYVvTE6K8oBqr28ahtP4376lXdKfUhZ5N5PDN2ta02Q=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOhm-dzkNfHNo-85Oqkbc7hOY_JqISqMTLq7OwtgxtX0s8yowinh7pXivaC6lLz2Fi8RAm1CPwtG0Im3L3akdh3jJ5rk8pFdqqDMeRtm4OP9vEcYVvTE6K8oBqr28ahtP4376lXdKfUhZ5N5PDN2ta02Q=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNf2kGh4DThyMuDvsHSvNWVhZRqPFVO9uz0qA2RZrfmhGTSXXCmRts8C9nC16ECny2vCJtksM36uhVIlCCf9WYj-3fwZ_N5qxMewG-zGLelOPA4ETDwj2sjjgT8rGgZOK4v_lw_Nuf6rf1KpRDbS_Ljsg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNf2kGh4DThyMuDvsHSvNWVhZRqPFVO9uz0qA2RZrfmhGTSXXCmRts8C9nC16ECny2vCJtksM36uhVIlCCf9WYj-3fwZ_N5qxMewG-zGLelOPA4ETDwj2sjjgT8rGgZOK4v_lw_Nuf6rf1KpRDbS_Ljsg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOKY7IYbDrRTrwkENQy2i3x-E6AObOn92CkUiBFMiG2zUN4TmA9bCJIufHultris2RGK2plG3v9xaQPUbUwhnOJ83MFHY7JVqtanP3TxzkY63DeJDmabmG8fBAxWapXXJLVZAPt04t1c0TQynhCqgNgJA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOKY7IYbDrRTrwkENQy2i3x-E6AObOn92CkUiBFMiG2zUN4TmA9bCJIufHultris2RGK2plG3v9xaQPUbUwhnOJ83MFHY7JVqtanP3TxzkY63DeJDmabmG8fBAxWapXXJLVZAPt04t1c0TQynhCqgNgJA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNRAvUKjCP3dGP9FOL1b-8bcuLlj0nlRq9hKxH0LjMJghQrLJrNpp-r3xN-1DLDxW1BIIOUgh0gTFR1amIpydQcKANzQYPBHmYfjzY3kIhFm4gsBgZPb9jBrQia6LVDfvaTiijfI0RcUZinJ1jr8Aw=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNRAvUKjCP3dGP9FOL1b-8bcuLlj0nlRq9hKxH0LjMJghQrLJrNpp-r3xN-1DLDxW1BIIOUgh0gTFR1amIpydQcKANzQYPBHmYfjzY3kIhFm4gsBgZPb9jBrQia6LVDfvaTiijfI0RcUZinJ1jr8Aw=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNhlwi6pv0cI06KvUH6lsKGRWqeLA9RG0VdM2RtEY404bO-CIrJb8pnqEnmVwhJCfgP-shpGCDrVA2TMBoTBGixYaJXi9YDFznw_UjRNxtAF7QBsjYuxvuKOOYwC1DkHT6XLYHxB_76-077GpIghsKgpQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNhlwi6pv0cI06KvUH6lsKGRWqeLA9RG0VdM2RtEY404bO-CIrJb8pnqEnmVwhJCfgP-shpGCDrVA2TMBoTBGixYaJXi9YDFznw_UjRNxtAF7QBsjYuxvuKOOYwC1DkHT6XLYHxB_76-077GpIghsKgpQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczODMy_9LzOtP3oHFl-dra-J8kC0uTpASp8WZB7TPnQsyjAcakRDP2OeRqVugBGJ6GMkeRL_IjfTdlj9Cj0B4KY_-18UihU2Vbrc1L9s-L2vqJII0rglzTl85_4pWLSo78fm3IJGbtD4VFdXf2NhYF6qNQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczODMy_9LzOtP3oHFl-dra-J8kC0uTpASp8WZB7TPnQsyjAcakRDP2OeRqVugBGJ6GMkeRL_IjfTdlj9Cj0B4KY_-18UihU2Vbrc1L9s-L2vqJII0rglzTl85_4pWLSo78fm3IJGbtD4VFdXf2NhYF6qNQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPQ7i4k-L-lbhI1vnIpEEmO6p74Ai4loes4h3-ncwC3AwyCWleSaPond1nIyGN9hiMv49XNBmkzuPFZeKzjE6TR4kOwNzEPME4CTcaqsWEb47oAp0WA47AxvJmN1hDtXFRcY91t_gOdWO35o44-9-KWaA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPQ7i4k-L-lbhI1vnIpEEmO6p74Ai4loes4h3-ncwC3AwyCWleSaPond1nIyGN9hiMv49XNBmkzuPFZeKzjE6TR4kOwNzEPME4CTcaqsWEb47oAp0WA47AxvJmN1hDtXFRcY91t_gOdWO35o44-9-KWaA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="domo" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMKIRiLgUNMahALsnYpuREScbXv80sRnFs2b3APtYuNNuV8-B3JXuAnlK-r7A474yAc13KCiHGlpYnP1g2Gk3313MoqyG0wiOskQAObPDBlyB5AXh_OM4zsUBknwz_ePiEhrRRJzuodSKztQJYK-thXrQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMKIRiLgUNMahALsnYpuREScbXv80sRnFs2b3APtYuNNuV8-B3JXuAnlK-r7A474yAc13KCiHGlpYnP1g2Gk3313MoqyG0wiOskQAObPDBlyB5AXh_OM4zsUBknwz_ePiEhrRRJzuodSKztQJYK-thXrQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczOiVgNEsO1lLxgfEYOUKiGaFdBjbqFiTRCtO-1DNYH_pS2XjMmOhwXR3o_ESknkYdAM0_WRykApgiR1I5FhuTlNHMzeJCditGzFaf_lx-7n5iVgxElCjOKJnbwDpfG2U1lZ_l9Nvm-obrfR_ajI8tP4Qg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOiVgNEsO1lLxgfEYOUKiGaFdBjbqFiTRCtO-1DNYH_pS2XjMmOhwXR3o_ESknkYdAM0_WRykApgiR1I5FhuTlNHMzeJCditGzFaf_lx-7n5iVgxElCjOKJnbwDpfG2U1lZ_l9Nvm-obrfR_ajI8tP4Qg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPMkIXU6oe_CTWBLpDfXmRQczVrfQFAZO25He-7SDymodvhlth3MazEwgljWV90bbbS5LM3jG4H1eyzQ54bSMdMO1DLgtksicwD9CmXsoOMoW7rNxxKQ07GFKfWRHXfN3jk0qfIADychC09r9bwuyvPhg=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPMkIXU6oe_CTWBLpDfXmRQczVrfQFAZO25He-7SDymodvhlth3MazEwgljWV90bbbS5LM3jG4H1eyzQ54bSMdMO1DLgtksicwD9CmXsoOMoW7rNxxKQ07GFKfWRHXfN3jk0qfIADychC09r9bwuyvPhg=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPmdr9MuvtKJCTapI-EfWGGwRlkeyLU9WQBvl2x9Us1zixg4VqVu4pA1yUBaEdK5W1pvHLiBmFJsYuPB2PFI_5Kctae__BXU5TTvqORMrPkiFLmnbR-7ILjiNXNc8uzxWJ4Wsdp61Y944ZRRs7VwCoXAA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPmdr9MuvtKJCTapI-EfWGGwRlkeyLU9WQBvl2x9Us1zixg4VqVu4pA1yUBaEdK5W1pvHLiBmFJsYuPB2PFI_5Kctae__BXU5TTvqORMrPkiFLmnbR-7ILjiNXNc8uzxWJ4Wsdp61Y944ZRRs7VwCoXAA=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczMPmfT2ivzGKqUXGrnQ9a_pfrr9Nr4w39JCC4bvyrG0IPK2b4ndHfK4CmFY-1UeMuWPUGKPF6bRRraGkcThPh5xzPixKGaKpIpbUSTdFhL03PRkTRv4NnVUnT0BZAsJRmAsmymLkf2VKaM7SuXl6G4DjQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMPmfT2ivzGKqUXGrnQ9a_pfrr9Nr4w39JCC4bvyrG0IPK2b4ndHfK4CmFY-1UeMuWPUGKPF6bRRraGkcThPh5xzPixKGaKpIpbUSTdFhL03PRkTRv4NnVUnT0BZAsJRmAsmymLkf2VKaM7SuXl6G4DjQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPIIdqSXU7CADL2S4u08za-JkZq9TjAk0GAuGHM2LsUh-gc17WBbXkcdrm0Xk5LQYzVwrMv270Xz_PnlLkndui0Kv96R8wER-0vvAwhNeliOZU8BwF5ME10gTn5DXvrJeF1OlzqPmSKYglger3TloGy-w=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPIIdqSXU7CADL2S4u08za-JkZq9TjAk0GAuGHM2LsUh-gc17WBbXkcdrm0Xk5LQYzVwrMv270Xz_PnlLkndui0Kv96R8wER-0vvAwhNeliOZU8BwF5ME10gTn5DXvrJeF1OlzqPmSKYglger3TloGy-w=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczNxGPbcVg1UMaDOEqPkA0kjq3EgUNZkQ0Qte2fIci2u4kZgLqGSvDa1F2dVZIFb-3a0YPhK_5fRDSz7JzzKOgkGXgEV5Q3uQe-prN8N-64GH4zQ3WmxXbWOxQfhYWTUxeH0HXyDfy5OE37j94xr9JmH3Q=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNxGPbcVg1UMaDOEqPkA0kjq3EgUNZkQ0Qte2fIci2u4kZgLqGSvDa1F2dVZIFb-3a0YPhK_5fRDSz7JzzKOgkGXgEV5Q3uQe-prN8N-64GH4zQ3WmxXbWOxQfhYWTUxeH0HXyDfy5OE37j94xr9JmH3Q=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczPSDbSxbEKTu5ygivXEtvQaK-4x_oydQ5IC8khstY64qIfESi7-G5O8ti3hmSSLdCoumQbKcW-PJdc66KjrMuvT-lU7-yJ3zf6zafI4t-FEJBaqgdeDesTimcmD4hVmdjzN888GWO8ZJVIqWWvaXsOsUQ=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPSDbSxbEKTu5ygivXEtvQaK-4x_oydQ5IC8khstY64qIfESi7-G5O8ti3hmSSLdCoumQbKcW-PJdc66KjrMuvT-lU7-yJ3zf6zafI4t-FEJBaqgdeDesTimcmD4hVmdjzN888GWO8ZJVIqWWvaXsOsUQ=w600" alt="" loading="lazy">
+</div>
+<div class="gi" data-cat="refugio" onclick="openLightbox('https://lh3.googleusercontent.com/pw/AP1GczO2tjWQ_0BiOrzIupCD7FlJr0S04uKT2FP1gdMvbXHyfgtft_Z28uJXsfHXj5HP5AZJbFG-O0Vo8-g7utYPAXB3sgFZ5I9aR11F9uuHt478XgAfOOJEFpXJBDVpq8KIAwHFLNkA5jhJnOaVMVapNsCQCA=w1920')">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczO2tjWQ_0BiOrzIupCD7FlJr0S04uKT2FP1gdMvbXHyfgtft_Z28uJXsfHXj5HP5AZJbFG-O0Vo8-g7utYPAXB3sgFZ5I9aR11F9uuHt478XgAfOOJEFpXJBDVpq8KIAwHFLNkA5jhJnOaVMVapNsCQCA=w600" alt="" loading="lazy">
+</div>
+    </div>
+  </div>
+</section>
+<!-- EXPLORA -->
+<section class="explora" id="explora">
+  <p class="section-label">Explora la zona</p>
+  <h2 class="section-title">Las Trancas,<br><em>los 12 meses del año</em></h2>
+
+  <div class="temporadas-grid">
+    <div class="temporada">
+      <div class="temp-icon"><i class="ti ti-snowflake"></i></div>
+      <span class="temp-badge b-winter">Invierno</span>
+      <p class="temp-months">Junio — Septiembre</p>
+      <p class="temp-title">Nieve y termas</p>
+      <ul class="temp-list">
+        <li>Ski y snowboard en Nevados de Chillán</li>
+        <li>Heli-ski y motos de nieve</li>
+        <li>Raquetas de nieve y randonnée</li>
+        <li>Termas volcánicas al aire libre</li>
+        <li>Tubing y trineo de perros</li>
+        <li>Fiestas Patrias con nieve (18 Sept.)</li>
+      </ul>
+    </div>
+    <div class="temporada">
+      <div class="temp-icon"><i class="ti ti-leaf"></i></div>
+      <span class="temp-badge b-autumn">Otoño</span>
+      <p class="temp-months">Abril — Mayo</p>
+      <p class="temp-title">Colores y silencio</p>
+      <ul class="temp-list">
+        <li>Bosque de coihues en llamas de color</li>
+        <li>Temporada baja, total privacidad</li>
+        <li>Niebla mañanera y hojas caídas</li>
+        <li>Fotografía de paisaje en su mejor momento</li>
+        <li>Tinaja caliente rodeada de colores</li>
+        <li>La temporada más subestimada del año</li>
+      </ul>
+    </div>
+    <div class="temporada">
+      <div class="temp-icon"><i class="ti ti-sun"></i></div>
+      <span class="temp-badge b-summer">Verano</span>
+      <p class="temp-months">Octubre — Marzo</p>
+      <p class="temp-title">Bosque y aventura</p>
+      <ul class="temp-list">
+        <li>Trekking y senderismo</li>
+        <li>MTB enduro y Bike Park</li>
+        <li>Canopy, canyoning y escalada en roca</li>
+        <li>Cabalgatas y yoga en la montaña</li>
+        <li>Pozones y aguas calientes naturales</li>
+        <li>Festival Cervezas Shangrilá (febrero)</li>
+      </ul>
+    </div>
+    <div class="temporada">
+      <div class="temp-icon"><i class="ti ti-cloud-rain"></i></div>
+      <span class="temp-badge b-spring">Primavera</span>
+      <p class="temp-months">Septiembre — Noviembre</p>
+      <p class="temp-title">Florecimiento del bosque</p>
+      <ul class="temp-list">
+        <li>Bosque nativo despertando</li>
+        <li>Cascadas en su caudal máximo</li>
+        <li>Flores silvestres y avistamiento de fauna</li>
+        <li>Clima templado ideal para salir</li>
+        <li>Valle casi sin turistas</li>
+        <li>Las primeras salidas de trekking del año</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="actividades-title" style="margin-top:56px">Actividades</p>
+  <div class="actividades-grid">
+    <div class="actividad"><i class="ti ti-ski-jumping"></i><p class="actividad-name">Ski & Snowboard</p><p class="actividad-desc">Nevados de Chillán, uno de los mejores centros de Sudamérica</p></div>
+    <div class="actividad"><i class="ti ti-bike"></i><p class="actividad-name">MTB & Bike Park</p><p class="actividad-desc">Senderos enduro y descenso para todos los niveles</p></div>
+    <div class="actividad"><i class="ti ti-route"></i><p class="actividad-name">Trekking</p><p class="actividad-desc">Rutas desde el refugio hasta Laguna Huemul</p></div>
+    <div class="actividad"><i class="ti ti-ripple"></i><p class="actividad-name">Termas</p><p class="actividad-desc">Piscinas volcánicas naturales al aire libre</p></div>
+    <div class="actividad"><i class="ti ti-horse"></i><p class="actividad-name">Cabalgatas</p><p class="actividad-desc">Valles y miradores a caballo</p></div>
+    <div class="actividad"><i class="ti ti-parachute"></i><p class="actividad-name">Canopy</p><p class="actividad-desc">Tirolesa entre árboles con vistas espectaculares</p></div>
+    <div class="actividad"><i class="ti ti-ripple"></i><p class="actividad-name">Canyoning</p><p class="actividad-desc">Barranquismo en ríos y cascadas del valle</p></div>
+    <div class="actividad"><i class="ti ti-mountain"></i><p class="actividad-name">Escalada en roca</p><p class="actividad-desc">Con guías certificados en entorno natural inigualable</p></div>
+    <div class="actividad"><i class="ti ti-snowmobile"></i><p class="actividad-name">Motos de nieve</p><p class="actividad-desc">Recorre senderos nevados a alta velocidad</p></div>
+    <div class="actividad"><i class="ti ti-yoga"></i><p class="actividad-name">Yoga</p><p class="actividad-desc">Práctica rodeada de montañas y bosque nativo</p></div>
+  </div>
+
+  <p class="atractivos-title" style="margin-top:48px">Atractivos de la zona</p>
+  <div class="atractivos-grid">
+    <div class="atractivo"><i class="ti ti-ripple"></i><p class="atractivo-name">Laguna Huemul</p><p class="atractivo-desc">La excursión más espectacular del valle</p></div>
+    <div class="atractivo"><i class="ti ti-waterfall"></i><p class="atractivo-name">Cascada Rucapirén</p><p class="atractivo-desc">Parada obligatoria, accesible toda la familia</p></div>
+    <div class="atractivo"><i class="ti ti-map-pin"></i><p class="atractivo-name">Valle Aguas Calientes</p><p class="atractivo-desc">Termas naturales al final del sendero</p></div>
+    <div class="atractivo"><i class="ti ti-history"></i><p class="atractivo-name">Cueva los Pincheira</p><p class="atractivo-desc">Historia de la Independencia, km 67</p></div>
+    <div class="atractivo"><i class="ti ti-trees"></i><p class="atractivo-name">Gruta Los Pangues</p><p class="atractivo-desc">Bosque centenario y escalera de raíces</p></div>
+    <div class="atractivo"><i class="ti ti-eye"></i><p class="atractivo-name">Mirador del Valle</p><p class="atractivo-desc">Vistas panorámicas a volcanes y cordillera</p></div>
+    <div class="atractivo"><i class="ti ti-flame"></i><p class="atractivo-name">Fumarolas</p><p class="atractivo-desc">Chimeneas volcánicas naturales activas</p></div>
+    <div class="atractivo"><i class="ti ti-swim"></i><p class="atractivo-name">Baños del Rafa</p><p class="atractivo-desc">Pozones naturales en aguas cristalinas</p></div>
+    <div class="atractivo"><i class="ti ti-star"></i><p class="atractivo-name">Reserva Nac. Ñuble</p><p class="atractivo-desc">Biodiversidad nativa protegida en la región</p></div>
+    <div class="atractivo"><i class="ti ti-map"></i><p class="atractivo-name">Refugio Shangrilá</p><p class="atractivo-desc">Ruinas históricas del refugio original del valle</p></div>
+  </div>
+
+  <p class="restaurantes-title" style="margin-top:48px">Restaurantes y vida local</p>
+  <div class="restaurantes-grid">
+    <div class="restaurante"><i class="ti ti-tool-kitchen-2"></i><p class="restaurante-name">Sitari Tapas y Brasas</p><p class="restaurante-desc">Tapas y cocina de autor en Las Trancas</p></div>
+    <div class="restaurante"><i class="ti ti-tool-kitchen-2"></i><p class="restaurante-name">Bagual</p><p class="restaurante-desc">Carnes y cocina patagónica</p></div>
+    <div class="restaurante"><i class="ti ti-tool-kitchen-2"></i><p class="restaurante-name">Alto Las Trancas</p><p class="restaurante-desc">Cocina de autor, cordero al palo y jabalí</p></div>
+    <div class="restaurante"><i class="ti ti-tool-kitchen-2"></i><p class="restaurante-name">Chil'in Pizzería</p><p class="restaurante-desc">Las mejores pizzas del valle, km 68</p></div>
+    <div class="restaurante"><i class="ti ti-tool-kitchen-2"></i><p class="restaurante-name">Restobar Shangrilá</p><p class="restaurante-desc">Ambiente local y cocina variada</p></div>
+    <div class="restaurante"><i class="ti ti-coffee"></i><p class="restaurante-name">Koiwe Café</p><p class="restaurante-desc">Brunch y té de tarde, el favorito del valle</p></div>
+    <div class="restaurante"><i class="ti ti-beer"></i><p class="restaurante-name">Pizzas & Beers</p><p class="restaurante-desc">Música en vivo, ideal para las noches</p></div>
+    <div class="restaurante"><i class="ti ti-beer"></i><p class="restaurante-name">Snow Pub</p><p class="restaurante-desc">El après-ski del valle, abierto hasta tarde</p></div>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog" id="blog">
+  <p class="section-label">Blog del refugio</p>
+  <h2 class="section-title">Todo lo que<br><em>necesitas saber</em></h2>
+  <div class="blog-grid">
+    <div class="blog-card">
+      <div class="blog-card-img">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMKnnFsyIBvGhQlgnFYHU0ZqVBpolV1ftSwTpIeoyfkBQCVwQb8Q6hSQIER0QVU8SLOjNw=w800" alt="Tinaja caliente">
+      </div>
+      <div class="blog-card-body">
+        <p class="blog-cat">Guía del refugio</p>
+        <p class="blog-title">Cómo encender la tinaja caliente paso a paso</p>
+        <p class="blog-excerpt">Todo lo que necesitas saber para encender, mantener y disfrutar la tinaja desde el primer momento.</p>
+        <span class="blog-arrow">Leer artículo <i class="ti ti-arrow-right"></i></span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-color" style="background:#2a1a0a">
+        <i class="ti ti-flame" style="font-size:48px;color:#8a5020;opacity:0.5"></i>
+      </div>
+      <div class="blog-card-body">
+        <p class="blog-cat">Guía del refugio</p>
+        <p class="blog-title">Cómo usar la estufa a leña de forma segura</p>
+        <p class="blog-excerpt">Enciende, regula la temperatura y mantén el calor toda la noche. Guía completa paso a paso.</p>
+        <span class="blog-arrow">Leer artículo <i class="ti ti-arrow-right"></i></span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-img">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczNaUioCZrMYdscXjC5kUXXyeE6QBiBeIFINeZGNuJ2Vumw3s0F_OWXkVRp7x7P72IZmrN_3l0d9kM0K2MDLyioa3v-o0mcu4lf_VZP85A-BdMsX6RNtOp74uxtcxRzDXe1NXTPuHZMnC6XuxmXG7w1sqA=w800" alt="Senderos">
+      </div>
+      <div class="blog-card-body">
+        <p class="blog-cat">Actividades</p>
+        <p class="blog-title">Los mejores senderos desde Las Trancas</p>
+        <p class="blog-excerpt">Desde caminatas de 2 horas hasta expediciones de día completo. Rutas para todos los niveles.</p>
+        <span class="blog-arrow">Leer artículo <i class="ti ti-arrow-right"></i></span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-img">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPw0alSY6JiEWSPNwTek27R-WLnPnbWBpnYJT2NDzhsJSCCYJcl8SF5U5sxt-c9643MJ4Mr__ccaClajyUOlmdamUcX2oavAIqZX3arTf4o9FFmNkhMGUnkUUGZfz9_XKQ9nnnmKgQyHzUXfoknZnFfow=w800" alt="Otoño Las Trancas">
+      </div>
+      <div class="blog-card-body">
+        <p class="blog-cat">Naturaleza</p>
+        <p class="blog-title">El otoño en Las Trancas — la temporada más subestimada</p>
+        <p class="blog-excerpt">Abril y mayo ofrecen algo que invierno y verano no pueden dar: silencio, colores imposibles y el valle para ti solo.</p>
+        <span class="blog-arrow">Leer artículo <i class="ti ti-arrow-right"></i></span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-color" style="background:#1a1e2a">
+        <i class="ti ti-mountain" style="font-size:48px;color:#404870;opacity:0.5"></i>
+      </div>
+      <div class="blog-card-body">
+        <p class="blog-cat">Actividades</p>
+        <p class="blog-title">Guía completa de Nevados de Chillán — mucho más que ski</p>
+        <p class="blog-excerpt">Termas, heli-ski, motos de nieve, gastronomía y experiencias que no requieren esquiar.</p>
+        <span class="blog-arrow">Leer artículo <i class="ti ti-arrow-right"></i></span>
+      </div>
+    </div>
+    <div class="blog-card">
+      <div class="blog-card-img">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOBB0iY9dppMd5AFoVc0beuI-R3GkWYDnODKPENDxFtoNLV6JPzuUtBKpC1jf-7u9pLSCPUYUtPFVXNiT-pXWGPnbsJaqfVemwf5D-mzHcn-CZlY2PfqvHafZfNnVyWLlDdmAkva3Ld2Ll2Q2Zozft0eg=w800" alt="Fauna bosque nativo">
+      </div>
+      <div class="blog-card-body">
+        <p class="blog-cat">Naturaleza</p>
+        <p class="blog-title">Fauna del bosque nativo — los animales que podrías ver</p>
+        <p class="blog-excerpt">Chucaos, cóndores, zorros, pudúes y más. Guía de la fauna que habita el bosque que rodea el refugio.</p>
+        <span class="blog-arrow">Leer artículo <i class="ti ti-arrow-right"></i></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO LLEGAR -->
+<section class="llegar" id="llegar">
+  <div class="llegar-content">
+    <p class="section-label">Cómo llegar</p>
+    <h2 class="section-title" style="margin-bottom:0">Desde Chillán<br><em>en 80 km</em></h2>
+    <div class="llegar-steps">
+      <div class="llegar-step">
+        <span class="llegar-step-num">01</span>
+        <div class="llegar-step-body">
+          <p class="llegar-step-title">Desde Chillán o Concepción</p>
+          <p class="llegar-step-desc">Toma la Ruta Q-61 en dirección a Termas de Chillán. Son 80 km desde Chillán y aproximadamente 200 km desde Concepción. El camino está pavimentado hasta Las Trancas.</p>
+        </div>
+      </div>
+      <div class="llegar-step">
+        <span class="llegar-step-num">02</span>
+        <div class="llegar-step-body">
+          <p class="llegar-step-title">Llegando a Shangrilá</p>
+          <p class="llegar-step-desc">Al llegar al sector Shangrilá encontrarás el estacionamiento compartido — es el acceso correcto. Puede que no veas el letrero de inmediato, pero sigue el camino hacia adentro del bosque.</p>
+        </div>
+      </div>
+      <div class="llegar-step">
+        <span class="llegar-step-num">03</span>
+        <div class="llegar-step-body">
+          <p class="llegar-step-title">En invierno</p>
+          <p class="llegar-step-desc">En temporada de nieve es obligatorio llevar cadenas o vehículo con tracción 4x4. Los controles de acceso hacia Termas de Chillán lo exigen. Las Trancas generalmente es accesible sin cadenas.</p>
+        </div>
+      </div>
+    </div>
+    <div class="llegar-alerta">
+      <i class="ti ti-info-circle"></i>
+      <p>Al llegar verás un estacionamiento compartido antes de la entrada — no te confundas, es el acceso correcto al refugio. Sigue el camino hacia adentro y encontrarás el letrero de cada espacio.</p>
+    </div>
+    <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+      <a href="https://waze.com/ul/h63mnj463q" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:#33CCFF;color:white;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:500;transition:opacity 0.2s">
+        <i class="ti ti-navigation" style="font-size:16px"></i> Abrir en Waze
+      </a>
+      <a href="https://maps.app.goo.gl/bdKBqhDVpEzLdrQd9" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:0.5px solid var(--gris-claro);color:#1a1a18;font-size:10px;letter-spacing:2px;text-transform:uppercase;font-family:'Jost',sans-serif;font-weight:500;transition:all 0.2s">
+        <i class="ti ti-map-pin" style="font-size:16px"></i> Google Maps
+      </a>
+    </div>
+  </div>
+  <div class="llegar-img">
+    <img src="https://lh3.googleusercontent.com/pw/AP1GczMQxNYn61ii24FJp1FCOcwplaDO6dTNih8VoLXXpT1k8e6cPx5OxQpldp0oE9c-hUa8q_xNMDfzwH-NT-mko-gI3r94cU5ZB41PDlNBMl_XSWbBfPm4KJlSrhJuuL7KbF79RpowsbqPAV871CFaBOQfTg=w1920" alt="Acceso Refugio Nativo">
+  </div>
+</section>
+
+<!-- RESEÑAS -->
+<section class="resenas">
+  <p class="section-label">Lo que dicen nuestros huéspedes</p>
+  <h2 class="section-title">Más de 140 reseñas,<br><em>casi todas de 5 estrellas</em></h2>
+  <div class="resenas-rating">
+    <span class="resenas-rating-num">4.88</span>
+    <div class="resenas-rating-right">
+      <div class="resenas-stars">
+        <i class="ti ti-star-filled"></i>
+        <i class="ti ti-star-filled"></i>
+        <i class="ti ti-star-filled"></i>
+        <i class="ti ti-star-filled"></i>
+        <i class="ti ti-star-filled"></i>
+      </div>
+      <p class="resenas-rating-desc">Superanfitrión · 3 años consecutivos · Airbnb</p>
+    </div>
+  </div>
+  <div class="resenas-grid">
+
+    <div class="resena-card">
+      <div class="resena-header">
+        <div class="resena-avatar">K</div>
+        <div>
+          <p class="resena-name">Karen Valentina</p>
+          <p class="resena-location">Chile</p>
+        </div>
+      </div>
+      <div class="resena-stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <p class="resena-text">"Mi estancia fue una experiencia muy positiva y enriquecedora. Destaco especialmente la hospitalidad y buena disposición del anfitrión, quien estuvo siempre atento, generando un ambiente acogedor y de confianza durante toda la estadía."</p>
+    </div>
+
+    <div class="resena-card">
+      <div class="resena-header">
+        <div class="resena-avatar">V</div>
+        <div>
+          <p class="resena-name">Valentina</p>
+          <p class="resena-location">Santiago, Chile</p>
+        </div>
+      </div>
+      <div class="resena-stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <p class="resena-text">"Precioso lugar, rodeado de bosque y muy bien equipado. Excelente lugar para quedarse cómodamente y recorrer la zona. Juan Pablo es un excelente anfitrión, la comunicación con él es muy rápida y clara."</p>
+    </div>
+
+    <div class="resena-card">
+      <div class="resena-header">
+        <div class="resena-avatar">P</div>
+        <div>
+          <p class="resena-name">Pablo</p>
+          <p class="resena-location">Chile</p>
+        </div>
+      </div>
+      <div class="resena-stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <p class="resena-text">"El lugar era espectacular. Lo que Juan Pablo presenta en las fotos, es tal cual lo que uno se encuentra. Su preocupación y respuesta oportuna nos ayudó mucho en nuestra estadía y en descubrir lugares a visitar."</p>
+    </div>
+
+    <div class="resena-card">
+      <div class="resena-header">
+        <div class="resena-avatar">R</div>
+        <div>
+          <p class="resena-name">Rosmary</p>
+          <p class="resena-location">Chile</p>
+        </div>
+      </div>
+      <div class="resena-stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <p class="resena-text">"Todo muy lindo, limpio, organizado, el bosque hermoso y una casa muy acogedora con todo lo necesario. Un excelente lugar para estar en familia en paz y con privacidad. 100% recomendable."</p>
+    </div>
+
+    <div class="resena-card">
+      <div class="resena-header">
+        <div class="resena-avatar">D</div>
+        <div>
+          <p class="resena-name">Daniel</p>
+          <p class="resena-location">Talcahuano, Chile</p>
+        </div>
+      </div>
+      <div class="resena-stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <p class="resena-text">"Excelente. La comunicación y preocupación de Juan Pablo es muy buena. El domo está ubicado en un hermoso lugar, muy tranquilo, excelente para ir a desconectarse. Recomendadísimo."</p>
+    </div>
+
+    <div class="resena-card">
+      <div class="resena-header">
+        <div class="resena-avatar">H</div>
+        <div>
+          <p class="resena-name">Héctor</p>
+          <p class="resena-location">Pichilemu, Chile</p>
+        </div>
+      </div>
+      <div class="resena-stars"><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i></div>
+      <p class="resena-text">"El lugar (domo y espacio) eran mucho mejores y más cómodos de lo que se aprecia en las imágenes. El lugar es increíble y a un par de cuadras de todo. Sin duda volveré."</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto">
+  <p class="section-label">Contacto</p>
+  <h2 class="section-title">¿Tienes alguna<br><em>pregunta?</em></h2>
+  <div class="contacto-cards">
+    <a href="https://wa.me/56987775298" target="_blank" class="contacto-card">
+      <div class="contacto-icon" style="background:#25D366">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28" height="28">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </div>
+      <div class="contacto-body">
+        <p class="contacto-label">WhatsApp</p>
+        <p class="contacto-val">+56 9 8777 5298</p>
+        <p class="contacto-hint">Respuesta rápida</p>
+      </div>
+      <i class="ti ti-arrow-right contacto-arrow"></i>
+    </a>
+    <a href="mailto:juanpabloverap@gmail.com" class="contacto-card">
+      <div class="contacto-icon" style="background:#1a1a18">
+        <i class="ti ti-mail" style="font-size:26px;color:white"></i>
+      </div>
+      <div class="contacto-body">
+        <p class="contacto-label">Correo electrónico</p>
+        <p class="contacto-val">juanpabloverap@gmail.com</p>
+        <p class="contacto-hint">Para consultas detalladas</p>
+      </div>
+      <i class="ti ti-arrow-right contacto-arrow"></i>
+    </a>
+    <a href="https://www.instagram.com/refugionativo1/" target="_blank" class="contacto-card">
+      <div class="contacto-icon" style="background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%)">
+        <i class="ti ti-brand-instagram" style="font-size:26px;color:white"></i>
+      </div>
+      <div class="contacto-body">
+        <p class="contacto-label">Instagram</p>
+        <p class="contacto-val">@refugionativo1</p>
+        <p class="contacto-hint">Fotos y novedades del refugio</p>
+      </div>
+      <i class="ti ti-arrow-right contacto-arrow"></i>
+    </a>
+    <a href="https://waze.com/ul/h63mnj463q" target="_blank" class="contacto-card">
+      <div class="contacto-icon" style="background:#33CCFF">
+        <i class="ti ti-navigation" style="font-size:26px;color:white"></i>
+      </div>
+      <div class="contacto-body">
+        <p class="contacto-label">Waze</p>
+        <p class="contacto-val">Navegar al refugio</p>
+        <p class="contacto-hint">Maihuén, Las Trancas, Pinto</p>
+      </div>
+      <i class="ti ti-arrow-right contacto-arrow"></i>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="REFUGIONATIVOFondoTransparente.png" alt="Refugio Nativo" style="height:40px;width:auto;filter:brightness(0) invert(1) sepia(1) saturate(0.3) hue-rotate(60deg)">
+        <div>
+          <span class="footer-logo-name">Refugio Nativo</span>
+          <span class="footer-logo-sub">Las Trancas · Ñuble · Chile</span>
+        </div>
+      </div>
+      <p class="footer-desc">Dos espacios en bosque nativo a 1.500 msnm en el Valle Las Trancas. Tinaja privada, piscina en temporada y 2.000 m² de naturaleza los 12 meses del año.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Síguenos</p>
+      <ul class="footer-links-list">
+        <li><a href="https://www.instagram.com/refugionativo1/" target="_blank"><i class="ti ti-brand-instagram" style="font-size:13px;margin-right:6px"></i>@refugionativo1</a></li>
+        <li><a href="https://wa.me/56987775298" target="_blank"><i class="ti ti-brand-whatsapp" style="font-size:13px;margin-right:6px"></i>+56 9 8777 5298</a></li>
+        <li><a href="mailto:juanpabloverap@gmail.com"><i class="ti ti-mail" style="font-size:13px;margin-right:6px"></i>juanpabloverap@gmail.com</a></li>
+        <li><a href="https://maps.app.goo.gl/bdKBqhDVpEzLdrQd9" target="_blank"><i class="ti ti-map-pin" style="font-size:13px;margin-right:6px"></i>Google Maps</a></li>
+        <li><a href="https://waze.com/ul/h63mnj463q" target="_blank"><i class="ti ti-navigation" style="font-size:13px;margin-right:6px"></i>Waze al refugio</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Reservas</p>
+      <p style="font-size:12px;color:#484840;font-weight:300;margin-bottom:8px;line-height:1.7">Las reservas se realizan a través de Airbnb. Selecciona el espacio que más te acomode.</p>
+      <a href="https://es-l.airbnb.com/rooms/811690761160204107" target="_blank" class="footer-airbnb">
+        El refugio <i class="ti ti-external-link" style="font-size:11px"></i>
+      </a>
+      <br>
+      <a href="https://es-l.airbnb.com/rooms/907301360932038684" target="_blank" class="footer-airbnb" style="margin-top:8px">
+        El domo <i class="ti ti-external-link" style="font-size:11px"></i>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Refugio Nativo · Las Trancas, Ñuble, Chile</span>
+    <span class="footer-marca">Marca registrada INAPI · Todos los derechos reservados</span>
+  </div>
+</footer>
+
+<!-- WHATSAPP BUTTON -->
+<a href="https://wa.me/56987775298" target="_blank" class="wsp-btn" aria-label="Contactar por WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="28" height="28">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close"><i class="ti ti-x"></i></span>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+</div>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Hero bg load
+  const heroBg = document.getElementById('heroBg');
+  heroBg.style.backgroundImage = "url('https://lh3.googleusercontent.com/pw/AP1GczM2nCdkc2gXrizomcJ6j68Tm-a5UU_9-zm4uz6ezXXoMvgYXPpvi_hp6w2SpeTEpFuBoKfUQvIM67Z67h-GDGkT70I0ljS3tst1aEa3HJrH6eZFRjZ0tkIfTrT3HzDm5Q1TV4QWaXMwJpxIVTXNDVUHcQ=w1920')";
+  const img = new Image();
+  img.onload = () => heroBg.classList.add('loaded');
+  img.src = "https://lh3.googleusercontent.com/pw/AP1GczM2nCdkc2gXrizomcJ6j68Tm-a5UU_9-zm4uz6ezXXoMvgYXPpvi_hp6w2SpeTEpFuBoKfUQvIM67Z67h-GDGkT70I0ljS3tst1aEa3HJrH6eZFRjZ0tkIfTrT3HzDm5Q1TV4QWaXMwJpxIVTXNDVUHcQ=w1920";
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuClose = document.getElementById('menuClose');
+  hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+  menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
+  // Gallery switcher
+  const refugioImgs = [
+    'https://lh3.googleusercontent.com/pw/AP1GczPiMYxDl_k1kEwTAT-TcQKUC1jiEnvhPKA1ryLnH0pCxt3yH4cXPCyIZcyIAVg-07ev5IzJevUBgSKpXUBWpHjim8KFo3pJejaDuWDQbLO4bjt2QupZ9jdylWwqQqBRxQ6hXued_3Nci7B3tbT-XoXNhA=w1260',
+    'https://lh3.googleusercontent.com/pw/AP1GczMD_SLBEDs-wXJ71BI6GQP5IX2mwo0D0obHWQrZQy7WZQAdMk5kyPz2mCwmHZxm5yuQcKxVhO4dH9ulthGySxC7VWVhZWyMEDR6qd1qTscsTLVuNIlNJ1UWPAHdpGAMWDi89oSGbqSiHMraizDs-E6ZfQ=w1260',
+    'https://lh3.googleusercontent.com/pw/AP1GczNxbxr2BYzZF3S7VWc4Ubi6Ib1BJArhk0kMCBLQlEDVQVBCwA7EOY9qIVKX8QILudWmsdzpjQ7oDEEjCp8XUvxBZiF1KgmMmXg13jw3iQUHO5zZjOSTx9Wpr0OdH7gHR4CNies0s5Nx6GF2xKhWvcXiog=w1260',
+    'https://lh3.googleusercontent.com/pw/AP1GczNdQ2Q-Hpn36ZlzJjXEzKVNyVySv9t3SXS3GIPGamwAtrphbm1XRCFvvHl_-jNiA8M5dMuIwEK4J1GQnxE9XrPsxJGle8C-WhSsyfPhVEdDiZ6-lwR7MhLy8Q1a51NeDG6glxX7Reo2-KxOZJlbIU15fQ=w1260'
+  ];
+  const domoImgs = [
+    'https://lh3.googleusercontent.com/pw/AP1GczPLbqkr5pvniHZ503sNeXPMEuAPlmPoKTyemUZm5ggCqo9DJZmf0FqsgAbPj68XX1owSqQsowLhu0eWR15iL-1fMumsDMuG6IAfpBojq8VxqpVDxG-uWI59CO-PgWwbKTqjbCmqN9lwUc5jHarwg8Q9RQ=w1260',
+    'https://lh3.googleusercontent.com/pw/AP1GczOiVgNEsO1lLxgfEYOUKiGaFdBjbqFiTRCtO-1DNYH_pS2XjMmOhwXR3o_ESknkYdAM0_WRykApgiR1I5FhuTlNHMzeJCditGzFaf_lx-7n5iVgxElCjOKJnbwDpfG2U1lZ_l9Nvm-obrfR_ajI8tP4Qg=w1260',
+    'https://lh3.googleusercontent.com/pw/AP1GczPMkIXU6oe_CTWBLpDfXmRQczVrfQFAZO25He-7SDymodvhlth3MazEwgljWV90bbbS5LM3jG4H1eyzQ54bSMdMO1DLgtksicwD9CmXsoOMoW7rNxxKQ07GFKfWRHXfN3jk0qfIADychC09r9bwuyvPhg=w1260',
+    'https://lh3.googleusercontent.com/pw/AP1GczPmdr9MuvtKJCTapI-EfWGGwRlkeyLU9WQBvl2x9Us1zixg4VqVu4pA1yUBaEdK5W1pvHLiBmFJsYuPB2PFI_5Kctae__BXU5TTvqORMrPkiFLmnbR-7ILjiNXNc8uzxWJ4Wsdp61Y944ZRRs7VwCoXAA=w1260'
+  ];
+
+  function changeImg(imgId, index, type) {
+    const imgEl = document.getElementById(imgId);
+    const imgs = type === 'domo' ? domoImgs : refugioImgs;
+    imgEl.src = imgs[index];
+    const dots = imgEl.closest('.espacio-gallery').querySelectorAll('.espacio-gallery-dot');
+    dots.forEach((d,i) => d.classList.toggle('active', i === index));
+  }
+
+  // Lightbox
+  function openLightbox(src) {
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLightbox(); });
+
+  // Gallery folder system
+  const carpetas = document.querySelectorAll('.gcarpeta');
+  const galeriaGrid = document.getElementById('galeriaGrid');
+  const galeriaGridTitle = document.getElementById('galeriaGridTitle');
+  const galeriaGridClose = document.getElementById('galeriaGridClose');
+  const catNames = { all:'Todos', refugio:'El refugio', domo:'El domo', comunes:'Áreas comunes', paisaje:'Paisaje' };
+
+  carpetas.forEach(carpeta => {
+    carpeta.addEventListener('click', () => {
+      const filter = carpeta.dataset.cat;
+      const isActive = carpeta.classList.contains('active') && galeriaGrid.style.display !== 'none';
+      
+      carpetas.forEach(c => c.classList.remove('active'));
+      
+      if (isActive) {
+        galeriaGrid.style.display = 'none';
+        return;
+      }
+      
+      carpeta.classList.add('active');
+      galeriaGridTitle.textContent = catNames[filter] || filter;
+      galeriaGrid.style.display = 'block';
+      
+      document.querySelectorAll('.gi').forEach(item => {
+        item.classList.toggle('hidden', filter !== 'all' && item.dataset.cat !== filter);
+      });
+      
+      setTimeout(() => galeriaGrid.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    });
+  });
+
+  galeriaGridClose.addEventListener('click', () => {
+    galeriaGrid.style.display = 'none';
+    carpetas.forEach(c => c.classList.remove('active'));
+  });
+
+  // Smooth scroll active nav
+  const sections = document.querySelectorAll('section[id], .hero[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+
+</body>
+</html>

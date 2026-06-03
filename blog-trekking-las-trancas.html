@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Las mejores rutas de trekking en Las Trancas, Valle de Chillán. Desde caminatas familiares hasta senderos con cataratas y miradores espectaculares.">
+<title>Trekking en Las Trancas — Rutas para todos los niveles | Refugio Nativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: #f5f2eb; color: #1a1a18; overflow-x: hidden; }
+  img { display: block; width: 100%; object-fit: cover; }
+  a { text-decoration: none; color: inherit; }
+
+  :root {
+    --verde: #2a3a22;
+    --verde-medio: #3d5030;
+    --verde-claro: #a0b878;
+    --crema: #f5f2eb;
+    --crema-oscuro: #edeadf;
+    --negro: #0f150f;
+    --gris: #888880;
+    --gris-claro: #c8c4b0;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(245,242,235,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--gris-claro);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; }
+  .nav-logo img { height: 44px; width: auto; filter: brightness(0); }
+  .nav-logo-name { font-size: 13px; letter-spacing: 4px; font-weight: 500; text-transform: uppercase; }
+  .nav-logo-sub { font-size: 9px; letter-spacing: 2px; color: var(--gris); font-weight: 300; }
+  .nav-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gris); transition: color 0.2s;
+  }
+  .nav-back:hover { color: #1a1a18; }
+
+  /* HERO ARTÍCULO */
+  .article-hero {
+    padding-top: 90px;
+    background: var(--verde);
+    padding-bottom: 64px;
+  }
+  .article-hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 48px 0;
+  }
+  .article-cat {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--verde-claro); margin-bottom: 16px; font-weight: 300;
+  }
+  .article-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 300; color: #f0ece0; line-height: 1.05;
+    font-style: italic; margin-bottom: 24px;
+  }
+  .article-meta {
+    display: flex; align-items: center; gap: 24px;
+    font-size: 11px; letter-spacing: 1.5px; color: rgba(255,255,255,0.4);
+    text-transform: uppercase; border-top: 0.5px solid rgba(255,255,255,0.1);
+    padding-top: 20px; margin-top: 24px;
+  }
+  .article-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* CONTENIDO */
+  .article-body {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 48px;
+  }
+  .article-intro {
+    font-size: 18px; line-height: 1.8; color: #3a3a38;
+    font-weight: 300; margin-bottom: 56px;
+    border-left: 3px solid var(--verde-claro);
+    padding-left: 24px;
+  }
+
+  /* RUTAS */
+  .rutas-grid {
+    display: flex; flex-direction: column; gap: 48px;
+    margin-bottom: 64px;
+  }
+  .ruta-card {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 32px; align-items: start;
+    padding-bottom: 48px;
+    border-bottom: 0.5px solid var(--gris-claro);
+  }
+  .ruta-card:last-child { border-bottom: none; }
+  .ruta-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-weight: 300; color: var(--gris-claro);
+    line-height: 1; text-align: right;
+  }
+  .ruta-content {}
+  .ruta-badges {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;
+  }
+  .ruta-badge {
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 4px 10px; font-family: 'Jost', sans-serif;
+  }
+  .b-baja { background: #e8f0e0; color: var(--verde-medio); }
+  .b-media { background: #f0e8d0; color: #7a5020; }
+  .b-familia { background: #e8eef5; color: #304870; }
+  .b-tiempo { background: var(--crema-oscuro); color: var(--gris); }
+  .ruta-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 400; color: #1a1a18;
+    line-height: 1.1; margin-bottom: 14px;
+  }
+  .ruta-desc {
+    font-size: 15px; line-height: 1.8; color: #4a4a48;
+    font-weight: 300; margin-bottom: 16px;
+  }
+  .ruta-highlights {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;
+  }
+  .ruta-hl {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: var(--verde-medio);
+    background: #edf2e5; padding: 5px 12px;
+  }
+  .ruta-hl i { font-size: 13px; }
+
+  /* CONSEJOS */
+  .consejos {
+    background: var(--verde);
+    padding: 48px;
+    margin-bottom: 64px;
+  }
+  .consejos-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; color: #f0ece0;
+    font-style: italic; margin-bottom: 28px;
+  }
+  .consejos-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .consejo {
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .consejo i { font-size: 20px; color: var(--verde-claro); flex-shrink: 0; margin-top: 2px; }
+  .consejo-text { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; font-weight: 300; }
+
+  /* CTA */
+  .article-cta {
+    background: var(--crema-oscuro);
+    padding: 48px;
+    display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    border: 0.5px solid var(--gris-claro);
+  }
+  .cta-text {}
+  .cta-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; font-style: italic; color: #1a1a18;
+  }
+  .cta-btn {
+    display: inline-block; padding: 14px 36px;
+    border: 0.5px solid var(--verde);
+    font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--verde); white-space: nowrap;
+    transition: all 0.3s;
+  }
+  .cta-btn:hover { background: var(--verde); color: #f0ece0; }
+
+  /* FOOTER SIMPLE */
+  .article-footer {
+    padding: 32px 48px;
+    border-top: 0.5px solid var(--gris-claro);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 10px; color: var(--gris); letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .nav { padding: 16px 24px; }
+    .article-hero-inner { padding: 40px 24px 0; }
+    .article-body { padding: 40px 24px; }
+    .ruta-card { grid-template-columns: 1fr; gap: 8px; }
+    .ruta-num { font-size: 40px; text-align: left; }
+    .consejos-grid { grid-template-columns: 1fr; }
+    .article-cta { flex-direction: column; }
+    .article-footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="REFUGIONATIVOFondoTransparente.png" alt="Refugio Nativo">
+    <div>
+      <p class="nav-logo-name">Refugio Nativo</p>
+      <p class="nav-logo-sub">Las Trancas · Chile</p>
+    </div>
+  </div>
+  <a href="index.html#blog" class="nav-back">
+    <i class="ti ti-arrow-left" style="font-size:14px"></i> Volver al blog
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <p class="article-cat">Blog · Actividades · Trekking</p>
+    <h1 class="article-title">Trekking en Las Trancas:<br>8 rutas para todos los pasos</h1>
+    <div class="article-meta">
+      <span><i class="ti ti-map-pin"></i> Valle Las Trancas, Ñuble</span>
+      <span><i class="ti ti-clock"></i> 8 min de lectura</span>
+      <span><i class="ti ti-route"></i> 8 rutas</span>
+    </div>
+  </div>
+</section>
+
+<!-- CUERPO -->
+<div class="article-body">
+
+  <p class="article-intro">
+    El Valle Las Trancas guarda algo que pocas zonas de montaña en Chile pueden presumir: rutas de trekking para todos los niveles, a pocos minutos de la ruta principal. Familias, adultos mayores, deportistas — todos encuentran aquí un sendero a su medida. Estas son las ocho que más recomendamos desde Refugio Nativo.
+  </p>
+
+  <div class="rutas-grid">
+
+    <div class="ruta-card">
+      <div class="ruta-num">01</div>
+      <div class="ruta-content">
+        <div class="ruta-badges">
+          <span class="ruta-badge b-baja">Dificultad baja</span>
+          <span class="ruta-badge b-familia">Apta para toda la familia</span>
+          <span class="ruta-badge b-tiempo">30–45 min</span>
+        </div>
+        <h2 class="ruta-name">Gruta Los Pangues</h2>
+        <p class="ruta-desc">La ruta más accesible de todo el valle. Un sendero corto que atraviesa bosque nativo denso con presencia de fauna local y desemboca en una pequeña catarata entre helechos y pangues gigantes. Perfecta para estrenar botas, llegar con niños pequeños o simplemente respirar sin apuro.</p>
+        <div class="ruta-highlights">
+          <span class="ruta-hl"><i class="ti ti-leaf"></i> Bosque nativo</span>
+          <span class="ruta-hl"><i class="ti ti-droplet"></i> Catarata</span>
+          <span class="ruta-hl"><i class="ti ti-paw"></i> Fauna silvestre</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ruta-card">
+      <div class="ruta-num">02</div>
+      <div class="ruta-content">
+        <div class="ruta-badges">
+          <span class="ruta-badge b-baja">Dificultad baja</span>
+          <span class="ruta-badge b-familia">Apta para toda la familia</span>
+          <span class="ruta-badge b-tiempo">40–60 min</span>
+        </div>
+        <h2 class="ruta-name">Mirador El Regalo</h2>
+        <p class="ruta-desc">Ubicado en la entrada del Valle Hermoso, este mirador regala una panorámica amplia del entorno cordillerano. Se combina bien con la Gruta Los Pangues en una misma jornada. El ascenso es suave y bien marcado, con paradas naturales para fotografiar y descansar.</p>
+        <div class="ruta-highlights">
+          <span class="ruta-hl"><i class="ti ti-mountain"></i> Mirador</span>
+          <span class="ruta-hl"><i class="ti ti-camera"></i> Fotografía</span>
+          <span class="ruta-hl"><i class="ti ti-droplet"></i> Catarata</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ruta-card">
+      <div class="ruta-num">03</div>
+      <div class="ruta-content">
+        <div class="ruta-badges">
+          <span class="ruta-badge b-baja">Dificultad baja</span>
+          <span class="ruta-badge b-tiempo">45–60 min</span>
+        </div>
+        <h2 class="ruta-name">Cascada Rucapirén</h2>
+        <p class="ruta-desc">Una catarata de 60 metros rodeada de coigüe y robles, con acceso desde las cabañas Rucapirén camino a los Nevados. Además de la caminata, el lugar invita al cañoneo y al forest bathing — esa práctica japonesa de simplemente estar presente en el bosque sin otro objetivo que conectar con él.</p>
+        <div class="ruta-highlights">
+          <span class="ruta-hl"><i class="ti ti-droplet"></i> 60 m de caída</span>
+          <span class="ruta-hl"><i class="ti ti-trees"></i> Coigüe y robles</span>
+          <span class="ruta-hl"><i class="ti ti-ripple"></i> Cañoneo</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ruta-card">
+      <div class="ruta-num">04</div>
+      <div class="ruta-content">
+        <div class="ruta-badges">
+          <span class="ruta-badge b-baja">Dificultad baja</span>
+          <span class="ruta-badge b-tiempo">45 min de caminata</span>
+        </div>
+        <h2 class="ruta-name">Cascada Las Turbinas</h2>
+        <p class="ruta-desc">Desde el Puente Renegado, unos 25 minutos en auto por la Ruta N-55 y N-633, parte un sendero de 45 minutos hasta esta catarata de acceso fácil. Hay servicio de bus desde Chillán, lo que la convierte en una excursión accesible incluso sin vehículo propio.</p>
+        <div class="ruta-highlights">
+          <span class="ruta-hl"><i class="ti ti-bus"></i> Acceso en bus</span>
+          <span class="ruta-hl"><i class="ti ti-droplet"></i> Catarata</span>
+          <span class="ruta-hl"><i class="ti ti-road"></i> Ruta N-55</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ruta-card">
+      <div class="ruta-num">05</div>
+      <div class="ruta-content">
+        <div class="ruta-badges">
+          <span class="ruta-badge b-baja">Dificultad baja</span>
+          <span class="ruta-badge b-familia">Apta para toda la familia</span>
+          <span class="ruta-badge b-tiempo">30–40 min</span>
+        </div>
+        <h2 class="ruta-name">Mirador Valle Las Trancas</h2>
+        <p class="ruta-desc">Sólo 700 metros separan la entrada del sendero (cerca de Plaza Oliva's) de un punto panorámico que muestra el valle en toda su extensión, con el complejo Nevados de Chillán al fondo. La ruta está bien señalizada y el ascenso es gradual. Una de las más recomendadas para llegar rápido a una vista memorable.</p>
+        <div class="ruta-highlights">
+          <span class="ruta-hl"><i class="ti ti-mountain"></i> Vista del complejo Nevados</span>
+          <span class="ruta-hl"><i class="ti ti-camera"></i> Fotografía</span>
+          <span class="ruta-hl"><i class="ti ti-map-2"></i> 700 m de sendero</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ruta-card">
+      <div class="ruta-num">06</div>
+      <div class="ruta-content">
+        <div class="ruta-badges">
+          <span class="ruta-badge b-media">Dificultad media</span>
+          <span class="ruta-badge b-tiempo">Caminata libre</span>
+        </div>
+        <h2 class="ruta-name">Refugio Shangri-La</h2>
+        <p class="ruta-desc">A 74,5 km de Chillán se conservan las ruinas de un refugio construido en la década de 1920. El entorno es de acceso gratuito y combina trekking con avistamiento de aves en un paisaje de montaña con historia. Se recomienda registrarse con las autoridades locales antes de partir.</p>
+        <div class="ruta-highlights">
+          <span class="ruta-hl"><i class="ti ti-building-castle"></i> Ruinas históricas</span>
+          <span class="ruta-hl"><i class="ti ti-feather"></i> Avistamiento de aves</span>
+          <span class="ruta-hl"><i class="ti ti-coin"></i> Acceso gratuito</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ruta-card">
+      <div class="ruta-num">07</div>
+      <div class="ruta-content">
+        <div class="ruta-badges">
+          <span class="ruta-badge b-baja">Dificultad baja</span>
+          <span class="ruta-badge b-tiempo">30–40 min</span>
+        </div>
+        <h2 class="ruta-name">Cascada Velo de la Novia</h2>
+        <p class="ruta-desc">Una caída de 50 metros que llega al sendero después de una caminata corta por un bosque bien señalizado, con vegetación densa y canto de pájaros permanente. Hay que llevar agua, algo de comida y ropa adecuada — el microclima del lugar puede sorprender.</p>
+        <div class="ruta-highlights">
+          <span class="ruta-hl"><i class="ti ti-droplet"></i> 50 m de caída</span>
+          <span class="ruta-hl"><i class="ti ti-trees"></i> Vegetación densa</span>
+          <span class="ruta-hl"><i class="ti ti-feather"></i> Avifauna</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ruta-card">
+      <div class="ruta-num">08</div>
+      <div class="ruta-content">
+        <div class="ruta-badges">
+          <span class="ruta-badge b-media">Dificultad media</span>
+          <span class="ruta-badge b-tiempo">40 min desde estacionamiento</span>
+        </div>
+        <h2 class="ruta-name">Fumarolas y Barros Termales</h2>
+        <p class="ruta-desc">El paisaje volcánico más singular del valle. A 40 minutos a pie desde el estacionamiento del sector Nevados, con pendientes suaves, se accede a un campo geotérmico activo donde el suelo humea y los barros termales tienen propiedades terapéuticas reconocidas. También apto para trail running y MTB.</p>
+        <div class="ruta-highlights">
+          <span class="ruta-hl"><i class="ti ti-flame"></i> Geotermia activa</span>
+          <span class="ruta-hl"><i class="ti ti-ripple"></i> Barros termales</span>
+          <span class="ruta-hl"><i class="ti ti-bike"></i> Apto MTB</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CONSEJOS -->
+  <div class="consejos">
+    <p class="consejos-title">Antes de salir al sendero</p>
+    <div class="consejos-grid">
+      <div class="consejo">
+        <i class="ti ti-bottle"></i>
+        <p class="consejo-text">Lleva suficiente agua. Las fuentes naturales no siempre son aptas para consumo directo.</p>
+      </div>
+      <div class="consejo">
+        <i class="ti ti-sun"></i>
+        <p class="consejo-text">Protector solar incluso en días nublados. La altitud amplifica la radiación UV considerablemente.</p>
+      </div>
+      <div class="consejo">
+        <i class="ti ti-boot"></i>
+        <p class="consejo-text">Calzado de trekking o zapatillas con buen agarre. El terreno puede ser resbaloso en sombra.</p>
+      </div>
+      <div class="consejo">
+        <i class="ti ti-cloud-rain"></i>
+        <p class="consejo-text">Una segunda capa siempre en la mochila. El tiempo en el valle puede cambiar rápido.</p>
+      </div>
+      <div class="consejo">
+        <i class="ti ti-leaf-off"></i>
+        <p class="consejo-text">Sin fuego ni basura. El bosque nativo que rodea estas rutas es ecosistema protegido.</p>
+      </div>
+      <div class="consejo">
+        <i class="ti ti-map-pin"></i>
+        <p class="consejo-text">Descarga los mapas sin conexión antes de salir. La señal de celular es limitada en varios tramos.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="article-cta">
+    <div class="cta-text">
+      <p class="cta-label">Tu base en el valle</p>
+      <p class="cta-title">Refugio Nativo está a pasos<br>de estas rutas</p>
+    </div>
+    <a href="index.html" class="cta-btn">Ver el refugio</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="article-footer">
+  <span>© 2025 Refugio Nativo · Las Trancas, Ñuble</span>
+  <a href="index.html" style="display:flex;align-items:center;gap:6px"><i class="ti ti-arrow-left" style="font-size:12px"></i> Volver al inicio</a>
+</footer>
+
+</body>
+</html>

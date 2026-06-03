@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Guía completa de Nevados de Chillán: ski, termas, gastronomía, heli-ski, spa y mucho más. Todo lo que puedes hacer más allá de las pistas.">
+<title>Guía completa de Nevados de Chillán | Refugio Nativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: #f5f2eb; color: #1a1a18; overflow-x: hidden; }
+  img { display: block; width: 100%; object-fit: cover; }
+  a { text-decoration: none; color: inherit; }
+  :root { --verde: #2a3a22; --verde-medio: #3d5030; --verde-claro: #a0b878; --crema: #f5f2eb; --crema-oscuro: #edeadf; --negro: #0f150f; --gris: #888880; --gris-claro: #c8c4b0; }
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(245,242,235,0.97); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--gris-claro); }
+  .nav-logo { display: flex; align-items: center; gap: 14px; }
+  .nav-logo img { height: 44px; width: auto; filter: brightness(0); }
+  .nav-logo-name { font-size: 13px; letter-spacing: 4px; font-weight: 500; text-transform: uppercase; }
+  .nav-logo-sub { font-size: 9px; letter-spacing: 2px; color: var(--gris); font-weight: 300; }
+  .nav-back { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); transition: color 0.2s; }
+  .nav-back:hover { color: #1a1a18; }
+  .article-hero { padding-top: 90px; background: #1a1e2a; padding-bottom: 64px; }
+  .article-hero-inner { max-width: 860px; margin: 0 auto; padding: 64px 48px 0; }
+  .article-cat { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #7090c8; margin-bottom: 16px; font-weight: 300; }
+  .article-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 300; color: #f0ece0; line-height: 1.05; font-style: italic; margin-bottom: 24px; }
+  .article-meta { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; font-size: 11px; letter-spacing: 1.5px; color: rgba(255,255,255,0.4); text-transform: uppercase; border-top: 0.5px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 24px; }
+  .article-meta span { display: flex; align-items: center; gap: 6px; }
+  .article-body { max-width: 860px; margin: 0 auto; padding: 64px 48px; }
+  .article-intro { font-size: 18px; line-height: 1.8; color: #3a3a38; font-weight: 300; margin-bottom: 56px; border-left: 3px solid #7090c8; padding-left: 24px; }
+  .article-text { font-size: 15px; line-height: 1.9; color: #4a4a48; font-weight: 300; margin-bottom: 32px; }
+  .article-text strong { font-weight: 500; color: #1a1a18; }
+  .article-h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: #1a1a18; font-style: italic; margin: 48px 0 20px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--gris-claro); margin-bottom: 56px; }
+  .stat { background: var(--crema-oscuro); padding: 28px 20px; text-align: center; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; color: var(--verde); line-height: 1; margin-bottom: 6px; }
+  .stat-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gris); }
+  .experiencias-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 48px; }
+  .exp-card { background: var(--negro); padding: 32px; }
+  .exp-icon { font-size: 28px; color: var(--verde-claro); margin-bottom: 14px; }
+  .exp-name { font-size: 15px; font-weight: 500; color: #f0ece0; margin-bottom: 10px; }
+  .exp-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; font-weight: 300; }
+  .article-cta { background: var(--crema-oscuro); padding: 48px; display: flex; align-items: center; justify-content: space-between; gap: 32px; border: 0.5px solid var(--gris-claro); }
+  .cta-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+  .cta-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; font-style: italic; color: #1a1a18; }
+  .cta-btn { display: inline-block; padding: 14px 36px; border: 0.5px solid var(--verde); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--verde); white-space: nowrap; transition: all 0.3s; }
+  .cta-btn:hover { background: var(--verde); color: #f0ece0; }
+  .article-footer { padding: 32px 48px; border-top: 0.5px solid var(--gris-claro); display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--gris); letter-spacing: 1.5px; text-transform: uppercase; }
+  @media (max-width: 768px) { .nav { padding: 16px 24px; } .article-hero-inner, .article-body { padding: 40px 24px; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .experiencias-grid { grid-template-columns: 1fr; } .article-cta { flex-direction: column; } .article-footer { flex-direction: column; gap: 12px; text-align: center; } }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="REFUGIONATIVOFondoTransparente.png" alt="Refugio Nativo">
+    <div><p class="nav-logo-name">Refugio Nativo</p><p class="nav-logo-sub">Las Trancas · Chile</p></div>
+  </div>
+  <a href="index.html#blog" class="nav-back"><i class="ti ti-arrow-left" style="font-size:14px"></i> Volver al blog</a>
+</nav>
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <p class="article-cat">Blog · Actividades · Nevados de Chillán</p>
+    <h1 class="article-title">Nevados de Chillán:<br>mucho más que ski</h1>
+    <div class="article-meta">
+      <span><i class="ti ti-map-pin"></i> Termas de Chillán, Ñuble</span>
+      <span><i class="ti ti-car"></i> A 15 min del refugio</span>
+      <span><i class="ti ti-calendar"></i> Abierto todo el año</span>
+    </div>
+  </div>
+</section>
+<div class="article-body">
+  <p class="article-intro">Nevados de Chillán tiene la pista de ski más larga de Sudamérica, pero reducirlo a eso sería un error. Termas volcánicas, spa, gastronomía de montaña, heli-ski, bicicleta de montaña y trekking lo convierten en un destino de cuatro temporadas.</p>
+
+  <div class="stats-grid">
+    <div class="stat"><div class="stat-num">13 km</div><div class="stat-label">Pista más larga de Sudamérica</div></div>
+    <div class="stat"><div class="stat-num">35 km</div><div class="stat-label">De pistas totales</div></div>
+    <div class="stat"><div class="stat-num">13</div><div class="stat-label">Medios de elevación</div></div>
+    <div class="stat"><div class="stat-num">65°C</div><div class="stat-label">Temperatura máxima termas</div></div>
+  </div>
+
+  <h2 class="article-h2">Las experiencias que no debes perderte</h2>
+
+  <div class="experiencias-grid">
+    <div class="exp-card"><div class="exp-icon"><i class="ti ti-ski-jumping"></i></div><p class="exp-name">Ski y Snowboard</p><p class="exp-desc">28 pistas clasificadas entre principiante, intermedio y experto. Clases para todos los niveles con instructores certificados. La pista El Cóndor, de 13 km, es una experiencia única en Sudamérica.</p></div>
+    <div class="exp-card"><div class="exp-icon"><i class="ti ti-helicopter"></i></div><p class="exp-name">Heli-ski</p><p class="exp-desc">Para los esquiadores avanzados, el helicóptero lleva hasta cumbres vírgenes donde bajar por nieve polvo sin tocar. Una de las experiencias más intensas que ofrece el complejo.</p></div>
+    <div class="exp-card"><div class="exp-icon"><i class="ti ti-ripple"></i></div><p class="exp-name">Termas volcánicas</p><p class="exp-desc">Piscinas de aguas termales naturales con temperaturas entre 27°C y 65°C, de origen volcánico. Disponibles todo el año, con parque acuático, bar y música en temporada alta.</p></div>
+    <div class="exp-card"><div class="exp-icon"><i class="ti ti-spa"></i></div><p class="exp-name">Spa termal</p><p class="exp-desc">Tratamientos con aguas termales volcánicas: sauna, hidroterapia, barros termales, masajes y aromaterapia. El spa del hotel utiliza el agua directamente de las fuentes geotérmicas.</p></div>
+    <div class="exp-card"><div class="exp-icon"><i class="ti ti-bike"></i></div><p class="exp-name">Bike Park</p><p class="exp-desc">Rutas de mountain bike desde recorridos tranquilos en Los Coltrahues hasta descensos técnicos de enduro. En verano, los mismos lifts de ski llevan las bicicletas a las cimas.</p></div>
+    <div class="exp-card"><div class="exp-icon"><i class="ti ti-tools-kitchen-2"></i></div><p class="exp-name">Gastronomía de montaña</p><p class="exp-desc">Cocina de altura con especialidades como kuchén artesanal, cordero patagónico, salmón y fondues. Los restaurantes del hotel cuentan con selección de vinos chilenos de primera.</p></div>
+  </div>
+
+  <p class="article-text">Desde Refugio Nativo, el complejo Nevados de Chillán queda a <strong>menos de 15 minutos en auto</strong>. Esto significa que puedes combinar el silencio y la intimidad del refugio en el bosque con todas las actividades del complejo en un mismo día — esquiar por la mañana, volver a almorzar al refugio y terminar la tarde en la tinaja.</p>
+
+  <div class="article-cta">
+    <div><p class="cta-label">Tu base en el valle</p><p class="cta-title">A 15 minutos<br>de Nevados de Chillán</p></div>
+    <a href="https://www.nevadosdechillan.com/" target="_blank" class="cta-btn">Sitio oficial Nevados</a>
+  </div>
+</div>
+<footer class="article-footer">
+  <span>© 2025 Refugio Nativo · Las Trancas, Ñuble</span>
+  <a href="index.html" style="display:flex;align-items:center;gap:6px"><i class="ti ti-arrow-left" style="font-size:12px"></i> Volver al inicio</a>
+</footer>
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cabalgatas en Las Trancas: recorre bosques nativos, miradores y lagunas a caballo. Guía completa de rutas y experiencias para toda la familia.">
+<title>Cabalgatas en Las Trancas — A caballo por el valle | Refugio Nativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: #f5f2eb; color: #1a1a18; overflow-x: hidden; }
+  img { display: block; width: 100%; object-fit: cover; }
+  a { text-decoration: none; color: inherit; }
+
+  :root {
+    --verde: #2a3a22;
+    --verde-medio: #3d5030;
+    --verde-claro: #a0b878;
+    --crema: #f5f2eb;
+    --crema-oscuro: #edeadf;
+    --negro: #0f150f;
+    --gris: #888880;
+    --gris-claro: #c8c4b0;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(245,242,235,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--gris-claro);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; }
+  .nav-logo img { height: 44px; width: auto; filter: brightness(0); }
+  .nav-logo-name { font-size: 13px; letter-spacing: 4px; font-weight: 500; text-transform: uppercase; }
+  .nav-logo-sub { font-size: 9px; letter-spacing: 2px; color: var(--gris); font-weight: 300; }
+  .nav-back {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gris); transition: color 0.2s;
+  }
+  .nav-back:hover { color: #1a1a18; }
+
+  /* HERO */
+  .article-hero {
+    padding-top: 90px;
+    background: var(--negro);
+    padding-bottom: 64px;
+  }
+  .article-hero-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 48px 0;
+  }
+  .article-cat {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--verde-claro); margin-bottom: 16px; font-weight: 300;
+  }
+  .article-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 300; color: #f0ece0; line-height: 1.05;
+    font-style: italic; margin-bottom: 24px;
+  }
+  .article-meta {
+    display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    font-size: 11px; letter-spacing: 1.5px; color: rgba(255,255,255,0.4);
+    text-transform: uppercase; border-top: 0.5px solid rgba(255,255,255,0.1);
+    padding-top: 20px; margin-top: 24px;
+  }
+  .article-meta span { display: flex; align-items: center; gap: 6px; }
+
+  /* CUERPO */
+  .article-body {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 64px 48px;
+  }
+  .article-intro {
+    font-size: 18px; line-height: 1.8; color: #3a3a38;
+    font-weight: 300; margin-bottom: 56px;
+    border-left: 3px solid var(--verde-claro);
+    padding-left: 24px;
+  }
+
+  /* RUTAS */
+  .rutas-grid {
+    display: flex; flex-direction: column; gap: 48px;
+    margin-bottom: 64px;
+  }
+  .ruta-card {
+    display: grid; grid-template-columns: 80px 1fr;
+    gap: 32px; align-items: start;
+    padding-bottom: 48px;
+    border-bottom: 0.5px solid var(--gris-claro);
+  }
+  .ruta-card:last-child { border-bottom: none; }
+  .ruta-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px; font-weight: 300; color: var(--gris-claro);
+    line-height: 1; text-align: right;
+  }
+  .ruta-badges {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;
+  }
+  .ruta-badge {
+    font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 4px 10px; font-family: 'Jost', sans-serif;
+  }
+  .b-baja { background: #e8f0e0; color: var(--verde-medio); }
+  .b-media { background: #f0e8d0; color: #7a5020; }
+  .b-familia { background: #e8eef5; color: #304870; }
+  .b-tiempo { background: var(--crema-oscuro); color: var(--gris); }
+  .ruta-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px; font-weight: 400; color: #1a1a18;
+    line-height: 1.1; margin-bottom: 14px;
+  }
+  .ruta-desc {
+    font-size: 15px; line-height: 1.8; color: #4a4a48;
+    font-weight: 300; margin-bottom: 16px;
+  }
+  .ruta-highlights {
+    display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;
+  }
+  .ruta-hl {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 11px; color: var(--verde-medio);
+    background: #edf2e5; padding: 5px 12px;
+  }
+  .ruta-hl i { font-size: 13px; }
+
+  /* FAUNA */
+  .fauna-section {
+    background: var(--crema-oscuro);
+    border: 0.5px solid var(--gris-claro);
+    padding: 40px 48px;
+    margin-bottom: 48px;
+  }
+  .fauna-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px; font-weight: 300; font-style: italic;
+    color: #1a1a18; margin-bottom: 24px;
+  }
+  .fauna-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  }
+  .fauna-item {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 8px; text-align: center;
+  }
+  .fauna-item i { font-size: 28px; color: var(--verde-medio); }
+  .fauna-item p { font-size: 12px; color: #4a4a48; font-weight: 300; }
+
+  /* CONSEJOS */
+  .consejos {
+    background: var(--verde);
+    padding: 48px;
+    margin-bottom: 64px;
+  }
+  .consejos-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; color: #f0ece0;
+    font-style: italic; margin-bottom: 28px;
+  }
+  .consejos-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  .consejo {
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .consejo i { font-size: 20px; color: var(--verde-claro); flex-shrink: 0; margin-top: 2px; }
+  .consejo-text { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; font-weight: 300; }
+
+  /* CTA */
+  .article-cta {
+    background: var(--crema-oscuro);
+    padding: 48px;
+    display: flex; align-items: center; justify-content: space-between; gap: 32px;
+    border: 0.5px solid var(--gris-claro);
+  }
+  .cta-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px; font-weight: 300; font-style: italic; color: #1a1a18;
+  }
+  .cta-btn {
+    display: inline-block; padding: 14px 36px;
+    border: 0.5px solid var(--verde);
+    font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--verde); white-space: nowrap; transition: all 0.3s;
+  }
+  .cta-btn:hover { background: var(--verde); color: #f0ece0; }
+
+  /* FOOTER */
+  .article-footer {
+    padding: 32px 48px;
+    border-top: 0.5px solid var(--gris-claro);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 10px; color: var(--gris); letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .nav { padding: 16px 24px; }
+    .article-hero-inner, .article-body { padding: 40px 24px; }
+    .ruta-card { grid-template-columns: 1fr; gap: 8px; }
+    .ruta-num { font-size: 40px; text-align: left; }
+    .consejos-grid { grid-template-columns: 1fr; }
+    .fauna-grid { grid-template-columns: repeat(2, 1fr); }
+    .article-cta { flex-direction: column; }
+    .article-footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="REFUGIONATIVOFondoTransparente.png" alt="Refugio Nativo">
+    <div>
+      <p class="nav-logo-name">Refugio Nativo</p>
+      <p class="nav-logo-sub">Las Trancas · Chile</p>
+    </div>
+  </div>
+  <a href="index.html#blog" class="nav-back">
+    <i class="ti ti-arrow-left" style="font-size:14px"></i> Volver al blog
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <p class="article-cat">Blog · Actividades · Cabalgatas</p>
+    <h1 class="article-title">A caballo por el valle:<br>cabalgatas en Las Trancas</h1>
+    <div class="article-meta">
+      <span><i class="ti ti-map-pin"></i> Valle Las Trancas, Ñuble</span>
+      <span><i class="ti ti-clock"></i> 5 min de lectura</span>
+      <span><i class="ti ti-horse"></i> Para toda la familia</span>
+    </div>
+  </div>
+</section>
+
+<!-- CUERPO -->
+<div class="article-body">
+
+  <p class="article-intro">
+    Hay algo que cambia cuando recorres el valle a caballo. El ritmo se ajusta, el paisaje se amplía y los senderos que a pie toman horas se convierten en recorridos naturales donde el único esfuerzo es dejarse llevar. En Las Trancas, las cabalgatas son una de esas actividades que combinan aventura sin exigencia física, contacto real con la naturaleza y una perspectiva del entorno que no se consigue de otra manera.
+  </p>
+
+  <div class="rutas-grid">
+
+    <div class="ruta-card">
+      <div class="ruta-num">01</div>
+      <div class="ruta-content">
+        <div class="ruta-badges">
+          <span class="ruta-badge b-baja">Dificultad baja</span>
+          <span class="ruta-badge b-familia">Para toda la familia</span>
+          <span class="ruta-badge b-tiempo">1–2 horas</span>
+        </div>
+        <h2 class="ruta-name">Calles interiores del valle</h2>
+        <p class="ruta-desc">El punto de entrada ideal para quienes nunca han montado o viajan con niños pequeños. Los guías conducen grupos pequeños por los caminos internos del valle rodeados de vegetación nativa, con cruces de ríos de poca profundidad y paradas en puntos de vista naturales. Sin apuro, sin exigencia — solo el trote suave entre árboles y el sonido del agua.</p>
+        <div class="ruta-highlights">
+          <span class="ruta-hl"><i class="ti ti-trees"></i> Bosque nativo</span>
+          <span class="ruta-hl"><i class="ti ti-droplet"></i> Cruces de río</span>
+          <span class="ruta-hl"><i class="ti ti-user"></i> Sin experiencia previa</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ruta-card">
+      <div class="ruta-num">02</div>
+      <div class="ruta-content">
+        <div class="ruta-badges">
+          <span class="ruta-badge b-baja">Dificultad baja</span>
+          <span class="ruta-badge b-familia">Para toda la familia</span>
+          <span class="ruta-badge b-tiempo">1.5–2 horas</span>
+        </div>
+        <h2 class="ruta-name">Mirador El Regalo</h2>
+        <p class="ruta-desc">Desde las caballerizas del sector, el sendero asciende suavemente entre el bosque hasta alcanzar este mirador con vista a la entrada del Valle Hermoso. Es uno de los recorridos más pedidos por familias: corto, con una recompensa visual concreta al llegar y sin tramos técnicos que compliquen la experiencia.</p>
+        <div class="ruta-highlights">
+          <span class="ruta-hl"><i class="ti ti-mountain"></i> Mirador panorámico</span>
+          <span class="ruta-hl"><i class="ti ti-camera"></i> Fotografía</span>
+          <span class="ruta-hl"><i class="ti ti-trees"></i> Valle Hermoso</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ruta-card">
+      <div class="ruta-num">03</div>
+      <div class="ruta-content">
+        <div class="ruta-badges">
+          <span class="ruta-badge b-media">Dificultad media</span>
+          <span class="ruta-badge b-tiempo">3–4 horas</span>
+        </div>
+        <h2 class="ruta-name">Laguna Huemul</h2>
+        <p class="ruta-desc">La cabalgata más espectacular del valle. El sendero parte entre bosque nativo, cruza sectores rocosos y después de unas tres horas a caballo llega a una laguna de color turquesa con vistas directas a los Nevados de Chillán. Un recorrido que sigue rutas históricas de arrieros y que recompensa con uno de los paisajes más memorables de la zona cordillerana de Ñuble.</p>
+        <div class="ruta-highlights">
+          <span class="ruta-hl"><i class="ti ti-droplet"></i> Laguna turquesa</span>
+          <span class="ruta-hl"><i class="ti ti-mountain"></i> Vista a los Nevados</span>
+          <span class="ruta-hl"><i class="ti ti-clock"></i> Jornada completa</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ruta-card">
+      <div class="ruta-num">04</div>
+      <div class="ruta-content">
+        <div class="ruta-badges">
+          <span class="ruta-badge b-media">Dificultad media</span>
+          <span class="ruta-badge b-tiempo">2–3 horas</span>
+        </div>
+        <h2 class="ruta-name">Palo Huacho y Gruta Los Pangues</h2>
+        <p class="ruta-desc">Un circuito que combina dos puntos emblemáticos del valle en una misma jornada. Parte con el ascenso hacia Palo Huacho, desde donde se domina una vista amplia del entorno cordillerano, y continúa hacia la Gruta Los Pangues atravesando bosque nativo con presencia de fauna local. Ideal para quienes ya tienen algo de experiencia en montura y quieren ver más del valle.</p>
+        <div class="ruta-highlights">
+          <span class="ruta-hl"><i class="ti ti-mountain"></i> Mirador Palo Huacho</span>
+          <span class="ruta-hl"><i class="ti ti-leaf"></i> Gruta Los Pangues</span>
+          <span class="ruta-hl"><i class="ti ti-paw"></i> Fauna silvestre</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FAUNA -->
+  <div class="fauna-section">
+    <p class="fauna-title">Lo que puedes encontrar en el camino</p>
+    <div class="fauna-grid">
+      <div class="fauna-item">
+        <i class="ti ti-feather"></i>
+        <p>Cóndores sobrevolando las cumbres</p>
+      </div>
+      <div class="fauna-item">
+        <i class="ti ti-paw"></i>
+        <p>Zorros del valle en zonas boscosas</p>
+      </div>
+      <div class="fauna-item">
+        <i class="ti ti-ripple"></i>
+        <p>Patos y aves acuáticas en los ríos</p>
+      </div>
+      <div class="fauna-item">
+        <i class="ti ti-trees"></i>
+        <p>Carpinteros negros en el bosque nativo</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONSEJOS -->
+  <div class="consejos">
+    <p class="consejos-title">Antes de subir al caballo</p>
+    <div class="consejos-grid">
+      <div class="consejo">
+        <i class="ti ti-license"></i>
+        <p class="consejo-text">Reserva siempre con guías u operadores registrados. Las cabalgatas libres sin guía no están permitidas en el valle.</p>
+      </div>
+      <div class="consejo">
+        <i class="ti ti-boot"></i>
+        <p class="consejo-text">Pantalón largo y zapatillas o botas con algo de tacón. Evita sandalias o calzado abierto al montar.</p>
+      </div>
+      <div class="consejo">
+        <i class="ti ti-sun"></i>
+        <p class="consejo-text">Protector solar y gorra. Los recorridos más largos exponen varias horas al sol de montaña.</p>
+      </div>
+      <div class="consejo">
+        <i class="ti ti-bottle"></i>
+        <p class="consejo-text">Lleva agua y snacks para las rutas de medio día o jornada completa. En el camino no hay puntos de abastecimiento.</p>
+      </div>
+      <div class="consejo">
+        <i class="ti ti-camera"></i>
+        <p class="consejo-text">Asegura bien la cámara o el celular. Los tramos rocosos generan movimiento y es fácil que se caigan.</p>
+      </div>
+      <div class="consejo">
+        <i class="ti ti-cloud-rain"></i>
+        <p class="consejo-text">Una chaqueta liviana siempre en la mochila. El tiempo en el valle puede cambiar rápidamente.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="article-cta">
+    <div>
+      <p class="cta-label">Tu base en el valle</p>
+      <p class="cta-title">Refugio Nativo está a pasos<br>de estas rutas</p>
+    </div>
+    <a href="index.html" class="cta-btn">Ver el refugio</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="article-footer">
+  <span>© 2025 Refugio Nativo · Las Trancas, Ñuble</span>
+  <a href="index.html" style="display:flex;align-items:center;gap:6px">
+    <i class="ti ti-arrow-left" style="font-size:12px"></i> Volver al inicio
+  </a>
+</footer>
+
+</body>
+</html>

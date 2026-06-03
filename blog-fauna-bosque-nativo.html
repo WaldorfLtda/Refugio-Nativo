@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Fauna del bosque nativo de Las Trancas: chucaos, cóndores, zorros, pudúes, carpinteros negros y más. Guía de los animales que podrías ver.">
+<title>Fauna del bosque nativo — los animales que podrías ver | Refugio Nativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: #f5f2eb; color: #1a1a18; overflow-x: hidden; }
+  img { display: block; width: 100%; object-fit: cover; }
+  a { text-decoration: none; color: inherit; }
+  :root { --verde: #2a3a22; --verde-medio: #3d5030; --verde-claro: #a0b878; --crema: #f5f2eb; --crema-oscuro: #edeadf; --negro: #0f150f; --gris: #888880; --gris-claro: #c8c4b0; }
+  .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(245,242,235,0.97); backdrop-filter: blur(12px); border-bottom: 0.5px solid var(--gris-claro); }
+  .nav-logo { display: flex; align-items: center; gap: 14px; }
+  .nav-logo img { height: 44px; width: auto; filter: brightness(0); }
+  .nav-logo-name { font-size: 13px; letter-spacing: 4px; font-weight: 500; text-transform: uppercase; }
+  .nav-logo-sub { font-size: 9px; letter-spacing: 2px; color: var(--gris); font-weight: 300; }
+  .nav-back { display: inline-flex; align-items: center; gap: 8px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gris); transition: color 0.2s; }
+  .nav-back:hover { color: #1a1a18; }
+  .article-hero { padding-top: 90px; background: var(--verde); padding-bottom: 64px; }
+  .article-hero-inner { max-width: 860px; margin: 0 auto; padding: 64px 48px 0; }
+  .article-cat { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--verde-claro); margin-bottom: 16px; font-weight: 300; }
+  .article-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 6vw, 72px); font-weight: 300; color: #f0ece0; line-height: 1.05; font-style: italic; margin-bottom: 24px; }
+  .article-meta { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; font-size: 11px; letter-spacing: 1.5px; color: rgba(255,255,255,0.4); text-transform: uppercase; border-top: 0.5px solid rgba(255,255,255,0.1); padding-top: 20px; margin-top: 24px; }
+  .article-meta span { display: flex; align-items: center; gap: 6px; }
+  .article-body { max-width: 860px; margin: 0 auto; padding: 64px 48px; }
+  .article-intro { font-size: 18px; line-height: 1.8; color: #3a3a38; font-weight: 300; margin-bottom: 56px; border-left: 3px solid var(--verde-claro); padding-left: 24px; }
+  .article-text { font-size: 15px; line-height: 1.9; color: #4a4a48; font-weight: 300; margin-bottom: 32px; }
+  .article-text strong { font-weight: 500; color: #1a1a18; }
+  .article-h2 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 300; color: #1a1a18; font-style: italic; margin: 48px 0 24px; }
+  .fauna-grid { display: flex; flex-direction: column; gap: 0; margin-bottom: 64px; }
+  .fauna-item { display: grid; grid-template-columns: 80px 1fr; gap: 32px; align-items: start; padding: 32px 0; border-bottom: 0.5px solid var(--gris-claro); }
+  .fauna-item:last-child { border-bottom: none; }
+  .fauna-icon { width: 64px; height: 64px; background: var(--crema-oscuro); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .fauna-icon i { font-size: 28px; color: var(--verde-medio); }
+  .fauna-name { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; color: #1a1a18; margin-bottom: 6px; }
+  .fauna-scientific { font-size: 11px; color: var(--gris); font-style: italic; letter-spacing: 1px; margin-bottom: 12px; }
+  .fauna-badge { display: inline-block; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; padding: 3px 10px; margin-bottom: 12px; }
+  .b-endemico { background: #e8f0e0; color: var(--verde-medio); }
+  .b-comun { background: var(--crema-oscuro); color: var(--gris); }
+  .b-raro { background: #f5e8e0; color: #8a3020; }
+  .fauna-desc { font-size: 14px; color: #4a4a48; line-height: 1.7; font-weight: 300; }
+  .fauna-desc strong { font-weight: 500; color: #1a1a18; }
+  .avistamiento { background: var(--verde); padding: 40px 48px; margin-bottom: 64px; }
+  .avistamiento-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 300; color: #f0ece0; font-style: italic; margin-bottom: 24px; }
+  .avistamiento-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .avist-item { display: flex; align-items: flex-start; gap: 12px; }
+  .avist-item i { font-size: 18px; color: var(--verde-claro); flex-shrink: 0; margin-top: 2px; }
+  .avist-text { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.6; font-weight: 300; }
+  .article-cta { background: var(--crema-oscuro); padding: 48px; display: flex; align-items: center; justify-content: space-between; gap: 32px; border: 0.5px solid var(--gris-claro); }
+  .cta-label { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gris); margin-bottom: 8px; }
+  .cta-title { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 300; font-style: italic; color: #1a1a18; }
+  .cta-btn { display: inline-block; padding: 14px 36px; border: 0.5px solid var(--verde); font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase; color: var(--verde); white-space: nowrap; transition: all 0.3s; }
+  .cta-btn:hover { background: var(--verde); color: #f0ece0; }
+  .article-footer { padding: 32px 48px; border-top: 0.5px solid var(--gris-claro); display: flex; justify-content: space-between; align-items: center; font-size: 10px; color: var(--gris); letter-spacing: 1.5px; text-transform: uppercase; }
+  @media (max-width: 768px) { .nav { padding: 16px 24px; } .article-hero-inner, .article-body { padding: 40px 24px; } .fauna-item { grid-template-columns: 1fr; gap: 12px; } .avistamiento-grid { grid-template-columns: 1fr; } .article-cta { flex-direction: column; } .article-footer { flex-direction: column; gap: 12px; text-align: center; } }
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-logo">
+    <img src="REFUGIONATIVOFondoTransparente.png" alt="Refugio Nativo">
+    <div><p class="nav-logo-name">Refugio Nativo</p><p class="nav-logo-sub">Las Trancas · Chile</p></div>
+  </div>
+  <a href="index.html#blog" class="nav-back"><i class="ti ti-arrow-left" style="font-size:14px"></i> Volver al blog</a>
+</nav>
+<section class="article-hero">
+  <div class="article-hero-inner">
+    <p class="article-cat">Blog · Naturaleza · Fauna</p>
+    <h1 class="article-title">Fauna del bosque nativo:<br>los animales que podrías ver</h1>
+    <div class="article-meta">
+      <span><i class="ti ti-leaf"></i> Bosque nativo</span>
+      <span><i class="ti ti-clock"></i> 6 min de lectura</span>
+      <span><i class="ti ti-paw"></i> 7 especies</span>
+    </div>
+  </div>
+</section>
+<div class="article-body">
+  <p class="article-intro">Los 2.000 m² de bosque nativo que rodean el refugio no son solo paisaje — son el hogar de una fauna que pocas personas tienen la oportunidad de ver de cerca. Esta es la guía de los animales que habitan el entorno y cómo aumentar las chances de encontrarlos.</p>
+
+  <h2 class="article-h2">Aves del bosque</h2>
+  <div class="fauna-grid">
+    <div class="fauna-item">
+      <div class="fauna-icon"><i class="ti ti-feather"></i></div>
+      <div>
+        <p class="fauna-name">Chucao</p>
+        <p class="fauna-scientific">Scelorchilus rubecula</p>
+        <span class="fauna-badge b-endemico">Endémico de Chile</span>
+        <p class="fauna-desc">Uno de los habitantes más característicos del bosque templado lluvioso del sur. Difícil de ver porque se mueve entre la vegetación baja, pero su <strong>canto es inconfundible</strong> — fuerte, repetitivo, casi agresivo. En la tradición local se dice que si canta a tu derecha trae buena suerte y a tu izquierda lo contrario. Es más fácil escucharlo al amanecer, cuando el bosque todavía está quieto.</p>
+      </div>
+    </div>
+    <div class="fauna-item">
+      <div class="fauna-icon"><i class="ti ti-feather"></i></div>
+      <div>
+        <p class="fauna-name">Carpintero Negro</p>
+        <p class="fauna-scientific">Campephilus magellanicus</p>
+        <span class="fauna-badge b-endemico">Endémico de Chile</span>
+        <p class="fauna-desc">El ave más grande y llamativa del bosque nativo. Su <strong>cabeza roja brillante</strong> contrasta con el plumaje negro intenso y lo hace inconfundible cuando aparece en los troncos. Se delata por el martilleo rítmico con el pico sobre la madera muerta, donde busca larvas de insectos. Suele verse en los árboles más gruesos del bosque en las mañanas.</p>
+      </div>
+    </div>
+    <div class="fauna-item">
+      <div class="fauna-icon"><i class="ti ti-feather"></i></div>
+      <div>
+        <p class="fauna-name">Cóndor Andino</p>
+        <p class="fauna-scientific">Vultur gryphus</p>
+        <span class="fauna-badge b-raro">Avistamiento especial</span>
+        <p class="fauna-desc">El vuelo del cóndor sobre los Andes es una de las imágenes más impactantes de la cordillera. Con una <strong>envergadura que supera los 3 metros</strong>, planea en círculos amplios aprovechando las corrientes de aire caliente. Se ve con más frecuencia en las mañanas despejadas sobre las cumbres que rodean el valle. No es un avistamiento diario, pero cuando aparece es imposible ignorarlo.</p>
+      </div>
+    </div>
+    <div class="fauna-item">
+      <div class="fauna-icon"><i class="ti ti-ripple"></i></div>
+      <div>
+        <p class="fauna-name">Pato Cortacorrientes</p>
+        <p class="fauna-scientific">Merganetta armata</p>
+        <span class="fauna-badge b-endemico">Endémico andino</span>
+        <p class="fauna-desc">Habita exclusivamente en ríos de montaña con corriente fuerte y agua cristalina — exactamente el tipo de ambiente que rodea Las Trancas. Se mueve con una facilidad sorprendente en el agua rápida, nadando contracorriente sin esfuerzo visible. <strong>Muy difícil de ver en otros contextos</strong>, pero frecuente en los ríos del valle.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="article-h2">Mamíferos</h2>
+  <div class="fauna-grid">
+    <div class="fauna-item">
+      <div class="fauna-icon"><i class="ti ti-paw"></i></div>
+      <div>
+        <p class="fauna-name">Zorro Culpeo</p>
+        <p class="fauna-scientific">Lycalopex culpaeus</p>
+        <span class="fauna-badge b-comun">Frecuente</span>
+        <p class="fauna-desc">El mamífero más visible del entorno. Sale a <strong>amanecer y atardecer</strong>, generalmente solo, bordeando los límites del bosque y los caminos. Es curioso y no necesariamente huye al ver personas — puede detenerse a observar desde cierta distancia. Su pelaje rojizo en el lomo y blanco en el vientre lo distingue fácilmente.</p>
+      </div>
+    </div>
+    <div class="fauna-item">
+      <div class="fauna-icon"><i class="ti ti-paw"></i></div>
+      <div>
+        <p class="fauna-name">Pudú</p>
+        <p class="fauna-scientific">Pudu puda</p>
+        <span class="fauna-badge b-raro">Poco frecuente</span>
+        <p class="fauna-desc">El ciervo más pequeño del mundo — adultos que apenas alcanzan los 40 cm de altura. Extremadamente <strong>tímido y esquivo</strong>, se mueve entre la vegetación densa del sotobosque. Los machos tienen pequeños cuernos que renuevan anualmente. Es más probable verlo al anochecer en los bordes del bosque. Un avistamiento de pudú es uno de los regalos que el bosque nativo entrega pocas veces.</p>
+      </div>
+    </div>
+    <div class="fauna-item">
+      <div class="fauna-icon"><i class="ti ti-paw"></i></div>
+      <div>
+        <p class="fauna-name">Monito del Monte</p>
+        <p class="fauna-scientific">Dromiciops gliroides</p>
+        <span class="fauna-badge b-endemico">Marsupial endémico</span>
+        <p class="fauna-desc">Un pequeño marsupial nocturno que se considera un <strong>fósil viviente</strong> — es el único sobreviviente de un orden de marsupiales que existía hace millones de años. Habita en los troncos huecos y la vegetación densa del bosque nativo. Raramente visto, pero su presencia en el bosque es indicador de un ecosistema saludable.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="avistamiento">
+    <p class="avistamiento-title">Cómo aumentar las chances de ver fauna</p>
+    <div class="avistamiento-grid">
+      <div class="avist-item"><i class="ti ti-sunrise"></i><p class="avist-text">Sal temprano. El amanecer es el momento de mayor actividad para la mayoría de las especies.</p></div>
+      <div class="avist-item"><i class="ti ti-volume-off"></i><p class="avist-text">Camina despacio y en silencio. La fauna detecta el ruido mucho antes de que tú la veas.</p></div>
+      <div class="avist-item"><i class="ti ti-shirt"></i><p class="avist-text">Evita colores brillantes. Tonos neutros y oscuros se mimetizan mejor con el entorno del bosque.</p></div>
+      <div class="avist-item"><i class="ti ti-camera"></i><p class="avist-text">Ten la cámara lista antes de entrar al sendero. Los avistamientos ocurren sin aviso y duran segundos.</p></div>
+      <div class="avist-item"><i class="ti ti-clock"></i><p class="avist-text">El atardecer es la segunda ventana de actividad. Especialmente útil para ver zorros y pudúes.</p></div>
+      <div class="avist-item"><i class="ti ti-leaf"></i><p class="avist-text">Quédate quieto en los bordes del bosque. Más efectivo que caminar buscando activamente.</p></div>
+    </div>
+  </div>
+
+  <div class="article-cta">
+    <div><p class="cta-label">2.000 m² de bosque nativo</p><p class="cta-title">El bosque forma parte<br>del refugio</p></div>
+    <a href="index.html" class="cta-btn">Ver el refugio</a>
+  </div>
+</div>
+<footer class="article-footer">
+  <span>© 2025 Refugio Nativo · Las Trancas, Ñuble</span>
+  <a href="index.html" style="display:flex;align-items:center;gap:6px"><i class="ti ti-arrow-left" style="font-size:12px"></i> Volver al inicio</a>
+</footer>
+</body>
+</html>
