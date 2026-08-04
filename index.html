@@ -2313,6 +2313,417 @@
   });
 </script>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --forest-deep:#1c2b1f;
+    --forest:#2f4632;
+    --bark:#5c4632;
+    --ember:#b5652f;
+    --cream:#f4efe4;
+    --cream-dim:#e8e1d0;
+    --stone:#8a8d7c;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{ height:100%; min-height:100vh; }
+  body{font-family:'Inter',sans-serif; background:var(--cream, #f4efe4);}
+
+  /* Solo para la vista previa: simula tu página de fondo. Al instalar en el sitio real, elimina #rn-demo-bg y este bloque. */
+  #rn-demo-bg{
+    position:absolute; inset:0; z-index:0;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:40px; font-family:'Fraunces',serif; color:#5c4632; opacity:.35; font-size:14px;
+  }
+
+  /* ---- Floating launcher ---- */
+  #rn-launcher{
+    position:fixed; bottom:24px; right:24px;
+    width:60px; height:60px; border-radius:50%;
+    background:var(--forest-deep);
+    border:2px solid var(--ember);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; box-shadow:0 6px 20px rgba(28,43,31,0.35);
+    transition:transform .25s ease, box-shadow .25s ease;
+    z-index:9999;
+  }
+  #rn-launcher:hover{ transform:translateY(-3px); box-shadow:0 10px 26px rgba(28,43,31,0.45); }
+  #rn-launcher svg{ width:26px; height:26px; stroke:var(--cream); }
+  #rn-launcher .pulse{
+    position:absolute; inset:-2px; border-radius:50%;
+    border:2px solid var(--ember); opacity:0;
+    animation:rn-pulse 2.8s ease-out infinite;
+  }
+  @keyframes rn-pulse{
+    0%{ transform:scale(1); opacity:.55; }
+    100%{ transform:scale(1.55); opacity:0; }
+  }
+
+  /* ---- Panel ---- */
+  #rn-panel{
+    position:fixed; bottom:96px; right:24px;
+    width:360px; max-width:calc(100vw - 32px);
+    height:520px; max-height:calc(100vh - 140px);
+    background:var(--cream);
+    border-radius:18px;
+    box-shadow:0 20px 60px rgba(28,43,31,0.28);
+    display:flex; flex-direction:column;
+    overflow:hidden;
+    opacity:0; transform:translateY(16px) scale(.98);
+    pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;
+    z-index:9999;
+  }
+  #rn-panel.open{ opacity:1; transform:translateY(0) scale(1); pointer-events:auto; }
+
+  #rn-header{
+    background:var(--forest-deep);
+    padding:18px 20px;
+    display:flex; align-items:center; gap:12px;
+    border-bottom:3px solid var(--ember);
+  }
+  #rn-header .mark{
+    width:36px; height:36px; border-radius:50%;
+    background:var(--forest); display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  #rn-header .mark svg{ width:18px; height:18px; stroke:var(--cream); }
+  #rn-header .txt h1{
+    font-family:'Fraunces',serif; font-size:16px; font-weight:600; color:var(--cream);
+    letter-spacing:.2px;
+  }
+  #rn-header .txt p{ font-size:11.5px; color:var(--cream-dim); margin-top:2px; }
+  #rn-close{
+    margin-left:auto; background:none; border:none; cursor:pointer;
+    color:var(--cream-dim); font-size:20px; line-height:1; padding:4px;
+  }
+  #rn-close:hover{ color:var(--cream); }
+
+  #rn-messages{
+    flex:1; overflow-y:auto; padding:18px 16px;
+    display:flex; flex-direction:column; gap:12px;
+    background:
+      radial-gradient(circle at 10% 0%, rgba(181,101,47,0.06), transparent 40%),
+      var(--cream);
+  }
+  .rn-msg{ max-width:82%; font-size:13.5px; line-height:1.5; padding:10px 13px; border-radius:14px; white-space:pre-line; }
+  .rn-msg.bot{
+    background:#fff; color:var(--forest-deep);
+    border:1px solid var(--cream-dim);
+    align-self:flex-start; border-bottom-left-radius:4px;
+  }
+  .rn-msg.user{
+    background:var(--forest); color:var(--cream);
+    align-self:flex-end; border-bottom-right-radius:4px;
+  }
+  .rn-msg.typing{ display:flex; gap:4px; align-items:center; padding:12px 14px; }
+  .rn-msg.typing span{
+    width:6px; height:6px; border-radius:50%; background:var(--stone);
+    animation:rn-bounce 1.2s infinite ease-in-out;
+  }
+  .rn-msg.typing span:nth-child(2){ animation-delay:.15s; }
+  .rn-msg.typing span:nth-child(3){ animation-delay:.3s; }
+  @keyframes rn-bounce{ 0%,60%,100%{ transform:translateY(0); opacity:.5; } 30%{ transform:translateY(-4px); opacity:1; } }
+
+  #rn-suggestions{
+    display:flex; flex-wrap:wrap; gap:6px; padding:0 16px 12px;
+  }
+  .rn-chip{
+    font-family:'Inter',sans-serif; font-size:11.5px; color:var(--forest-deep);
+    background:var(--cream-dim); border:1px solid var(--stone);
+    border-radius:100px; padding:6px 12px; cursor:pointer;
+    transition:background .15s ease;
+  }
+  .rn-chip:hover{ background:#fff; border-color:var(--ember); }
+
+  #rn-mic{
+    width:38px; height:38px; border-radius:50%; border:1px solid var(--cream-dim);
+    background:var(--cream); cursor:pointer; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+  }
+  #rn-mic svg{ width:16px; height:16px; stroke:var(--forest-deep); }
+  #rn-mic:hover{ border-color:var(--ember); }
+  #rn-mic.listening{ background:var(--ember); border-color:var(--ember); animation:rn-pulse 1.4s ease-out infinite; }
+  #rn-mic.listening svg{ stroke:#fff; }
+
+  #rn-speaker{
+    background:none; border:none; cursor:pointer; padding:2px 0 0 6px;
+    opacity:.55; flex-shrink:0;
+  }
+  #rn-speaker:hover{ opacity:1; }
+  .rn-msg-row{ display:flex; align-items:flex-end; }
+  .rn-msg-row.bot-row{ align-self:flex-start; }
+
+  #rn-inputbar{
+    display:flex; gap:8px; padding:14px 16px;
+    border-top:1px solid var(--cream-dim); background:#fff;
+  }
+  #rn-input{
+    flex:1; border:1px solid var(--cream-dim); border-radius:100px;
+    padding:10px 16px; font-size:13.5px; font-family:'Inter',sans-serif;
+    outline:none; background:var(--cream);
+  }
+  #rn-input:focus{ border-color:var(--ember); }
+  #rn-send{
+    width:38px; height:38px; border-radius:50%; border:none;
+    background:var(--forest-deep); cursor:pointer;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  #rn-send:hover{ background:var(--ember); }
+  #rn-send svg{ width:16px; height:16px; stroke:var(--cream); }
+  #rn-send:disabled{ opacity:.5; cursor:default; }
+
+  #rn-messages::-webkit-scrollbar{ width:5px; }
+  #rn-messages::-webkit-scrollbar-thumb{ background:var(--cream-dim); border-radius:10px; }
+</style>
+
+<div id="rn-launcher" onclick="rnToggle()">
+  <div class="pulse"></div>
+  <svg id="rn-icon-open" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M2 19 L7.5 9 L11 14.5 L14.5 7 L22 19 Z"></path>
+    <path d="M12.5 9.5 L14.5 7 L16.2 9.3" stroke-width="1.4"></path>
+  </svg>
+</div>
+
+<div id="rn-panel">
+  <div id="rn-header">
+    <div class="mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 19 L7.5 9 L11 14.5 L14.5 7 L22 19 Z"></path>
+        <path d="M12.5 9.5 L14.5 7 L16.2 9.3" stroke-width="1.4"></path>
+      </svg>
+    </div>
+    <div class="txt">
+      <h1>Refugio Nativo</h1>
+      <p>Las Trancas · respuesta al instante</p>
+    </div>
+    <button id="rn-close" onclick="rnToggle()">&times;</button>
+  </div>
+
+  <div id="rn-messages"></div>
+  <div id="rn-suggestions">
+    <div class="rn-chip" onclick="rnAsk('¿Está disponible el próximo fin de semana?')">Ver disponibilidad</div>
+    <div class="rn-chip" onclick="rnAsk('¿Qué se puede hacer en Las Trancas?')">Qué hacer acá</div>
+    <div class="rn-chip" onclick="rnAsk('¿Cómo llego al refugio?')">Cómo llegar</div>
+    <div class="rn-chip" onclick="rnAsk('¿Cuál es la diferencia entre el refugio y el domo?')">Refugio vs. domo</div>
+  </div>
+  <div id="rn-inputbar">
+    <button id="rn-mic" onclick="rnToggleMic()" title="Hablar">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+        <line x1="12" y1="19" x2="12" y2="23"></line>
+      </svg>
+    </button>
+    <input id="rn-input" type="text" placeholder="Escribe tu pregunta..." onkeydown="if(event.key==='Enter') rnSend()">
+    <button id="rn-send" onclick="rnSend()">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="22" y1="2" x2="11" y2="13"></line>
+        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+const RN_SYSTEM_PROMPT = `Eres el asistente virtual de Refugio Nativo, un alojamiento de dos espacios (El Refugio y El Domo) en Shangrilá, Valle Las Trancas, Termas de Chillán, Ñuble, Chile. Responde SIEMPRE en el mismo idioma en que te escribe el huésped (español, inglés, portugués u otro) — nunca respondas en un idioma distinto al de su mensaje, incluso si esta información está en español. Con un tono cálido, cercano y directo — como Juan Pablo, el dueño, que es Superanfitrión Airbnb hace 3 años con 4.88 de rating y más de 140 reseñas. Sé breve y útil, no des respuestas largas tipo ensayo.
+
+INFORMACIÓN DEL LUGAR:
+- Ubicación: Shangrilá, Valle Las Trancas, Termas de Chillán, Ñuble, a 1.500 msnm. 80 km desde Chillán, ~200 km desde Concepción por Ruta N-55 (pavimentada hasta Las Trancas, luego 1.8 km de ripio hasta el refugio).
+- 2.000 m² de terreno privado con bosque nativo de coihues centenarios, sin vecinos.
+- Piscina compartida en temporada de verano, hamacas, zonas de descanso, fogón y parrilla exterior.
+
+EL REFUGIO (cabaña): hasta 7 personas, estufa a leña, hot tub/tinaja privada, piscina en temporada, terraza con fogón, parrilla exterior, PET FRIENDLY (acepta mascotas), 2 terrazas techadas.
+
+EL DOMO: hasta 4 personas, estufa a leña, hot tub/tinaja privada, piscina en temporada, terraza con vistas al cerro Las Bravas y volcanes Chillán, aire acondicionado. NO es pet friendly.
+
+RESERVAS Y DISPONIBILIDAD: Se reservan exclusivamente por Airbnb (no hay pago ni reserva directa por este chat). Más abajo tienes el listado REAL y actualizado de fechas ya ocupadas por propiedad — úsalo para responder si una fecha está libre u ocupada. Si una fecha no aparece en la lista de ocupadas, está libre. Nunca inventes precios (esos no están disponibles aquí) — para precio o para confirmar/reservar, deriva siempre a WhatsApp +56 9 8777 5298 o Airbnb.
+
+CÓMO LLEGAR: Ruta N-55 desde Chillán o Concepción. Al llegar a Shangrilá hay un estacionamiento compartido antes de la entrada (es el acceso correcto, aunque el letrero no se vea de inmediato). En invierno es obligatorio llevar cadenas o vehículo 4x4 para los controles de acceso hacia Termas de Chillán.
+
+ACTIVIDADES POR TEMPORADA:
+- Invierno (jun-sep): ski y snowboard en Nevados de Chillán, heli-ski, motos de nieve, raquetas de nieve, termas volcánicas al aire libre, tubing, trineo de perros.
+- Otoño (abr-may): bosque de coihues con colores, temporada baja y privacidad total, fotografía de paisaje, niebla mañanera. "La temporada más subestimada del año".
+- Verano (oct-mar): trekking, MTB enduro y Bike Park, canopy, canyoning, escalada en roca, cabalgatas, yoga, pozones y aguas calientes naturales, Festival Cervezas Shangrilá (febrero).
+- Primavera (sep-nov): bosque despertando, cascadas en caudal máximo, flores silvestres, clima templado, valle casi sin turistas.
+
+ATRACTIVOS CERCANOS: Laguna Huemul (la excursión más espectacular del valle), Cascada Rucapirén, Valle Aguas Calientes (termas naturales), Cueva Los Pincheira (historia, km 67), Gruta Los Pangues, Mirador del Valle, Fumarolas, Baños del Rafa, Reserva Nacional Ñuble, Refugio Shangrilá (ruinas históricas).
+
+RESTAURANTES CERCANOS: Sitari Tapas y Brasas, Bagual (cocina patagónica), Chil'in Pizzería (km 68), Cumbres, Koiwe Café (brunch), Pizzas & Beers (música en vivo), Olivas Restaurant, Alto Las Trancas (cordero al palo y jabalí).
+
+SERVICIOS PRÓXIMAMENTE (aún no disponibles): arriendo de cadenas para nieve, transporte desde Chillán al refugio.
+
+CONTACTO: WhatsApp +56 9 8777 5298 (respuesta rápida), correo juanpabloverap@gmail.com, Instagram @refugionativo1.
+
+Si preguntan algo que no está en esta información (ej. precios exactos, disponibilidad de fechas específicas, temas no relacionados al refugio), dilo con honestidad y deriva al WhatsApp +56 9 8777 5298 en vez de inventar una respuesta.`;
+
+let rnHistory = [];
+let rnOpen = false;
+let rnAvailabilityText = 'No se pudo cargar la disponibilidad en este momento.';
+let rnAvailabilityPromise = null;
+let rnListening = false;
+let rnRecognition = null;
+let rnLastInputWasVoice = false;
+
+// ---- Voz: hablarle al bot (speech-to-text) ----
+function rnToggleMic(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){
+    alert('Tu navegador no soporta entrada de voz. Prueba en Chrome.');
+    return;
+  }
+  if(rnListening){
+    rnRecognition.stop();
+    return;
+  }
+  rnRecognition = new SR();
+  rnRecognition.lang = 'es-CL';
+  rnRecognition.interimResults = false;
+  rnRecognition.maxAlternatives = 1;
+
+  rnRecognition.onstart = () => {
+    rnListening = true;
+    document.getElementById('rn-mic').classList.add('listening');
+  };
+  rnRecognition.onend = () => {
+    rnListening = false;
+    document.getElementById('rn-mic').classList.remove('listening');
+  };
+  rnRecognition.onerror = () => {
+    rnListening = false;
+    document.getElementById('rn-mic').classList.remove('listening');
+  };
+  rnRecognition.onresult = (event) => {
+    const transcript = event.results[0][0].transcript;
+    document.getElementById('rn-input').value = transcript;
+    rnLastInputWasVoice = true;
+    rnSend();
+  };
+  rnRecognition.start();
+}
+
+// ---- Voz: que el bot responda hablado (text-to-speech) ----
+function rnSpeak(text){
+  if(!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const utter = new SpeechSynthesisUtterance(text);
+  utter.lang = 'es-CL';
+  utter.rate = 1.0;
+  window.speechSynthesis.speak(utter);
+}
+
+const SB_URL = 'https://dsczjxscglezsdmcbuho.supabase.co';
+const SB_KEY = 'sb_publishable_vrG4JuYDsvpWz_MFav82og_lGIgl-mG';
+
+async function rnLoadAvailability(){
+  try{
+    const today = new Date().toISOString().slice(0,10);
+    const res = await fetch(
+      `${SB_URL}/rest/v1/disponibilidad?select=*&check_out=gte.${today}&order=check_in.asc`,
+      { headers: { apikey: SB_KEY, Authorization: `Bearer ${SB_KEY}` } }
+    );
+    if(!res.ok) throw new Error('fetch failed');
+    const rows = await res.json();
+    if(!rows.length){
+      rnAvailabilityText = 'No hay reservas futuras registradas — ambos espacios están libres por ahora.';
+      return;
+    }
+    const byProp = {};
+    rows.forEach(r=>{
+      const prop = r.propiedad || 'Sin especificar';
+      if(!byProp[prop]) byProp[prop] = [];
+      byProp[prop].push(`${r.check_in} a ${r.check_out} (${r.estado})`);
+    });
+    rnAvailabilityText = Object.entries(byProp)
+      .map(([prop, ranges]) => `${prop}: ocupado en ${ranges.join('; ')}`)
+      .join('\n');
+  }catch(err){
+    rnAvailabilityText = 'No se pudo cargar la disponibilidad en tiempo real en este momento — deriva al huésped a WhatsApp +56 9 8777 5298 para confirmar fechas.';
+  }
+}
+
+function rnToggle(){
+  rnOpen = !rnOpen;
+  document.getElementById('rn-panel').classList.toggle('open', rnOpen);
+  if(rnOpen && rnHistory.length===0){
+    rnAddMessage('bot', '¡Hola! 🌲 Soy el asistente de Refugio Nativo. Pregúntame sobre el lugar, actividades en Las Trancas, o cómo llegar.\n\nHi! Feel free to ask in English. / Olá! Pode perguntar em português.');
+    rnAvailabilityPromise = rnLoadAvailability();
+  }
+}
+
+function rnAddMessage(role, text, opts){
+  opts = opts || {};
+  const wrap = document.getElementById('rn-messages');
+  const row = document.createElement('div');
+  row.className = 'rn-msg-row' + (role==='bot' ? ' bot-row' : '');
+
+  const div = document.createElement('div');
+  div.className = 'rn-msg ' + role;
+  div.textContent = text;
+  row.appendChild(div);
+
+  if(role === 'bot' && window.speechSynthesis){
+    const btn = document.createElement('button');
+    btn.id = 'rn-speaker';
+    btn.title = 'Escuchar';
+    btn.innerHTML = '🔊';
+    btn.onclick = () => rnSpeak(text);
+    row.appendChild(btn);
+    if(opts.autoSpeak) rnSpeak(text);
+  }
+
+  wrap.appendChild(row);
+  wrap.scrollTop = wrap.scrollHeight;
+}
+
+function rnAsk(text){
+  document.getElementById('rn-input').value = text;
+  rnSend();
+}
+
+async function rnSend(){
+  const input = document.getElementById('rn-input');
+  const text = input.value.trim();
+  if(!text) return;
+  const wasVoice = rnLastInputWasVoice;
+  rnLastInputWasVoice = false;
+  input.value = '';
+  document.getElementById('rn-send').disabled = true;
+
+  rnAddMessage('user', text);
+  rnHistory.push({ role:'user', content:text });
+
+  if(rnAvailabilityPromise) await rnAvailabilityPromise;
+
+  const wrap = document.getElementById('rn-messages');
+  const typing = document.createElement('div');
+  typing.className = 'rn-msg bot typing';
+  typing.innerHTML = '<span></span><span></span><span></span>';
+  wrap.appendChild(typing);
+  wrap.scrollTop = wrap.scrollHeight;
+
+  try{
+    const response = await fetch("/.netlify/functions/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        system: RN_SYSTEM_PROMPT + '\n\nDISPONIBILIDAD ACTUAL (fechas ya ocupadas, formato AAAA-MM-DD):\n' + rnAvailabilityText,
+        messages: rnHistory
+      })
+    });
+    const data = await response.json();
+    typing.remove();
+    const reply = (data.content && data.content[0] && data.content[0].text) ? data.content[0].text : 'Disculpa, tuve un problema para responder. Escríbenos por WhatsApp al +56 9 8777 5298.';
+    rnAddMessage('bot', reply, { autoSpeak: wasVoice });
+    rnHistory.push({ role:'assistant', content:reply });
+  }catch(err){
+    typing.remove();
+    rnAddMessage('bot', 'Hubo un problema de conexión. Escríbenos directo por WhatsApp al +56 9 8777 5298.');
+  }
+  document.getElementById('rn-send').disabled = false;
+}
+</script>
 </body>
 </html>
 
