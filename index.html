@@ -849,6 +849,27 @@
     margin-bottom: 10px;
   }
   .prox-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; font-weight: 300; }
+  .prox-contacts {
+    list-style: none;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 0.5px solid rgba(255,255,255,0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .prox-contacts a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #f0ece0;
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s ease;
+  }
+  .prox-contacts a i { font-size: 15px; color: var(--verde-claro); }
+  .prox-contacts a:hover { color: var(--verde-claro); }
 
   /* ===== COMO LLEGAR ===== */
   .llegar {
@@ -1936,7 +1957,7 @@
 <!-- PRÓXIMAMENTE -->
 <section class="proximamente">
   <p class="section-label">Servicios</p>
-  <h2 class="section-title">Próximamente<br><em>disponibles</em></h2>
+  <h2 class="section-title">Servicios<br><em>adicionales</em></h2>
   <div class="proximamente-grid">
 
     <div class="prox-card">
@@ -1944,9 +1965,12 @@
         <i class="ti ti-car"></i>
       </div>
       <div class="prox-card-body">
-        <span class="prox-badge">Próximamente</span>
+        <span class="prox-badge">Contacto directo</span>
         <p class="prox-name">Arriendo de cadenas</p>
-        <p class="prox-desc">Servicio de arriendo de cadenas para nieve disponible en el refugio. Ideal para temporada invernal sin necesidad de llevarlas desde la ciudad.</p>
+        <p class="prox-desc">Servicio externo de arriendo de cadenas para nieve. Ideal para temporada invernal sin necesidad de llevarlas desde la ciudad.</p>
+        <ul class="prox-contacts">
+          <li><a href="tel:+56976470471"><i class="ti ti-phone"></i> Checho Pacheco · +56 9 7647 0471</a></li>
+        </ul>
       </div>
     </div>
 
@@ -1955,9 +1979,14 @@
         <i class="ti ti-bus"></i>
       </div>
       <div class="prox-card-body">
-        <span class="prox-badge">Próximamente</span>
+        <span class="prox-badge">Contacto directo</span>
         <p class="prox-name">Transporte</p>
-        <p class="prox-desc">Servicio de traslado desde Chillán al refugio y hacia los principales puntos del valle. Cómodo, seguro y sin preocupaciones por el camino de ripio.</p>
+        <p class="prox-desc">Servicios externos de traslado desde Chillán al refugio y hacia los principales puntos del valle. Contacta directamente para coordinar tu viaje.</p>
+        <ul class="prox-contacts">
+          <li><a href="tel:+56973258744"><i class="ti ti-phone"></i> Andes Transfer · +56 9 7325 8744</a></li>
+          <li><a href="tel:+56992383706"><i class="ti ti-phone"></i> Traslados y Rescates 4x4 · +56 9 9238 3706</a></li>
+          <li><a href="tel:+56984983055"><i class="ti ti-phone"></i> Manuel Barbera · +56 9 8498 3055</a></li>
+        </ul>
       </div>
     </div>
 
@@ -2552,7 +2581,7 @@ ATRACTIVOS CERCANOS: Laguna Huemul (la excursión más espectacular del valle), 
 
 RESTAURANTES CERCANOS: Sitari Tapas y Brasas, Bagual (cocina patagónica), Chil'in Pizzería (km 68), Cumbres, Koiwe Café (brunch), Pizzas & Beers (música en vivo), Olivas Restaurant, Alto Las Trancas (cordero al palo y jabalí). MINIMARKETS CERCANOS: McPato es el más cercano, a aprox. 1 km camino a Shangrilá (el más práctico para el huésped). En el centro de Las Trancas hay varios más: El Leñador, Rucahue, Copito.
 
-SERVICIOS PRÓXIMAMENTE (aún no disponibles): arriendo de cadenas para nieve, transporte desde Chillán al refugio.
+SERVICIOS EXTERNOS (no los ofrece el refugio, son contactos externos): arriendo de cadenas para nieve con Checho Pacheco +56976470471; transporte desde Chillán al refugio con Andes Transfer +56973258744, Traslados y Rescates 4x4 +56992383706, o Manuel Barbera +56984983055.
 
 PREGUNTAS FRECUENTES DE HUESPEDES (respuestas oficiales, usalas tal cual):
 - Check-in: 16:00. Check-out: 11:00.
